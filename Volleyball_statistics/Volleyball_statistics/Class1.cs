@@ -6,17 +6,23 @@ using System.Threading.Tasks;
 
 namespace Volleyball_statistics
 {
-    internal class Menu
+    public class Menu
     {
-        string Domaci;
-        string Hoste;
-        int Sestava;
+        public string? Domaci;
+        public string? Hoste;
+        public string? Sestava;
 
-        public Menu(string domaci, string hoste, int sestava)
+        public Menu(string domaci, string hoste, string sestava)
         {
             Domaci = domaci;
             Hoste = hoste;
             Sestava = sestava;
-        }   
+        }
+        public Menu()
+        {
+            Domaci = null;
+            Hoste = null;
+            Sestava = null;
+        }
     }
 }

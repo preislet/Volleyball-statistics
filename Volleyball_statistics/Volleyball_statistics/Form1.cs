@@ -9,7 +9,12 @@ namespace Volleyball_statistics
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void Button_NovaSestava_Click(object sender, EventArgs e)
+        {
+            Form_NovaSestava NovaSestava = new Form_NovaSestava();
+            NovaSestava.Show();
         }
     }
 }
