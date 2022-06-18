@@ -56,10 +56,25 @@ namespace Volleyball_statistics
         }
         private void SaveNewTeam(string path)
         {
+            string[] write = new string[45];
+            int index = 0;
             try
             {
                 TextWriter tw = new StreamWriter(path, true);
-                tw.WriteLine("Densdbabdkjgakjhd");
+                for (int i = 1; i < tableLayoutPanel1.RowCount;i++)
+                    for (int j = 0; j < tableLayoutPanel1.ColumnCount; j++)
+                    {
+                        Control c = this.tableLayoutPanel1.GetControlFromPosition(j, i);
+                        if (c.Text == null) break;
+                        write[index] = c.Text;
+                        index++;
+                    }
+                
+                for (int i = 0; i < write.Length; i += 3)
+                {
+                    if (write[i] == "") break;
+                    tw.WriteLine("#" + write[i] + "*" + write[i+1] + "*" + write[i+2]);
+                }
                 tw.Close();
             }
             catch (Exception ex)

@@ -34,6 +34,8 @@
             this.textBox_Domaci = new System.Windows.Forms.TextBox();
             this.textBox_Hoste = new System.Windows.Forms.TextBox();
             this.Button_NovaSestava = new System.Windows.Forms.Button();
+            this.button_sestava = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +44,7 @@
             this.label_domaci.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_domaci.AutoSize = true;
             this.label_domaci.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_domaci.Location = new System.Drawing.Point(12, 13);
+            this.label_domaci.Location = new System.Drawing.Point(12, 7);
             this.label_domaci.Name = "label_domaci";
             this.label_domaci.Size = new System.Drawing.Size(120, 40);
             this.label_domaci.TabIndex = 0;
@@ -53,7 +55,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(23, 81);
+            this.label2.Location = new System.Drawing.Point(23, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 40);
             this.label2.TabIndex = 1;
@@ -69,19 +71,21 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBox_Domaci, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBox_Hoste, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(32, 72);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(570, 135);
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(570, 164);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // textBox_Domaci
             // 
             this.textBox_Domaci.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox_Domaci.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox_Domaci.Location = new System.Drawing.Point(148, 10);
+            this.textBox_Domaci.Location = new System.Drawing.Point(148, 4);
             this.textBox_Domaci.Name = "textBox_Domaci";
             this.textBox_Domaci.Size = new System.Drawing.Size(419, 46);
             this.textBox_Domaci.TabIndex = 2;
@@ -90,7 +94,7 @@
             // 
             this.textBox_Hoste.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox_Hoste.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox_Hoste.Location = new System.Drawing.Point(148, 78);
+            this.textBox_Hoste.Location = new System.Drawing.Point(148, 58);
             this.textBox_Hoste.Name = "textBox_Hoste";
             this.textBox_Hoste.Size = new System.Drawing.Size(419, 46);
             this.textBox_Hoste.TabIndex = 3;
@@ -98,7 +102,7 @@
             // Button_NovaSestava
             // 
             this.Button_NovaSestava.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Button_NovaSestava.Location = new System.Drawing.Point(622, 285);
+            this.Button_NovaSestava.Location = new System.Drawing.Point(306, 277);
             this.Button_NovaSestava.Name = "Button_NovaSestava";
             this.Button_NovaSestava.Size = new System.Drawing.Size(201, 61);
             this.Button_NovaSestava.TabIndex = 3;
@@ -106,11 +110,33 @@
             this.Button_NovaSestava.UseVisualStyleBackColor = true;
             this.Button_NovaSestava.Click += new System.EventHandler(this.Button_NovaSestava_Click);
             // 
+            // button_sestava
+            // 
+            this.button_sestava.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button_sestava.Location = new System.Drawing.Point(32, 277);
+            this.button_sestava.Name = "button_sestava";
+            this.button_sestava.Size = new System.Drawing.Size(201, 61);
+            this.button_sestava.TabIndex = 4;
+            this.button_sestava.Text = "Sestava";
+            this.button_sestava.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(13, 116);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(119, 40);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Sestava:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 501);
+            this.Controls.Add(this.button_sestava);
             this.Controls.Add(this.Button_NovaSestava);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
@@ -130,5 +156,7 @@
         private TextBox textBox_Domaci;
         private TextBox textBox_Hoste;
         private Button Button_NovaSestava;
+        private Label label1;
+        private Button button_sestava;
     }
 }
