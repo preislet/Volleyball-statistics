@@ -33,9 +33,11 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox_Domaci = new System.Windows.Forms.TextBox();
             this.textBox_Hoste = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label_VybranaSestava = new System.Windows.Forms.Label();
             this.Button_NovaSestava = new System.Windows.Forms.Button();
             this.button_sestava = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +74,7 @@
             this.tableLayoutPanel1.Controls.Add(this.textBox_Domaci, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBox_Hoste, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label_VybranaSestava, 1, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(32, 72);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
@@ -89,6 +92,7 @@
             this.textBox_Domaci.Name = "textBox_Domaci";
             this.textBox_Domaci.Size = new System.Drawing.Size(419, 46);
             this.textBox_Domaci.TabIndex = 2;
+            this.textBox_Domaci.TextChanged += new System.EventHandler(this.textBox_Domaci_TextChanged);
             // 
             // textBox_Hoste
             // 
@@ -98,27 +102,7 @@
             this.textBox_Hoste.Name = "textBox_Hoste";
             this.textBox_Hoste.Size = new System.Drawing.Size(419, 46);
             this.textBox_Hoste.TabIndex = 3;
-            // 
-            // Button_NovaSestava
-            // 
-            this.Button_NovaSestava.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Button_NovaSestava.Location = new System.Drawing.Point(306, 277);
-            this.Button_NovaSestava.Name = "Button_NovaSestava";
-            this.Button_NovaSestava.Size = new System.Drawing.Size(201, 61);
-            this.Button_NovaSestava.TabIndex = 3;
-            this.Button_NovaSestava.Text = "Nová Sestava";
-            this.Button_NovaSestava.UseVisualStyleBackColor = true;
-            this.Button_NovaSestava.Click += new System.EventHandler(this.Button_NovaSestava_Click);
-            // 
-            // button_sestava
-            // 
-            this.button_sestava.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_sestava.Location = new System.Drawing.Point(32, 277);
-            this.button_sestava.Name = "button_sestava";
-            this.button_sestava.Size = new System.Drawing.Size(201, 61);
-            this.button_sestava.TabIndex = 4;
-            this.button_sestava.Text = "Sestava";
-            this.button_sestava.UseVisualStyleBackColor = true;
+            this.textBox_Hoste.TextChanged += new System.EventHandler(this.textBox_Hoste_TextChanged);
             // 
             // label1
             // 
@@ -131,11 +115,56 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Sestava:";
             // 
+            // label_VybranaSestava
+            // 
+            this.label_VybranaSestava.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_VybranaSestava.AutoSize = true;
+            this.label_VybranaSestava.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_VybranaSestava.Location = new System.Drawing.Point(199, 116);
+            this.label_VybranaSestava.Name = "label_VybranaSestava";
+            this.label_VybranaSestava.Size = new System.Drawing.Size(317, 40);
+            this.label_VybranaSestava.TabIndex = 5;
+            this.label_VybranaSestava.Text = "Nebyla vybrána sestava\r\n";
+            // 
+            // Button_NovaSestava
+            // 
+            this.Button_NovaSestava.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Button_NovaSestava.Location = new System.Drawing.Point(347, 260);
+            this.Button_NovaSestava.Name = "Button_NovaSestava";
+            this.Button_NovaSestava.Size = new System.Drawing.Size(201, 61);
+            this.Button_NovaSestava.TabIndex = 3;
+            this.Button_NovaSestava.Text = "Nová Sestava";
+            this.Button_NovaSestava.UseVisualStyleBackColor = true;
+            this.Button_NovaSestava.Click += new System.EventHandler(this.Button_NovaSestava_Click);
+            // 
+            // button_sestava
+            // 
+            this.button_sestava.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button_sestava.Location = new System.Drawing.Point(32, 260);
+            this.button_sestava.Name = "button_sestava";
+            this.button_sestava.Size = new System.Drawing.Size(255, 61);
+            this.button_sestava.TabIndex = 4;
+            this.button_sestava.Text = "Vybrat Sestavu";
+            this.button_sestava.UseVisualStyleBackColor = true;
+            this.button_sestava.Click += new System.EventHandler(this.button_sestava_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(659, 377);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(259, 93);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Start";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 501);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button_sestava);
             this.Controls.Add(this.Button_NovaSestava);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -158,5 +187,7 @@
         private Button Button_NovaSestava;
         private Label label1;
         private Button button_sestava;
+        private Label label_VybranaSestava;
+        private Button button1;
     }
 }
