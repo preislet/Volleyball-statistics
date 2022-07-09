@@ -19,7 +19,7 @@ namespace Volleyball_statistics
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            menu.CreateFolder();
         }
 
         private void Button_NovaSestava_Click(object sender, EventArgs e)

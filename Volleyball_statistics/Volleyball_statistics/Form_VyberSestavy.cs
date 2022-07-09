@@ -20,15 +20,17 @@ namespace Volleyball_statistics
 
         private void Form_VyberSestavy_Load(object sender, EventArgs e)
         {
-            path = Form1.menu.FindPath("");
+            path = Form1.menu.FindPath("sestavy");
             VyplnitLayout(path);
         }
         private void VyplnitLayout(string path)
         {
             DirectoryInfo d = new DirectoryInfo(path); 
-            FileInfo[] Files = d.GetFiles("*.txt"); //Getting Text files
+            FileInfo[] Files = d.GetFiles("*.txt"); //Nalezení všexh .txt files ve složce
             int index = 0;
             int max_index = Files.Length;
+
+            //Vytvoření Buttonu pro vybrání dané sestavy
             for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
                 for (int j = 0; j < tableLayoutPanel1.ColumnCount; j++)
                 {
@@ -43,9 +45,9 @@ namespace Volleyball_statistics
                     index++;
                 }
         }
-        private void Button_Click_VyberSestavy(object sender, EventArgs e)
+        private void Button_Click_VyberSestavy(object sender, EventArgs e)  //Vybrání sestavy 
         {
-            Form1.menu.Sestava = (sender as Button).Text;
+            Form1.menu.Sestava = (sender as Button).Text;  //Sestava se zapisuje do třídy menu k pozdějšímu využití
             Form1.l.Text = "Byla vybrána sestava: " + Form1.menu.Sestava;
             this.Close();
         }

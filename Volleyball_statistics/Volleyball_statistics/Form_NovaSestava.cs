@@ -17,16 +17,18 @@ namespace Volleyball_statistics
             InitializeComponent();
         }
 
-        private void button_Ulozit_Click(object sender, EventArgs e)
+        private void button_Ulozit_Click(object sender, EventArgs e)  //Ukložení nové sestavy do složky vytvořené na ploše
         {
-            string path = Form1.menu.FindPath(textBox43.Text);
+            string path = Form1.menu.FindPath(textBox43.Text);  //textBox43 je kolonka, kam se vyplňuje název sestavy
             Form1.menu.SaveNewTeam(path, tableLayoutPanel1);
             this.Close();
         }
 
         private void textBox43_TextChanged(object sender, EventArgs e)
         {
-            if (textBox43.Text.Length != 0) button_Ulozit.Enabled = true;
+            if (textBox43.Text.Length != 0) button_Ulozit.Enabled = true;  //Sestava bez jména se nedá uložit
+
+            // TODO - kontorla, zda se už takhle nějaká sestava nejmenuje
         }
     }
 }

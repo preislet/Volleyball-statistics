@@ -60,7 +60,31 @@
             this.label_ServisHoste = new System.Windows.Forms.Label();
             this.button_ServisDomaci = new System.Windows.Forms.Button();
             this.button_ServisHoste = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label_ServisSet4 = new System.Windows.Forms.Label();
+            this.label_ServisSet3 = new System.Windows.Forms.Label();
+            this.label_ServisSet2 = new System.Windows.Forms.Label();
+            this.label_Set5 = new System.Windows.Forms.Label();
+            this.label_Set4 = new System.Windows.Forms.Label();
+            this.label_Set3 = new System.Windows.Forms.Label();
+            this.label_Set2 = new System.Windows.Forms.Label();
+            this.label_Set1 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label_SkoreSet1 = new System.Windows.Forms.Label();
+            this.label_SkoreSet2 = new System.Windows.Forms.Label();
+            this.label_SkoreSet3 = new System.Windows.Forms.Label();
+            this.label_SkoreSet4 = new System.Windows.Forms.Label();
+            this.label_SkoreSet5 = new System.Windows.Forms.Label();
+            this.label_ServisSet1 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label_ServisSet5 = new System.Windows.Forms.Label();
+            this.pictureBox_HristeStridani = new System.Windows.Forms.PictureBox();
+            this.textBox_7HracHoste = new System.Windows.Forms.TextBox();
+            this.textBox_7HracDomaci = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_HristeStridani)).BeginInit();
             this.SuspendLayout();
             // 
             // Label_Domaci
@@ -317,50 +341,50 @@
             // label_Skore
             // 
             this.label_Skore.AutoSize = true;
-            this.label_Skore.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_Skore.Location = new System.Drawing.Point(733, 53);
+            this.label_Skore.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_Skore.Location = new System.Drawing.Point(715, 58);
             this.label_Skore.Name = "label_Skore";
-            this.label_Skore.Size = new System.Drawing.Size(100, 20);
+            this.label_Skore.Size = new System.Drawing.Size(77, 15);
             this.label_Skore.TabIndex = 23;
             this.label_Skore.Text = " D   Skóre   H ";
             // 
             // label_Pomlcka
             // 
             this.label_Pomlcka.AutoSize = true;
-            this.label_Pomlcka.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_Pomlcka.Location = new System.Drawing.Point(777, 73);
+            this.label_Pomlcka.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_Pomlcka.Location = new System.Drawing.Point(750, 73);
             this.label_Pomlcka.Name = "label_Pomlcka";
-            this.label_Pomlcka.Size = new System.Drawing.Size(15, 20);
+            this.label_Pomlcka.Size = new System.Drawing.Size(12, 15);
             this.label_Pomlcka.TabIndex = 24;
             this.label_Pomlcka.Text = "-";
             // 
             // label_SkoreDomaci
             // 
             this.label_SkoreDomaci.AutoSize = true;
-            this.label_SkoreDomaci.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_SkoreDomaci.Location = new System.Drawing.Point(754, 73);
+            this.label_SkoreDomaci.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_SkoreDomaci.Location = new System.Drawing.Point(718, 73);
             this.label_SkoreDomaci.Name = "label_SkoreDomaci";
-            this.label_SkoreDomaci.Size = new System.Drawing.Size(17, 20);
+            this.label_SkoreDomaci.Size = new System.Drawing.Size(13, 15);
             this.label_SkoreDomaci.TabIndex = 25;
             this.label_SkoreDomaci.Text = "0";
             // 
             // label_SkoreHoste
             // 
             this.label_SkoreHoste.AutoSize = true;
-            this.label_SkoreHoste.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_SkoreHoste.Location = new System.Drawing.Point(798, 73);
+            this.label_SkoreHoste.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_SkoreHoste.Location = new System.Drawing.Point(779, 73);
             this.label_SkoreHoste.Name = "label_SkoreHoste";
-            this.label_SkoreHoste.Size = new System.Drawing.Size(17, 20);
+            this.label_SkoreHoste.Size = new System.Drawing.Size(13, 15);
             this.label_SkoreHoste.TabIndex = 26;
             this.label_SkoreHoste.Text = "0";
             // 
             // label_Servis
             // 
             this.label_Servis.AutoSize = true;
-            this.label_Servis.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_Servis.Location = new System.Drawing.Point(733, 112);
+            this.label_Servis.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_Servis.Location = new System.Drawing.Point(715, 100);
             this.label_Servis.Name = "label_Servis";
-            this.label_Servis.Size = new System.Drawing.Size(101, 20);
+            this.label_Servis.Size = new System.Drawing.Size(78, 15);
             this.label_Servis.TabIndex = 27;
             this.label_Servis.Text = " D   Servis   H ";
             // 
@@ -370,7 +394,7 @@
             this.label_ServisDomaci.AutoSize = true;
             this.label_ServisDomaci.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label_ServisDomaci.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label_ServisDomaci.Location = new System.Drawing.Point(754, 143);
+            this.label_ServisDomaci.Location = new System.Drawing.Point(715, 119);
             this.label_ServisDomaci.Name = "label_ServisDomaci";
             this.label_ServisDomaci.Size = new System.Drawing.Size(16, 17);
             this.label_ServisDomaci.TabIndex = 28;
@@ -381,7 +405,7 @@
             this.label_ServisHoste.AutoSize = true;
             this.label_ServisHoste.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label_ServisHoste.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label_ServisHoste.Location = new System.Drawing.Point(799, 143);
+            this.label_ServisHoste.Location = new System.Drawing.Point(776, 119);
             this.label_ServisHoste.Name = "label_ServisHoste";
             this.label_ServisHoste.Size = new System.Drawing.Size(16, 17);
             this.label_ServisHoste.TabIndex = 29;
@@ -392,7 +416,7 @@
             this.button_ServisDomaci.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_ServisDomaci.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_ServisDomaci.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_ServisDomaci.Location = new System.Drawing.Point(718, 119);
+            this.button_ServisDomaci.Location = new System.Drawing.Point(701, 119);
             this.button_ServisDomaci.Name = "button_ServisDomaci";
             this.button_ServisDomaci.Size = new System.Drawing.Size(8, 8);
             this.button_ServisDomaci.TabIndex = 30;
@@ -405,7 +429,7 @@
             this.button_ServisHoste.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_ServisHoste.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_ServisHoste.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_ServisHoste.Location = new System.Drawing.Point(840, 119);
+            this.button_ServisHoste.Location = new System.Drawing.Point(798, 119);
             this.button_ServisHoste.Name = "button_ServisHoste";
             this.button_ServisHoste.Size = new System.Drawing.Size(8, 8);
             this.button_ServisHoste.TabIndex = 31;
@@ -413,11 +437,272 @@
             this.button_ServisHoste.UseVisualStyleBackColor = false;
             this.button_ServisHoste.Click += new System.EventHandler(this.button_Servis_Click);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.39833F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.41433F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.53271F));
+            this.tableLayoutPanel1.Controls.Add(this.label_ServisSet4, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label_ServisSet3, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label_ServisSet2, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label_Set5, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label_Set4, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label_Set3, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label_Set2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label_Set1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label20, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label19, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label_SkoreSet1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label_SkoreSet2, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label_SkoreSet3, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label_SkoreSet4, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label_SkoreSet5, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label_ServisSet1, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label21, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label_ServisSet5, 2, 5);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(715, 172);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(321, 186);
+            this.tableLayoutPanel1.TabIndex = 32;
+            // 
+            // label_ServisSet4
+            // 
+            this.label_ServisSet4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_ServisSet4.AutoSize = true;
+            this.label_ServisSet4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_ServisSet4.Location = new System.Drawing.Point(188, 125);
+            this.label_ServisSet4.Name = "label_ServisSet4";
+            this.label_ServisSet4.Size = new System.Drawing.Size(106, 20);
+            this.label_ServisSet4.TabIndex = 42;
+            this.label_ServisSet4.Text = "Domácí/Hosté";
+            // 
+            // label_ServisSet3
+            // 
+            this.label_ServisSet3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_ServisSet3.AutoSize = true;
+            this.label_ServisSet3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_ServisSet3.Location = new System.Drawing.Point(188, 95);
+            this.label_ServisSet3.Name = "label_ServisSet3";
+            this.label_ServisSet3.Size = new System.Drawing.Size(106, 20);
+            this.label_ServisSet3.TabIndex = 43;
+            this.label_ServisSet3.Text = "Domácí/Hosté";
+            // 
+            // label_ServisSet2
+            // 
+            this.label_ServisSet2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_ServisSet2.AutoSize = true;
+            this.label_ServisSet2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_ServisSet2.Location = new System.Drawing.Point(188, 65);
+            this.label_ServisSet2.Name = "label_ServisSet2";
+            this.label_ServisSet2.Size = new System.Drawing.Size(106, 20);
+            this.label_ServisSet2.TabIndex = 44;
+            this.label_ServisSet2.Text = "Domácí/Hosté";
+            // 
+            // label_Set5
+            // 
+            this.label_Set5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_Set5.AutoSize = true;
+            this.label_Set5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_Set5.Location = new System.Drawing.Point(16, 158);
+            this.label_Set5.Name = "label_Set5";
+            this.label_Set5.Size = new System.Drawing.Size(42, 20);
+            this.label_Set5.TabIndex = 33;
+            this.label_Set5.Text = "Set 5";
+            // 
+            // label_Set4
+            // 
+            this.label_Set4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_Set4.AutoSize = true;
+            this.label_Set4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_Set4.Location = new System.Drawing.Point(16, 125);
+            this.label_Set4.Name = "label_Set4";
+            this.label_Set4.Size = new System.Drawing.Size(42, 20);
+            this.label_Set4.TabIndex = 34;
+            this.label_Set4.Text = "Set 4";
+            // 
+            // label_Set3
+            // 
+            this.label_Set3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_Set3.AutoSize = true;
+            this.label_Set3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_Set3.Location = new System.Drawing.Point(16, 95);
+            this.label_Set3.Name = "label_Set3";
+            this.label_Set3.Size = new System.Drawing.Size(42, 20);
+            this.label_Set3.TabIndex = 35;
+            this.label_Set3.Text = "Set 3";
+            // 
+            // label_Set2
+            // 
+            this.label_Set2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_Set2.AutoSize = true;
+            this.label_Set2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_Set2.Location = new System.Drawing.Point(16, 65);
+            this.label_Set2.Name = "label_Set2";
+            this.label_Set2.Size = new System.Drawing.Size(42, 20);
+            this.label_Set2.TabIndex = 36;
+            this.label_Set2.Text = "Set 2";
+            // 
+            // label_Set1
+            // 
+            this.label_Set1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_Set1.AutoSize = true;
+            this.label_Set1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_Set1.Location = new System.Drawing.Point(16, 35);
+            this.label_Set1.Name = "label_Set1";
+            this.label_Set1.Size = new System.Drawing.Size(42, 20);
+            this.label_Set1.TabIndex = 0;
+            this.label_Set1.Text = "Set 1";
+            // 
+            // label20
+            // 
+            this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label20.Location = new System.Drawing.Point(217, 5);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(47, 20);
+            this.label20.TabIndex = 38;
+            this.label20.Text = "Servis";
+            // 
+            // label19
+            // 
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(95, 5);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(46, 20);
+            this.label19.TabIndex = 37;
+            this.label19.Text = "Skóre";
+            // 
+            // label_SkoreSet1
+            // 
+            this.label_SkoreSet1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_SkoreSet1.AutoSize = true;
+            this.label_SkoreSet1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_SkoreSet1.Location = new System.Drawing.Point(98, 35);
+            this.label_SkoreSet1.Name = "label_SkoreSet1";
+            this.label_SkoreSet1.Size = new System.Drawing.Size(39, 20);
+            this.label_SkoreSet1.TabIndex = 40;
+            this.label_SkoreSet1.Text = "0 - 0";
+            // 
+            // label_SkoreSet2
+            // 
+            this.label_SkoreSet2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_SkoreSet2.AutoSize = true;
+            this.label_SkoreSet2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_SkoreSet2.Location = new System.Drawing.Point(98, 65);
+            this.label_SkoreSet2.Name = "label_SkoreSet2";
+            this.label_SkoreSet2.Size = new System.Drawing.Size(39, 20);
+            this.label_SkoreSet2.TabIndex = 40;
+            this.label_SkoreSet2.Text = "0 - 0";
+            // 
+            // label_SkoreSet3
+            // 
+            this.label_SkoreSet3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_SkoreSet3.AutoSize = true;
+            this.label_SkoreSet3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_SkoreSet3.Location = new System.Drawing.Point(98, 95);
+            this.label_SkoreSet3.Name = "label_SkoreSet3";
+            this.label_SkoreSet3.Size = new System.Drawing.Size(39, 20);
+            this.label_SkoreSet3.TabIndex = 40;
+            this.label_SkoreSet3.Text = "0 - 0";
+            // 
+            // label_SkoreSet4
+            // 
+            this.label_SkoreSet4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_SkoreSet4.AutoSize = true;
+            this.label_SkoreSet4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_SkoreSet4.Location = new System.Drawing.Point(98, 125);
+            this.label_SkoreSet4.Name = "label_SkoreSet4";
+            this.label_SkoreSet4.Size = new System.Drawing.Size(39, 20);
+            this.label_SkoreSet4.TabIndex = 40;
+            this.label_SkoreSet4.Text = "0 - 0";
+            // 
+            // label_SkoreSet5
+            // 
+            this.label_SkoreSet5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_SkoreSet5.AutoSize = true;
+            this.label_SkoreSet5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_SkoreSet5.Location = new System.Drawing.Point(98, 158);
+            this.label_SkoreSet5.Name = "label_SkoreSet5";
+            this.label_SkoreSet5.Size = new System.Drawing.Size(39, 20);
+            this.label_SkoreSet5.TabIndex = 40;
+            this.label_SkoreSet5.Text = "0 - 0";
+            // 
+            // label_ServisSet1
+            // 
+            this.label_ServisSet1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_ServisSet1.AutoSize = true;
+            this.label_ServisSet1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_ServisSet1.Location = new System.Drawing.Point(188, 35);
+            this.label_ServisSet1.Name = "label_ServisSet1";
+            this.label_ServisSet1.Size = new System.Drawing.Size(106, 20);
+            this.label_ServisSet1.TabIndex = 41;
+            this.label_ServisSet1.Text = "Domácí/Hosté";
+            // 
+            // label21
+            // 
+            this.label21.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(37, 8);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(0, 15);
+            this.label21.TabIndex = 39;
+            // 
+            // label_ServisSet5
+            // 
+            this.label_ServisSet5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_ServisSet5.AutoSize = true;
+            this.label_ServisSet5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_ServisSet5.Location = new System.Drawing.Point(188, 158);
+            this.label_ServisSet5.Name = "label_ServisSet5";
+            this.label_ServisSet5.Size = new System.Drawing.Size(106, 20);
+            this.label_ServisSet5.TabIndex = 45;
+            this.label_ServisSet5.Text = "Domácí/Hosté";
+            // 
+            // pictureBox_HristeStridani
+            // 
+            this.pictureBox_HristeStridani.Image = global::Volleyball_statistics.Properties.Resources.volleyballHristePostaveni;
+            this.pictureBox_HristeStridani.Location = new System.Drawing.Point(61, 453);
+            this.pictureBox_HristeStridani.Name = "pictureBox_HristeStridani";
+            this.pictureBox_HristeStridani.Size = new System.Drawing.Size(275, 540);
+            this.pictureBox_HristeStridani.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_HristeStridani.TabIndex = 33;
+            this.pictureBox_HristeStridani.TabStop = false;
+            // 
+            // textBox_7HracHoste
+            // 
+            this.textBox_7HracHoste.Location = new System.Drawing.Point(358, 456);
+            this.textBox_7HracHoste.Name = "textBox_7HracHoste";
+            this.textBox_7HracHoste.Size = new System.Drawing.Size(31, 23);
+            this.textBox_7HracHoste.TabIndex = 34;
+            // 
+            // textBox_7HracDomaci
+            // 
+            this.textBox_7HracDomaci.Location = new System.Drawing.Point(358, 970);
+            this.textBox_7HracDomaci.Name = "textBox_7HracDomaci";
+            this.textBox_7HracDomaci.Size = new System.Drawing.Size(31, 23);
+            this.textBox_7HracDomaci.TabIndex = 35;
+            // 
             // Form_statistika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.textBox_7HracDomaci);
+            this.Controls.Add(this.textBox_7HracHoste);
+            this.Controls.Add(this.pictureBox_HristeStridani);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button_ServisHoste);
             this.Controls.Add(this.button_ServisDomaci);
             this.Controls.Add(this.label_ServisHoste);
@@ -454,6 +739,9 @@
             this.Text = "Form_statistika";
             this.Load += new System.EventHandler(this.Form_statistika_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_HristeStridani)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,5 +781,27 @@
         private Label label_ServisHoste;
         private Button button_ServisDomaci;
         private Button button_ServisHoste;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Label label_Set5;
+        private Label label_Set4;
+        private Label label_Set3;
+        private Label label_Set2;
+        private Label label_Set1;
+        private Label label19;
+        private Label label20;
+        private Label label21;
+        private Label label_SkoreSet1;
+        private Label label_SkoreSet2;
+        private Label label_SkoreSet3;
+        private Label label_SkoreSet4;
+        private Label label_SkoreSet5;
+        private Label label_ServisSet4;
+        private Label label_ServisSet3;
+        private Label label_ServisSet2;
+        private Label label_ServisSet1;
+        private Label label_ServisSet5;
+        private PictureBox pictureBox_HristeStridani;
+        private TextBox textBox_7HracHoste;
+        private TextBox textBox_7HracDomaci;
     }
 }

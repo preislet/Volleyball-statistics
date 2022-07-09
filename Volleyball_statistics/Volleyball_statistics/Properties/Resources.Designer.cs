@@ -63,6 +63,26 @@ namespace Volleyball_statistics.Properties {
         /// <summary>
         ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap HristePostaveni {
+            get {
+                object obj = ResourceManager.GetObject("HristePostaveni", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PostaveniHriste {
+            get {
+                object obj = ResourceManager.GetObject("PostaveniHriste", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap volleyball {
             get {
                 object obj = ResourceManager.GetObject("volleyball", resourceCulture);
@@ -76,6 +96,16 @@ namespace Volleyball_statistics.Properties {
         internal static System.Drawing.Bitmap volleyball1 {
             get {
                 object obj = ResourceManager.GetObject("volleyball1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap volleyballHristePostaveni {
+            get {
+                object obj = ResourceManager.GetObject("volleyballHristePostaveni", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
