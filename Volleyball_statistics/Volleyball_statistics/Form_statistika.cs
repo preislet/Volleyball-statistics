@@ -188,5 +188,72 @@ namespace Volleyball_statistics
             //Přechod do dalšího setu
             skore.CurrSet++;
         }
+
+        private void button_PoziceDomaci_Click(object sender, EventArgs e) { }
+        private void button_PoziceHoste_Click(object sender, EventArgs e) { }
+
+        private void button_PoziceLock_Click(object sender, EventArgs e)
+        {
+
+            //Zamknutí všech pozic
+            if (button_PoziceLock.BackColor == Color.Green)
+            {
+                button_PoziceLock.BackColor = Color.Red;
+                textBox_PoziceHoste1.Enabled = false;
+                textBox_PoziceHoste1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceHoste2.Enabled = false;
+                textBox_PoziceHoste2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceHoste3.Enabled = false;
+                textBox_PoziceHoste3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceHoste4.Enabled = false;
+                textBox_PoziceHoste4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceHoste5.Enabled = false;
+                textBox_PoziceHoste5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceHoste6.Enabled = false;
+                textBox_PoziceHoste6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceDomaci1.Enabled = false;
+                textBox_PoziceDomaci1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceDomaci2.Enabled = false;
+                textBox_PoziceDomaci2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceDomaci3.Enabled = false;
+                textBox_PoziceDomaci3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceDomaci4.Enabled = false;
+                textBox_PoziceDomaci4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceDomaci5.Enabled = false;
+                textBox_PoziceDomaci5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceDomaci6.Enabled = false;
+                textBox_PoziceDomaci6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+
+            }
+            //Odemknutí všech pozic
+            else
+            {
+                textBox_PoziceHoste1.Enabled = true;
+                textBox_PoziceHoste1.BackColor = Color.Red;
+                textBox_PoziceHoste2.Enabled = true;
+                textBox_PoziceHoste2.BackColor = Color.Red;
+                textBox_PoziceHoste3.Enabled = true;
+                textBox_PoziceHoste3.BackColor = Color.Red;
+                textBox_PoziceHoste4.Enabled = true;
+                textBox_PoziceHoste4.BackColor = Color.Red;
+                textBox_PoziceHoste5.Enabled = true;
+                textBox_PoziceHoste5.BackColor = Color.Red;
+                textBox_PoziceHoste6.Enabled = true;
+                textBox_PoziceHoste6.BackColor = Color.Red;
+                textBox_PoziceDomaci1.Enabled = true;
+                textBox_PoziceDomaci1.BackColor = Color.Red;
+                textBox_PoziceDomaci2.Enabled = true;
+                textBox_PoziceDomaci2.BackColor = Color.Red;
+                textBox_PoziceDomaci3.Enabled = true;
+                textBox_PoziceDomaci3.BackColor = Color.Red;
+                textBox_PoziceDomaci4.Enabled = true;
+                textBox_PoziceDomaci4.BackColor = Color.Red;
+                textBox_PoziceDomaci5.Enabled = true;
+                textBox_PoziceDomaci5.BackColor = Color.Red;
+                textBox_PoziceDomaci6.Enabled = true;
+                textBox_PoziceDomaci6.BackColor = Color.Red;
+            }
+
+        }
     }
 }

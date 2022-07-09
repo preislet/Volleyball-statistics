@@ -80,8 +80,25 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label_ServisSet5 = new System.Windows.Forms.Label();
             this.pictureBox_HristeStridani = new System.Windows.Forms.PictureBox();
-            this.textBox_7HracHoste = new System.Windows.Forms.TextBox();
-            this.textBox_7HracDomaci = new System.Windows.Forms.TextBox();
+            this.textBox_7LiberoHoste = new System.Windows.Forms.TextBox();
+            this.textBox_7LiberoDomaci = new System.Windows.Forms.TextBox();
+            this.label_HostePozice = new System.Windows.Forms.Label();
+            this.label_DomaciPozice = new System.Windows.Forms.Label();
+            this.textBox_PoziceHoste1 = new System.Windows.Forms.TextBox();
+            this.textBox_PoziceHoste6 = new System.Windows.Forms.TextBox();
+            this.textBox_PoziceHoste2 = new System.Windows.Forms.TextBox();
+            this.textBox_PoziceHoste3 = new System.Windows.Forms.TextBox();
+            this.textBox_PoziceHoste5 = new System.Windows.Forms.TextBox();
+            this.textBox_PoziceHoste4 = new System.Windows.Forms.TextBox();
+            this.button_PoziceLock = new System.Windows.Forms.Button();
+            this.label_liberoDomaci = new System.Windows.Forms.Label();
+            this.label_liberoHoste = new System.Windows.Forms.Label();
+            this.textBox_PoziceDomaci1 = new System.Windows.Forms.TextBox();
+            this.textBox_PoziceDomaci6 = new System.Windows.Forms.TextBox();
+            this.textBox_PoziceDomaci5 = new System.Windows.Forms.TextBox();
+            this.textBox_PoziceDomaci4 = new System.Windows.Forms.TextBox();
+            this.textBox_PoziceDomaci3 = new System.Windows.Forms.TextBox();
+            this.textBox_PoziceDomaci2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_HristeStridani)).BeginInit();
@@ -680,27 +697,237 @@
             this.pictureBox_HristeStridani.TabIndex = 33;
             this.pictureBox_HristeStridani.TabStop = false;
             // 
-            // textBox_7HracHoste
+            // textBox_7LiberoHoste
             // 
-            this.textBox_7HracHoste.Location = new System.Drawing.Point(358, 456);
-            this.textBox_7HracHoste.Name = "textBox_7HracHoste";
-            this.textBox_7HracHoste.Size = new System.Drawing.Size(31, 23);
-            this.textBox_7HracHoste.TabIndex = 34;
+            this.textBox_7LiberoHoste.Location = new System.Drawing.Point(358, 456);
+            this.textBox_7LiberoHoste.Name = "textBox_7LiberoHoste";
+            this.textBox_7LiberoHoste.Size = new System.Drawing.Size(31, 23);
+            this.textBox_7LiberoHoste.TabIndex = 34;
             // 
-            // textBox_7HracDomaci
+            // textBox_7LiberoDomaci
             // 
-            this.textBox_7HracDomaci.Location = new System.Drawing.Point(358, 970);
-            this.textBox_7HracDomaci.Name = "textBox_7HracDomaci";
-            this.textBox_7HracDomaci.Size = new System.Drawing.Size(31, 23);
-            this.textBox_7HracDomaci.TabIndex = 35;
+            this.textBox_7LiberoDomaci.Location = new System.Drawing.Point(358, 970);
+            this.textBox_7LiberoDomaci.Name = "textBox_7LiberoDomaci";
+            this.textBox_7LiberoDomaci.Size = new System.Drawing.Size(31, 23);
+            this.textBox_7LiberoDomaci.TabIndex = 35;
+            // 
+            // label_HostePozice
+            // 
+            this.label_HostePozice.AutoSize = true;
+            this.label_HostePozice.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_HostePozice.Location = new System.Drawing.Point(155, 416);
+            this.label_HostePozice.Name = "label_HostePozice";
+            this.label_HostePozice.Size = new System.Drawing.Size(76, 32);
+            this.label_HostePozice.TabIndex = 36;
+            this.label_HostePozice.Text = "Hosté";
+            // 
+            // label_DomaciPozice
+            // 
+            this.label_DomaciPozice.AutoSize = true;
+            this.label_DomaciPozice.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_DomaciPozice.Location = new System.Drawing.Point(141, 996);
+            this.label_DomaciPozice.Name = "label_DomaciPozice";
+            this.label_DomaciPozice.Size = new System.Drawing.Size(95, 32);
+            this.label_DomaciPozice.TabIndex = 37;
+            this.label_DomaciPozice.Text = "Domácí";
+            // 
+            // textBox_PoziceHoste1
+            // 
+            this.textBox_PoziceHoste1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox_PoziceHoste1.BackColor = System.Drawing.Color.Red;
+            this.textBox_PoziceHoste1.Location = new System.Drawing.Point(96, 583);
+            this.textBox_PoziceHoste1.Name = "textBox_PoziceHoste1";
+            this.textBox_PoziceHoste1.Size = new System.Drawing.Size(31, 23);
+            this.textBox_PoziceHoste1.TabIndex = 50;
+            this.textBox_PoziceHoste1.Tag = "1";
+            this.textBox_PoziceHoste1.Text = "X";
+            this.textBox_PoziceHoste1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_PoziceHoste6
+            // 
+            this.textBox_PoziceHoste6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox_PoziceHoste6.BackColor = System.Drawing.Color.Red;
+            this.textBox_PoziceHoste6.Location = new System.Drawing.Point(179, 490);
+            this.textBox_PoziceHoste6.Name = "textBox_PoziceHoste6";
+            this.textBox_PoziceHoste6.Size = new System.Drawing.Size(31, 23);
+            this.textBox_PoziceHoste6.TabIndex = 51;
+            this.textBox_PoziceHoste6.Tag = "6";
+            this.textBox_PoziceHoste6.Text = "X";
+            this.textBox_PoziceHoste6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_PoziceHoste2
+            // 
+            this.textBox_PoziceHoste2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox_PoziceHoste2.BackColor = System.Drawing.Color.Red;
+            this.textBox_PoziceHoste2.Location = new System.Drawing.Point(96, 676);
+            this.textBox_PoziceHoste2.Name = "textBox_PoziceHoste2";
+            this.textBox_PoziceHoste2.Size = new System.Drawing.Size(31, 23);
+            this.textBox_PoziceHoste2.TabIndex = 52;
+            this.textBox_PoziceHoste2.Tag = "2";
+            this.textBox_PoziceHoste2.Text = "X";
+            this.textBox_PoziceHoste2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_PoziceHoste3
+            // 
+            this.textBox_PoziceHoste3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox_PoziceHoste3.BackColor = System.Drawing.Color.Red;
+            this.textBox_PoziceHoste3.Location = new System.Drawing.Point(179, 676);
+            this.textBox_PoziceHoste3.Name = "textBox_PoziceHoste3";
+            this.textBox_PoziceHoste3.Size = new System.Drawing.Size(31, 23);
+            this.textBox_PoziceHoste3.TabIndex = 53;
+            this.textBox_PoziceHoste3.Tag = "3";
+            this.textBox_PoziceHoste3.Text = "X";
+            this.textBox_PoziceHoste3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_PoziceHoste5
+            // 
+            this.textBox_PoziceHoste5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox_PoziceHoste5.BackColor = System.Drawing.Color.Red;
+            this.textBox_PoziceHoste5.Location = new System.Drawing.Point(263, 583);
+            this.textBox_PoziceHoste5.Name = "textBox_PoziceHoste5";
+            this.textBox_PoziceHoste5.Size = new System.Drawing.Size(31, 23);
+            this.textBox_PoziceHoste5.TabIndex = 54;
+            this.textBox_PoziceHoste5.Tag = "5";
+            this.textBox_PoziceHoste5.Text = "X";
+            this.textBox_PoziceHoste5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_PoziceHoste4
+            // 
+            this.textBox_PoziceHoste4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox_PoziceHoste4.BackColor = System.Drawing.Color.Red;
+            this.textBox_PoziceHoste4.Location = new System.Drawing.Point(263, 676);
+            this.textBox_PoziceHoste4.Name = "textBox_PoziceHoste4";
+            this.textBox_PoziceHoste4.Size = new System.Drawing.Size(31, 23);
+            this.textBox_PoziceHoste4.TabIndex = 55;
+            this.textBox_PoziceHoste4.Tag = "4";
+            this.textBox_PoziceHoste4.Text = "X";
+            this.textBox_PoziceHoste4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button_PoziceLock
+            // 
+            this.button_PoziceLock.BackColor = System.Drawing.Color.Green;
+            this.button_PoziceLock.Location = new System.Drawing.Point(10, 459);
+            this.button_PoziceLock.Name = "button_PoziceLock";
+            this.button_PoziceLock.Size = new System.Drawing.Size(41, 41);
+            this.button_PoziceLock.TabIndex = 56;
+            this.button_PoziceLock.Text = "🔑";
+            this.button_PoziceLock.UseVisualStyleBackColor = false;
+            this.button_PoziceLock.Click += new System.EventHandler(this.button_PoziceLock_Click);
+            // 
+            // label_liberoDomaci
+            // 
+            this.label_liberoDomaci.AutoSize = true;
+            this.label_liberoDomaci.Location = new System.Drawing.Point(395, 973);
+            this.label_liberoDomaci.Name = "label_liberoDomaci";
+            this.label_liberoDomaci.Size = new System.Drawing.Size(68, 15);
+            this.label_liberoDomaci.TabIndex = 57;
+            this.label_liberoDomaci.Text = "Libero/blok";
+            // 
+            // label_liberoHoste
+            // 
+            this.label_liberoHoste.AutoSize = true;
+            this.label_liberoHoste.Location = new System.Drawing.Point(394, 459);
+            this.label_liberoHoste.Name = "label_liberoHoste";
+            this.label_liberoHoste.Size = new System.Drawing.Size(68, 15);
+            this.label_liberoHoste.TabIndex = 58;
+            this.label_liberoHoste.Text = "Libero/blok";
+            // 
+            // textBox_PoziceDomaci1
+            // 
+            this.textBox_PoziceDomaci1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox_PoziceDomaci1.BackColor = System.Drawing.Color.Red;
+            this.textBox_PoziceDomaci1.Location = new System.Drawing.Point(263, 843);
+            this.textBox_PoziceDomaci1.Name = "textBox_PoziceDomaci1";
+            this.textBox_PoziceDomaci1.Size = new System.Drawing.Size(31, 23);
+            this.textBox_PoziceDomaci1.TabIndex = 59;
+            this.textBox_PoziceDomaci1.Tag = "1";
+            this.textBox_PoziceDomaci1.Text = "X";
+            this.textBox_PoziceDomaci1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_PoziceDomaci6
+            // 
+            this.textBox_PoziceDomaci6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox_PoziceDomaci6.BackColor = System.Drawing.Color.Red;
+            this.textBox_PoziceDomaci6.Location = new System.Drawing.Point(179, 918);
+            this.textBox_PoziceDomaci6.Name = "textBox_PoziceDomaci6";
+            this.textBox_PoziceDomaci6.Size = new System.Drawing.Size(31, 23);
+            this.textBox_PoziceDomaci6.TabIndex = 60;
+            this.textBox_PoziceDomaci6.Tag = "6";
+            this.textBox_PoziceDomaci6.Text = "X";
+            this.textBox_PoziceDomaci6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_PoziceDomaci5
+            // 
+            this.textBox_PoziceDomaci5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox_PoziceDomaci5.BackColor = System.Drawing.Color.Red;
+            this.textBox_PoziceDomaci5.Location = new System.Drawing.Point(96, 843);
+            this.textBox_PoziceDomaci5.Name = "textBox_PoziceDomaci5";
+            this.textBox_PoziceDomaci5.Size = new System.Drawing.Size(31, 23);
+            this.textBox_PoziceDomaci5.TabIndex = 61;
+            this.textBox_PoziceDomaci5.Tag = "5";
+            this.textBox_PoziceDomaci5.Text = "X";
+            this.textBox_PoziceDomaci5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_PoziceDomaci4
+            // 
+            this.textBox_PoziceDomaci4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox_PoziceDomaci4.BackColor = System.Drawing.Color.Red;
+            this.textBox_PoziceDomaci4.Location = new System.Drawing.Point(96, 767);
+            this.textBox_PoziceDomaci4.Name = "textBox_PoziceDomaci4";
+            this.textBox_PoziceDomaci4.Size = new System.Drawing.Size(31, 23);
+            this.textBox_PoziceDomaci4.TabIndex = 62;
+            this.textBox_PoziceDomaci4.Tag = "4";
+            this.textBox_PoziceDomaci4.Text = "X";
+            this.textBox_PoziceDomaci4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_PoziceDomaci3
+            // 
+            this.textBox_PoziceDomaci3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox_PoziceDomaci3.BackColor = System.Drawing.Color.Red;
+            this.textBox_PoziceDomaci3.Location = new System.Drawing.Point(179, 767);
+            this.textBox_PoziceDomaci3.Name = "textBox_PoziceDomaci3";
+            this.textBox_PoziceDomaci3.Size = new System.Drawing.Size(31, 23);
+            this.textBox_PoziceDomaci3.TabIndex = 63;
+            this.textBox_PoziceDomaci3.Tag = "3";
+            this.textBox_PoziceDomaci3.Text = "X";
+            this.textBox_PoziceDomaci3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_PoziceDomaci2
+            // 
+            this.textBox_PoziceDomaci2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox_PoziceDomaci2.BackColor = System.Drawing.Color.Red;
+            this.textBox_PoziceDomaci2.Location = new System.Drawing.Point(263, 767);
+            this.textBox_PoziceDomaci2.Name = "textBox_PoziceDomaci2";
+            this.textBox_PoziceDomaci2.Size = new System.Drawing.Size(31, 23);
+            this.textBox_PoziceDomaci2.TabIndex = 64;
+            this.textBox_PoziceDomaci2.Tag = "2";
+            this.textBox_PoziceDomaci2.Text = "X";
+            this.textBox_PoziceDomaci2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form_statistika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.textBox_7HracDomaci);
-            this.Controls.Add(this.textBox_7HracHoste);
+            this.Controls.Add(this.textBox_PoziceDomaci2);
+            this.Controls.Add(this.textBox_PoziceDomaci3);
+            this.Controls.Add(this.textBox_PoziceDomaci4);
+            this.Controls.Add(this.textBox_PoziceDomaci5);
+            this.Controls.Add(this.textBox_PoziceDomaci6);
+            this.Controls.Add(this.textBox_PoziceDomaci1);
+            this.Controls.Add(this.label_liberoHoste);
+            this.Controls.Add(this.label_liberoDomaci);
+            this.Controls.Add(this.button_PoziceLock);
+            this.Controls.Add(this.textBox_PoziceHoste4);
+            this.Controls.Add(this.textBox_PoziceHoste5);
+            this.Controls.Add(this.textBox_PoziceHoste3);
+            this.Controls.Add(this.textBox_PoziceHoste2);
+            this.Controls.Add(this.textBox_PoziceHoste6);
+            this.Controls.Add(this.textBox_PoziceHoste1);
+            this.Controls.Add(this.label_DomaciPozice);
+            this.Controls.Add(this.label_HostePozice);
+            this.Controls.Add(this.textBox_7LiberoDomaci);
+            this.Controls.Add(this.textBox_7LiberoHoste);
             this.Controls.Add(this.pictureBox_HristeStridani);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button_ServisHoste);
@@ -801,7 +1028,24 @@
         private Label label_ServisSet1;
         private Label label_ServisSet5;
         private PictureBox pictureBox_HristeStridani;
-        private TextBox textBox_7HracHoste;
-        private TextBox textBox_7HracDomaci;
+        private TextBox textBox_7LiberoHoste;
+        private TextBox textBox_7LiberoDomaci;
+        private Label label_HostePozice;
+        private Label label_DomaciPozice;
+        private TextBox textBox_PoziceHoste1;
+        private TextBox textBox_PoziceHoste6;
+        private TextBox textBox_PoziceHoste2;
+        private TextBox textBox_PoziceHoste3;
+        private TextBox textBox_PoziceHoste5;
+        private TextBox textBox_PoziceHoste4;
+        private Button button_PoziceLock;
+        private Label label_liberoDomaci;
+        private Label label_liberoHoste;
+        private TextBox textBox_PoziceDomaci1;
+        private TextBox textBox_PoziceDomaci6;
+        private TextBox textBox_PoziceDomaci5;
+        private TextBox textBox_PoziceDomaci4;
+        private TextBox textBox_PoziceDomaci3;
+        private TextBox textBox_PoziceDomaci2;
     }
 }
