@@ -200,6 +200,7 @@ namespace Volleyball_statistics
     }
     public class Postaveni_a_StatistikaHracu
     {
+        #region Třídy Hráčů
         /// <summary>
         /// Class Hrac - vzorová třída pro další specializované pozice
         /// </summary>
@@ -213,6 +214,7 @@ namespace Volleyball_statistics
             protected int[] utok = new int[4];
             protected int[] prijem = new int[4];
             protected int cislo;
+            protected string? jmeno;
 
             #region Get/Set metody pro třídu Hrac a její syny
             public int[] Servis
@@ -240,8 +242,20 @@ namespace Volleyball_statistics
                 get { return cislo; }
                 set { cislo = value; }
             }
+            public string Jmeno
+            {
+                get { return jmeno; }
+                set { jmeno = value; }
+            }
             #endregion
 
+
+            //Konstruktor
+            public Hrac(string jmeno, int cislo)
+            {
+                this.jmeno = jmeno;
+                this.cislo = cislo;
+            }
             
             /// <summary>
             /// Zajišťování zápisu statistiky servisu hráče (int z je známka servisu)
@@ -335,6 +349,7 @@ namespace Volleyball_statistics
             /// </summary>
             public int[,] utokPoPrijmu = new int[4,2];
 
+            public Smecar(string jmeno, int cislo) : base(jmeno, cislo){}
             public string Tag { get { return tag; } }
             public override void Prijem_zmena(int z)
             {
@@ -375,6 +390,7 @@ namespace Volleyball_statistics
         {
             protected string tag = "Blokar";
             public string Tag { get { return tag; } }
+            public Blokar(string jmeno, int cislo) : base(jmeno, cislo) { }
         }
 
 
@@ -385,6 +401,7 @@ namespace Volleyball_statistics
         {
             protected string tag = "Nahravac";
             public string Tag { get { return tag; } }
+            public Nahravac(string jmeno, int cislo) : base(jmeno, cislo) { }
         }
 
 
@@ -395,6 +412,7 @@ namespace Volleyball_statistics
         {
             protected string tag = "Univerzal";
             public string Tag { get { return tag; } }
+            public Univerzal(string jmeno, int cislo) : base(jmeno, cislo) { }
         }
 
         /// <summary>
@@ -404,16 +422,117 @@ namespace Volleyball_statistics
         {
             string tag = "Libero";
             public string Tag { get { return tag; } }
+            public Libero(string jmeno, int cislo) : base(jmeno, cislo) { }
         }
-        public int[] HraciDomaci;
-        public int[] PostaveniDomac;
-        public int[] PostaveniHoste;
+        #endregion
 
-        //Konstruktory
-        public Postaveni_a_StatistikaHracu(int[] postaveniDomac, int[] postaveniHoste)
+        protected string sestava;
+        protected object[] hraciDomaci = new object[14];
+        protected int[] postaveniDomaci = new int[6];
+        protected int[] postaveniHoste = new int[6];
+
+        #region Get/Set
+        public string Sestava
         {
-            PostaveniDomac = postaveniDomac;
-            PostaveniHoste = postaveniHoste;
-        }   
+            get { return sestava; }
+            set { sestava = value; }
+        }
+        public object[] HraciDomaci
+        {
+            get { return hraciDomaci; }
+            set { hraciDomaci = value; }
+        }
+        public int[] PostaveniDomaci
+        {
+            get { return postaveniDomaci; }
+            set { postaveniDomaci = value; }
+        }
+        public int[] PostaveniHoste
+        {
+            get { return PostaveniHoste; }
+            set { PostaveniHoste = value; }
+        }
+        #endregion
+        //Konstruktory
+        public Postaveni_a_StatistikaHracu(string sestava)
+        {
+            this.sestava = sestava;
+            NacteniSestavy(sestava);
+        }
+        //Public Funkce
+
+        /// <summary>
+        /// Funkce zajišťuje rotaci týmů
+        /// true = rotace domácích
+        /// false = rotace hostů
+        /// </summary>
+        public void Rotace(bool z)
+        {
+            if (z)
+            {
+                int posledniPozice = postaveniDomaci[6];
+                for (int i = 1; i < postaveniDomaci.Length; i++)
+                {
+                    postaveniDomaci[postaveniDomaci.Length - i] = postaveniDomaci[postaveniDomaci.Length - i + 1];
+                }
+                postaveniDomaci[0] = posledniPozice;
+            }
+            else
+            {
+                int posledniPozice = postaveniHoste[6];
+                for (int i = 1; i < postaveniHoste.Length; i++)
+                {
+                    postaveniHoste[postaveniHoste.Length - i] = postaveniDomaci[postaveniHoste.Length - i + 1];
+                }
+                postaveniHoste[0] = posledniPozice;
+            }
+        }
+
+
+        // Private Funkce 
+        private void NacteniSestavy(string sestava)
+        {
+            int index = 0; // Pomocný index pro vkládání tříd hráčů do pole hraciDomaci 
+            string[] lines = File.ReadAllLines(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Volleyball statistics", "Sestavy", sestava + ".txt"));
+
+            foreach (string line in lines)
+            {
+                // Pomocné zámky
+                bool nacteniJmeno = false;
+                bool nacteniCislo = false;
+
+                // Proměné, které se zapíší do třídy dle pozice
+                string jmeno = "";
+                int cislo = 0;
+                char pozice = 'x';
+
+                // Nacteni řádku
+                for (int i = 1; i < line.Length - 1; i++)
+                {
+                    if ((line[i] == '*') && (!nacteniJmeno))
+                    {
+                        nacteniJmeno = true;
+                        continue;
+                    }
+                    if ((line[i] == '*') && (!nacteniCislo))
+                    {
+                        nacteniCislo = true;
+                        continue;
+                    }
+                    if (!nacteniJmeno) jmeno += line[i];
+                    else if (!nacteniCislo) cislo = Convert.ToInt32(line[i]);
+                    else pozice = line[i];
+                }
+
+                //Vytvoření třídy
+                if (pozice == 'S') hraciDomaci[index] = new Smecar(jmeno, cislo); 
+                if (pozice == 'B') hraciDomaci[index] = new Blokar(jmeno, cislo);
+                if (pozice == 'N') hraciDomaci[index] = new Nahravac(jmeno, cislo);
+                if (pozice == 'U') hraciDomaci[index] = new Univerzal(jmeno, cislo);
+                if (pozice == 'L') hraciDomaci[index] = new Libero(jmeno, cislo);
+                index++;
+                                   
+            }
+        }
     }
 }
