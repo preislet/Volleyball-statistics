@@ -200,6 +200,9 @@ namespace Volleyball_statistics
     }
     public class Postaveni_a_StatistikaHracu
     {
+        /// <summary>
+        /// Class Hrac - vzorová třída pro další specializované pozice
+        /// </summary>
         abstract class Hrac
         {
             // index 0 - za 1, index 1 - za 3; index 2 - za 5; index 3 - chyba (pole ma pouze 1 nebo chyba)
@@ -209,8 +212,32 @@ namespace Volleyball_statistics
             protected int[] pole = new int[2];
             protected int[] utok = new int[4];
 
-            // Public functions
 
+            public int[] Servis
+            {
+                get { return servis; }  // get metoda
+                set { servis = value; } // set metoda
+            }
+
+            #region Get/Set metody pro třídu Hrac a její syny
+            public int[] Blok
+            {
+                get { return blok; }
+                set { blok = value; }
+            }
+            public int[] Pole
+            {
+                get { return pole; }
+                set { pole = value; }
+            }
+            public int[] Utok
+            {
+                get { return utok; }
+                set { utok = value; }
+            }
+            #endregion
+
+            
             /// <summary>
             /// Zajišťování zápisu statistiky servisu hráče (int z je známka servisu)
             /// 1 - eso
@@ -218,7 +245,13 @@ namespace Volleyball_statistics
             /// 5 - soupeřící tým přijal za 1
             /// chyba - chyba
             /// </summary>
-            protected void Servis(int z) { }
+            protected void Servis_zmena(int z) 
+            {
+                if (z == 0) servis[3]++;
+                if (z == 5) servis[2]++;
+                if (z == 3) servis[1]++;
+                if (z == 1) servis[0]++;
+            }
 
 
             /// <summary>
@@ -228,7 +261,13 @@ namespace Volleyball_statistics
             /// 5 -soupeřící tým zvedl v pohodě balón
             /// chyba - chyba bloku
             /// </summary>
-            protected void Blok(int z) { }
+            protected void Blok_zmena(int z) 
+            {
+                if (z == 0) blok[3]++;
+                if (z == 5) blok[2]++;
+                if (z == 3) blok[1]++;
+                if (z == 1) blok[0]++;
+            }
 
 
             /// <summary>
@@ -236,7 +275,11 @@ namespace Volleyball_statistics
             /// 1 - výborný zákrok
             /// chyba - kritická (nevynucená chyba v poli)
             /// </summary>
-            protected void Pole(int z) { }
+            protected void Pole_zmena(int z) 
+            {
+                if (z == 0) pole[1]++;
+                if (z == 1) pole[0]++;
+            }
 
 
             /// <summary>
@@ -246,27 +289,58 @@ namespace Volleyball_statistics
             /// 5 - soupeřící tým přijal balón bez problému
             /// chyba - chyba na útoku (out, blok)
             /// </summary>
-            protected void Utok(int z) { }
-        }
-        class Smecar: Hrac 
-        {
-            string Pozice = "Smecar";
-        }
-        class Blokar: Hrac 
-        {
-            string Pozice = "Smecar";
-        }
-        class Nahravac: Hrac 
-        { 
+            protected void Utok_zmena(int z) 
+            {
+                if (z == 0) utok[3]++;
+                if (z == 5) utok[2]++;
+                if (z == 3) utok[1]++;
+                if (z == 1) utok[0]++;
+            }
 
         }
-        class Univerzal: Hrac 
-        { 
 
+
+        /// <summary>
+        /// Class Smecar - třída zajišťující statistiku smečařů
+        /// </summary>
+        sealed class Smecar: Hrac
+        {
+            string tag = "Smecar";
         }
-        class Libero: Hrac 
-        { 
-        
+
+
+        /// <summary>
+        /// Class Blokar - třída zajišťující statistiku blokařů
+        /// </summary>
+        sealed class Blokar: Hrac 
+        {
+            string tag = "Blokar";
+        }
+
+
+        /// <summary>
+        /// Class Nahravac - třída zajišťující statistiku nahravačů
+        /// </summary>
+        sealed class Nahravac: Hrac 
+        {
+            string tag = "Nahravac";
+        }
+
+
+        /// <summary>
+        /// Class Univerzal - třída zajišťující statistiku univerzálů
+        /// </summary>
+        sealed class Univerzal: Hrac 
+        {
+            string tag = "Univerzal";
+        }
+
+        /// <summary>
+        /// Class Libero - třída zajišťující statistiku liber
+        /// </summary>
+        sealed class Libero: Hrac 
+        {
+            string tag = "Libero";
         }
         public int[] HraciDomaci;
         public int[] PostaveniDomac;
