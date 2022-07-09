@@ -24,7 +24,6 @@ namespace Volleyball_statistics
         {
             Label_Domaci.Text = Form1.menu.Domaci;  //Jméno domácího týmu
             Label_Hoste.Text = Form1.menu.Hoste;  //Jméno týmu domácích
-            label_Skore.Text = Form1.menu.Domaci.Remove(1).ToString() + "   Skóre   " + Form1.menu.Hoste.Remove(1).ToString();  //Update názvu (používají se první pásmena týmů)
             button_OutDomaci.Text = "OUT " + Form1.menu.Domaci;
             button_OutHoste.Text = "OUT " + Form1.menu.Hoste;
 
