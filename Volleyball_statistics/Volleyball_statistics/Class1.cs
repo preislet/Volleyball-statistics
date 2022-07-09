@@ -211,29 +211,34 @@ namespace Volleyball_statistics
             protected int[] blok = new int[4];
             protected int[] pole = new int[2];
             protected int[] utok = new int[4];
-
-
-            public int[] Servis
-            {
-                get { return servis; }  // get metoda
-                set { servis = value; } // set metoda
-            }
+            protected int[] prijem = new int[4];
+            protected int cislo;
 
             #region Get/Set metody pro třídu Hrac a její syny
+            public int[] Servis
+            {
+                get { return servis; }
+            }
             public int[] Blok
             {
                 get { return blok; }
-                set { blok = value; }
             }
             public int[] Pole
             {
                 get { return pole; }
-                set { pole = value; }
             }
             public int[] Utok
             {
                 get { return utok; }
-                set { utok = value; }
+            }
+            public int[] Prijem
+            {
+                get { return prijem; }
+            }
+            public int Cislo
+            {
+                get { return cislo; }
+                set { cislo = value; }
             }
             #endregion
 
@@ -245,7 +250,7 @@ namespace Volleyball_statistics
             /// 5 - soupeřící tým přijal za 1
             /// chyba - chyba
             /// </summary>
-            protected void Servis_zmena(int z) 
+            public virtual void Servis_zmena(int z) 
             {
                 if (z == 0) servis[3]++;
                 if (z == 5) servis[2]++;
@@ -261,7 +266,7 @@ namespace Volleyball_statistics
             /// 5 -soupeřící tým zvedl v pohodě balón
             /// chyba - chyba bloku
             /// </summary>
-            protected void Blok_zmena(int z) 
+            public virtual void Blok_zmena(int z) 
             {
                 if (z == 0) blok[3]++;
                 if (z == 5) blok[2]++;
@@ -275,7 +280,7 @@ namespace Volleyball_statistics
             /// 1 - výborný zákrok
             /// chyba - kritická (nevynucená chyba v poli)
             /// </summary>
-            protected void Pole_zmena(int z) 
+            public virtual void Pole_zmena(int z) 
             {
                 if (z == 0) pole[1]++;
                 if (z == 1) pole[0]++;
@@ -289,7 +294,7 @@ namespace Volleyball_statistics
             /// 5 - soupeřící tým přijal balón bez problému
             /// chyba - chyba na útoku (out, blok)
             /// </summary>
-            protected void Utok_zmena(int z) 
+            public virtual void Utok_zmena(int z) 
             {
                 if (z == 0) utok[3]++;
                 if (z == 5) utok[2]++;
@@ -297,6 +302,21 @@ namespace Volleyball_statistics
                 if (z == 1) utok[0]++;
             }
 
+
+            /// <summary>
+            /// Zajišťování zápisu statistiky příjmu hráče (int z je známka příjmu)
+            /// 1 - příjem za 1
+            /// 3 - příjem do trojky
+            /// 5 - špatný příjem, ale hraje se dál
+            /// chyba - eso
+            /// </summary>
+            public virtual void Prijem_zmena(int z)
+            {
+                if (z == 0) prijem[3]++;
+                if (z == 5) prijem[2]++;
+                if (z == 3) prijem[1]++;
+                if (z == 1) prijem[0]++;
+            }
         }
 
 
@@ -305,7 +325,46 @@ namespace Volleyball_statistics
         /// </summary>
         sealed class Smecar: Hrac
         {
-            string tag = "Smecar";
+            protected string tag = "Smecar";
+            protected bool prijemVeSmene = false;
+
+            /// <summary>
+            /// 2D pole - sleduje, zda hráč utočí lépe, když balón zároveň přijmul nebo ne
+            /// index i 0 - za 1, index i 1 - za 3; index i 2 - za 5; index i 3 - chyba 
+            /// index j 0 - prijemVeSmene = true (hrac zároveň přijímal balón), inde j 1 - prijemVeSmene = false (hrac nepřijímal balón)
+            /// </summary>
+            public int[,] utokPoPrijmu = new int[4,2];
+
+            public string Tag { get { return tag; } }
+            public override void Prijem_zmena(int z)
+            {
+                if (z == 0) prijem[3]++;
+                if (z == 5) prijem[2]++;
+                if (z == 3) prijem[1]++;
+                if (z == 1) prijem[0]++;
+                prijemVeSmene = true;
+            }
+            //TODO - Musím zajistit, aby se prijemVeSmene vždy po Smene nastavil na false
+            public override void Utok_zmena(int z)
+            {
+                base.Utok_zmena(z);
+                if (prijemVeSmene)
+                {
+                    if (z == 0) utokPoPrijmu[3, 0]++;
+                    if (z == 5) utokPoPrijmu[2, 0]++;
+                    if (z == 3) utokPoPrijmu[1, 0]++;
+                    if (z == 1) utokPoPrijmu[0, 0]++;
+                    prijemVeSmene = false;
+                }
+                else
+                {
+                    if (z == 0) utokPoPrijmu[3, 1]++;
+                    if (z == 5) utokPoPrijmu[2, 1]++;
+                    if (z == 3) utokPoPrijmu[1, 1]++;
+                    if (z == 1) utokPoPrijmu[0, 1]++;
+                }
+            }
+            public void RestartPrijmuVeSmene() { prijemVeSmene = false; }
         }
 
 
@@ -314,7 +373,8 @@ namespace Volleyball_statistics
         /// </summary>
         sealed class Blokar: Hrac 
         {
-            string tag = "Blokar";
+            protected string tag = "Blokar";
+            public string Tag { get { return tag; } }
         }
 
 
@@ -323,7 +383,8 @@ namespace Volleyball_statistics
         /// </summary>
         sealed class Nahravac: Hrac 
         {
-            string tag = "Nahravac";
+            protected string tag = "Nahravac";
+            public string Tag { get { return tag; } }
         }
 
 
@@ -332,7 +393,8 @@ namespace Volleyball_statistics
         /// </summary>
         sealed class Univerzal: Hrac 
         {
-            string tag = "Univerzal";
+            protected string tag = "Univerzal";
+            public string Tag { get { return tag; } }
         }
 
         /// <summary>
@@ -341,6 +403,7 @@ namespace Volleyball_statistics
         sealed class Libero: Hrac 
         {
             string tag = "Libero";
+            public string Tag { get { return tag; } }
         }
         public int[] HraciDomaci;
         public int[] PostaveniDomac;
