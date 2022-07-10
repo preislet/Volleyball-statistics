@@ -349,8 +349,9 @@ namespace Volleyball_statistics
             /// </summary>
             public int[,] utokPoPrijmu = new int[4,2];
 
-            public Smecar(string jmeno, int cislo) : base(jmeno, cislo){}
             public string Tag { get { return tag; } }
+
+            public Smecar(string jmeno, int cislo) : base(jmeno, cislo){}
             public override void Prijem_zmena(int z)
             {
                 if (z == 0) prijem[3]++;
@@ -389,6 +390,7 @@ namespace Volleyball_statistics
         sealed class Blokar: Hrac 
         {
             protected string tag = "Blokar";
+
             public string Tag { get { return tag; } }
             public Blokar(string jmeno, int cislo) : base(jmeno, cislo) { }
         }
@@ -400,6 +402,7 @@ namespace Volleyball_statistics
         sealed class Nahravac: Hrac 
         {
             protected string tag = "Nahravac";
+
             public string Tag { get { return tag; } }
             public Nahravac(string jmeno, int cislo) : base(jmeno, cislo) { }
         }
@@ -411,6 +414,7 @@ namespace Volleyball_statistics
         sealed class Univerzal: Hrac 
         {
             protected string tag = "Univerzal";
+
             public string Tag { get { return tag; } }
             public Univerzal(string jmeno, int cislo) : base(jmeno, cislo) { }
         }
@@ -421,6 +425,7 @@ namespace Volleyball_statistics
         sealed class Libero: Hrac 
         {
             string tag = "Libero";
+
             public string Tag { get { return tag; } }
             public Libero(string jmeno, int cislo) : base(jmeno, cislo) { }
         }
@@ -430,6 +435,11 @@ namespace Volleyball_statistics
         protected object[] hraciDomaci = new object[14];
         protected int[] postaveniDomaci = new int[6];
         protected int[] postaveniHoste = new int[6];
+        protected int aktivniLiberoBlokarDomaci;
+        protected object[] liberaDomaci = new object[3];
+        public int aktivniLiberoDomaciPozice = 7;
+        readonly Skore skore;
+        readonly Hriste hriste;
 
         #region Get/Set
         public string Sestava
@@ -452,12 +462,20 @@ namespace Volleyball_statistics
             get { return postaveniHoste; }
             set { postaveniHoste = value; }
         }
+        public int AktivniLiberoBlokarDomaci
+        {
+            get { return aktivniLiberoBlokarDomaci; }
+            set { aktivniLiberoBlokarDomaci = value; }
+        }
+
         #endregion
         //Konstruktory
-        public Postaveni_a_StatistikaHracu(string sestava)
+        public Postaveni_a_StatistikaHracu(string sestava, Skore skore, Hriste hriste)
         {
             this.sestava = sestava;
             NacteniSestavy(sestava);
+            this.skore = skore;
+            this.hriste = hriste;
         }
         //Public Funkce
 
@@ -487,9 +505,80 @@ namespace Volleyball_statistics
                 postaveniHoste[0] = posledniPozice;
             }
         }
+        public void NactenySestavNaHristi(int D1 = 0, int D2 = 0, int D3 = 0, int D4 = 0, int D5 = 0, int D6 = 0, int H1 = 0, int H2 = 0, int H3 = 0, int H4 = 0, int H5 = 0, int H6 = 0)
+        {
+            postaveniDomaci[0] = D1;
+            postaveniDomaci[1] = D2;
+            postaveniDomaci[2] = D3;
+            postaveniDomaci[3] = D4;
+            postaveniDomaci[4] = D5;
+            postaveniDomaci[5] = D6;
+            postaveniHoste[0] = H1;
+            postaveniHoste[1] = H2;
+            postaveniHoste[2] = H3;
+            postaveniHoste[3] = H4;
+            postaveniHoste[4] = H5;
+            postaveniHoste[5] = H6;
+            KontrolaLiber();
+        }
 
+        /// <summary>
+        /// Kontroluje zda se blokar nenachází v zadní lajně
+        /// </summary>
+        public bool CisloBlokare(int z)
+        {
+            for (int i = 0; i < hraciDomaci.Length; i++)
+            {
+                if (hraciDomaci[i] is null) return false;
+                if (hraciDomaci[i] is Blokar)
+                {
+                    Blokar blokar = (Blokar)hraciDomaci[i];
+                    if (blokar.Cislo == z) return true;
+                }
+            }
+            return false;
+        }
 
         // Private Funkce 
+
+        /// <summary>
+        /// Funkce zkontroluje, jestli se náhodou libero nenachází na hřišti a na střídačce není blokař
+        /// Blokař, co se v zápisu napíše do zadní lajny, tak se automaticky točí se liberem
+        /// </summary>
+        private void KontrolaLiber()
+        {
+            int index = 0;  //pomocný index pro vpisování do pole
+            for (int i = 0; i < hraciDomaci.Length; i++)
+            {
+                if (hraciDomaci[i] is null) break;
+                if (hraciDomaci[i] is Libero) 
+                {
+                    liberaDomaci[index] = hraciDomaci[i];
+                    index++;
+                }
+            }
+            for (int i = 4; i < 6; i++)
+            {
+                //Blokar muze podávat, ale pokud nepodava, tak strida za libero
+                if (CisloBlokare(postaveniDomaci[0]) && !skore.Podani)
+                {
+                    int cisloBlokare = postaveniDomaci[0];
+                    postaveniDomaci[0] = aktivniLiberoBlokarDomaci;
+                    aktivniLiberoDomaciPozice = 0;
+                    aktivniLiberoBlokarDomaci = cisloBlokare;
+                    break;
+                }
+                if (CisloBlokare(postaveniDomaci[i]))
+                {
+                    int cisloBlokare = postaveniDomaci[i];
+                    postaveniDomaci[i] = aktivniLiberoBlokarDomaci;
+                    aktivniLiberoDomaciPozice = i;
+                    aktivniLiberoBlokarDomaci = cisloBlokare;
+                    break;
+                }
+            }
+
+        }
         private void NacteniSestavy(string sestava)
         {
             int index = 0; // Pomocný index pro vkládání tříd hráčů do pole hraciDomaci 
@@ -503,7 +592,7 @@ namespace Volleyball_statistics
 
                 // Proměné, které se zapíší do třídy dle pozice
                 string jmeno = "";
-                int cislo = 0;
+                string cislo = "";
                 char pozice = 'x';
 
                 // Nacteni řádku
@@ -520,20 +609,20 @@ namespace Volleyball_statistics
                         continue;
                     }
                     if (!nacteniJmeno) jmeno += line[i];
-                    else if (!nacteniCislo) cislo = Convert.ToInt32(line[i]);
+                    else if (!nacteniCislo) cislo += line[i];
                     else pozice = line[i];
                 }
+                int cislo2 = Convert.ToInt32(cislo);
 
                 //Vytvoření třídy
-                if (pozice == 'S') hraciDomaci[index] = new Smecar(jmeno, cislo); 
-                if (pozice == 'B') hraciDomaci[index] = new Blokar(jmeno, cislo);
-                if (pozice == 'N') hraciDomaci[index] = new Nahravac(jmeno, cislo);
-                if (pozice == 'U') hraciDomaci[index] = new Univerzal(jmeno, cislo);
-                if (pozice == 'L') hraciDomaci[index] = new Libero(jmeno, cislo);
-                index++;
-                                   
+                if (pozice == 'S') hraciDomaci[index] = new Smecar(jmeno, cislo2); 
+                if (pozice == 'B') hraciDomaci[index] = new Blokar(jmeno, cislo2);
+                if (pozice == 'N') hraciDomaci[index] = new Nahravac(jmeno, cislo2);
+                if (pozice == 'U') hraciDomaci[index] = new Univerzal(jmeno, cislo2);
+                if (pozice == 'L') hraciDomaci[index] = new Libero(jmeno, cislo2);
+                index++;                
             }
-            //Console.WriteLine("Nacteno");
+            Console.WriteLine("Nacteno");
         }
     }
 }

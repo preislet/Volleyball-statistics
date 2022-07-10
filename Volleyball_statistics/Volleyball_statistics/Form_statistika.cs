@@ -14,7 +14,7 @@ namespace Volleyball_statistics
     {
         public static Hriste hriste = new Hriste();
         public static Skore skore = new Skore(false);
-        public static Postaveni_a_StatistikaHracu postaveni_A_StatistikaHracu = new Postaveni_a_StatistikaHracu(Form1.menu.Sestava);
+        public static Postaveni_a_StatistikaHracu postaveni_A_StatistikaHracu = new Postaveni_a_StatistikaHracu(Form1.menu.Sestava, skore, hriste);
         public Form_statistika()
         {
             InitializeComponent();
@@ -142,8 +142,22 @@ namespace Volleyball_statistics
 
         private void button_Servis_Click(object sender, EventArgs e)
         {
+            
             if ((sender as Button).Tag == 1.ToString())  //Button Servis Hosté
             {
+                // Vracení blokaře do hry, když má jít na servis
+                if (textBox_PoziceDomaci1.Text != "")
+                {
+                    if(postaveni_A_StatistikaHracu.aktivniLiberoDomaciPozice == 0)
+                    {
+                        int cisloLibera = postaveni_A_StatistikaHracu.PostaveniDomaci[0];
+                        postaveni_A_StatistikaHracu.PostaveniDomaci[0] = postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci;
+                        postaveni_A_StatistikaHracu.aktivniLiberoDomaciPozice = 7;
+                        postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci = cisloLibera;
+                        textBox_PoziceDomaci1.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[0].ToString();
+                        textBox_7LiberoDomaci.Text = postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci.ToString();
+                    }
+                }
                 if ((hriste.PocetBoduDomaci + hriste.hriste_outy[0] + hriste.PocetBoduHoste + hriste.hriste_outy[1] == 0)) //Počáteční nastavení servisů
                 {
                     label_ServisSet1.Text = Form1.menu.Hoste;
@@ -159,7 +173,22 @@ namespace Volleyball_statistics
                 label_ServisDomaci.BackColor = Color.White;
             }
             if ((sender as Button).Tag == 0.ToString()) //Button Servis Domácí
-            {
+            { 
+
+                // Vrácení libera na pozici 1
+                if (textBox_PoziceDomaci1.Text != "")
+                {
+                    if ((postaveni_A_StatistikaHracu.aktivniLiberoDomaciPozice == 7) && (postaveni_A_StatistikaHracu.CisloBlokare(postaveni_A_StatistikaHracu.PostaveniDomaci[0])))
+                    {
+                        int cisloBlokare = postaveni_A_StatistikaHracu.PostaveniDomaci[0];
+                        postaveni_A_StatistikaHracu.PostaveniDomaci[0] = postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci;
+                        postaveni_A_StatistikaHracu.aktivniLiberoDomaciPozice = 0;
+                        postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci = cisloBlokare;
+                        textBox_PoziceDomaci1.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[0].ToString();
+                        textBox_7LiberoDomaci.Text = postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci.ToString();
+                    }
+                }
+            
                 if ((hriste.PocetBoduDomaci + hriste.hriste_outy[0] + hriste.PocetBoduHoste + hriste.hriste_outy[1] == 0)) //Počáteční nastavení servisů
                 {
                     label_ServisSet1.Text = Form1.menu.Domaci;
@@ -190,15 +219,19 @@ namespace Volleyball_statistics
             skore.CurrSet++;
         }
 
-        private void button_PoziceDomaci_Click(object sender, EventArgs e) { }
-        private void button_PoziceHoste_Click(object sender, EventArgs e) { }
-
         private void button_PoziceLock_Click(object sender, EventArgs e)
         {
 
             //Zamknutí všech pozic
             if (button_PoziceLock.BackColor == Color.Green)
             {
+                // Načtení Sestavy na hřišti
+                postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci = Convert.ToInt32(textBox_7LiberoDomaci.Text);
+                postaveni_A_StatistikaHracu.NactenySestavNaHristi(Convert.ToInt32(textBox_PoziceDomaci1.Text), Convert.ToInt32(textBox_PoziceDomaci2.Text), Convert.ToInt32(textBox_PoziceDomaci3.Text),
+                    Convert.ToInt32(textBox_PoziceDomaci4.Text), Convert.ToInt32(textBox_PoziceDomaci5.Text), Convert.ToInt32(textBox_PoziceDomaci6.Text), Convert.ToInt32(textBox_PoziceHoste1.Text),
+                    Convert.ToInt32(textBox_PoziceHoste2.Text), Convert.ToInt32(textBox_PoziceHoste3.Text), Convert.ToInt32(textBox_PoziceHoste4.Text), Convert.ToInt32(textBox_PoziceHoste5.Text), Convert.ToInt32(textBox_PoziceHoste6.Text));
+
+
                 button_PoziceLock.BackColor = Color.Red;
                 textBox_PoziceHoste1.Enabled = false;
                 textBox_PoziceHoste1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
@@ -212,23 +245,32 @@ namespace Volleyball_statistics
                 textBox_PoziceHoste5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
                 textBox_PoziceHoste6.Enabled = false;
                 textBox_PoziceHoste6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceDomaci1.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[0].ToString();
                 textBox_PoziceDomaci1.Enabled = false;
                 textBox_PoziceDomaci1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceDomaci2.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[1].ToString();
                 textBox_PoziceDomaci2.Enabled = false;
                 textBox_PoziceDomaci2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceDomaci3.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[2].ToString();
                 textBox_PoziceDomaci3.Enabled = false;
                 textBox_PoziceDomaci3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceDomaci4.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[3].ToString();
                 textBox_PoziceDomaci4.Enabled = false;
                 textBox_PoziceDomaci4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceDomaci5.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[4].ToString();
                 textBox_PoziceDomaci5.Enabled = false;
                 textBox_PoziceDomaci5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
+                textBox_PoziceDomaci6.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[5].ToString();
                 textBox_PoziceDomaci6.Enabled = false;
                 textBox_PoziceDomaci6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(147)))), ((int)(((byte)(31)))));
-
+                textBox_7LiberoDomaci.Text = postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci.ToString();
+                textBox_7LiberoDomaci.Enabled = false;
+                textBox_7LiberoDomaci.BackColor = Color.Blue;
             }
             //Odemknutí všech pozic
             else
             {
+                button_PoziceLock.BackColor = Color.Green;
                 textBox_PoziceHoste1.Enabled = true;
                 textBox_PoziceHoste1.BackColor = Color.Red;
                 textBox_PoziceHoste2.Enabled = true;
@@ -253,6 +295,8 @@ namespace Volleyball_statistics
                 textBox_PoziceDomaci5.BackColor = Color.Red;
                 textBox_PoziceDomaci6.Enabled = true;
                 textBox_PoziceDomaci6.BackColor = Color.Red;
+                textBox_7LiberoDomaci.Enabled = true;
+                textBox_7LiberoDomaci.BackColor = Color.Red;
             }
 
         }
