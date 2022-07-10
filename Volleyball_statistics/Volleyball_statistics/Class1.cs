@@ -69,7 +69,7 @@ namespace Volleyball_statistics
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Chybaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                Console.WriteLine("Error: " + ex.ToString());
             }
         }
         public void CreateFolder()
@@ -468,6 +468,8 @@ namespace Volleyball_statistics
         }
 
         #endregion
+
+
         //Konstruktory
         public Postaveni_a_StatistikaHracu(string sestava, Skore skore, Hriste hriste)
         {
@@ -476,6 +478,8 @@ namespace Volleyball_statistics
             this.skore = skore;
             this.hriste = hriste;
         }
+
+
         //Public Funkce
 
         /// <summary>
@@ -485,7 +489,7 @@ namespace Volleyball_statistics
         /// </summary>
         public void Rotace(bool z)
         {
-            //TODO Rotace s liberem
+            //Pokud z je true, tak rotuje strana Domácích
             if (z)
             {
                 int prvniPozice = postaveniDomaci[0];
@@ -528,6 +532,10 @@ namespace Volleyball_statistics
                 postaveniHoste[5] = prvniPozice;
             }
         }
+
+        /// <summary>
+        /// Načítá sestavu, kterou uživatel vepsal do hřiště pro kontrolu pozic, do pole
+        /// </summary>
         public void NactenySestavNaHristi(int D1 = 0, int D2 = 0, int D3 = 0, int D4 = 0, int D5 = 0, int D6 = 0, int H1 = 0, int H2 = 0, int H3 = 0, int H4 = 0, int H5 = 0, int H6 = 0)
         {
             postaveniDomaci[0] = D1;
@@ -561,6 +569,7 @@ namespace Volleyball_statistics
             }
             return false;
         }
+
 
         // Private Funkce 
 
@@ -602,6 +611,11 @@ namespace Volleyball_statistics
             }
 
         }
+
+        /// <summary>
+        /// Funkce načte sestavu z vybraného .zxz souboru, který uživatel vybtal v hlavním menu
+        /// Jméno sestavy je zjištěno pomocí třídy menu, které toto jméno nesla z formuláře hlavního menu
+        /// </summary>
         private void NacteniSestavy(string sestava)
         {
             int index = 0; // Pomocný index pro vkládání tříd hráčů do pole hraciDomaci 

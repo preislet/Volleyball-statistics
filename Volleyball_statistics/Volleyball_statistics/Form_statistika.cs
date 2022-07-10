@@ -220,6 +220,26 @@ namespace Volleyball_statistics
 
             //Přechod do dalšího setu
             skore.CurrSet++;
+
+            //Nastavení podání podle tabulky
+            if ((skore.CurrSet != 5) && skore.CurrSet > 1)
+            {
+                if (skore.CurrSet == 2)
+                {
+                    if (label_ServisSet2.Text == Form1.menu.Hoste) hriste.LastBod = skore.Podani = false;
+                    else hriste.LastBod = skore.Podani = true;
+                }
+                if (skore.CurrSet == 3)
+                {
+                    if (label_ServisSet3.Text == Form1.menu.Hoste) hriste.LastBod = skore.Podani = false;
+                    else hriste.LastBod = skore.Podani = true;
+                }
+                if (skore.CurrSet == 4)
+                {
+                    if (label_ServisSet3.Text == Form1.menu.Hoste) hriste.LastBod = skore.Podani = false;
+                    else hriste.LastBod = skore.Podani = true;
+                }
+            }
         }
         private void RotacePoziceUpdate()
         {
@@ -236,6 +256,8 @@ namespace Volleyball_statistics
             textBox_PoziceHoste4.Text = postaveni_A_StatistikaHracu.PostaveniHoste[3].ToString();
             textBox_PoziceHoste5.Text = postaveni_A_StatistikaHracu.PostaveniHoste[4].ToString();
             textBox_PoziceHoste6.Text = postaveni_A_StatistikaHracu.PostaveniHoste[5].ToString();
+            if (postaveni_A_StatistikaHracu.aktivniLiberoDomaciPozice == 7) label_liberoDomaci.Text = "Libero";
+            else label_liberoDomaci.Text = "Blokař";
         }
         private void button_PoziceLock_Click(object sender, EventArgs e)
         {
