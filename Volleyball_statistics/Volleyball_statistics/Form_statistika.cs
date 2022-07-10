@@ -14,6 +14,7 @@ namespace Volleyball_statistics
     {
         public static Hriste hriste = new Hriste();
         public static Skore skore = new Skore(false);
+        public static Postaveni_a_StatistikaHracu postaveni_A_StatistikaHracu = new Postaveni_a_StatistikaHracu(Form1.menu.Sestava);
         public Form_statistika()
         {
             InitializeComponent();

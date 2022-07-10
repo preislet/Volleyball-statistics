@@ -449,8 +449,8 @@ namespace Volleyball_statistics
         }
         public int[] PostaveniHoste
         {
-            get { return PostaveniHoste; }
-            set { PostaveniHoste = value; }
+            get { return postaveniHoste; }
+            set { postaveniHoste = value; }
         }
         #endregion
         //Konstruktory
@@ -533,6 +533,7 @@ namespace Volleyball_statistics
                 index++;
                                    
             }
+            //Console.WriteLine("Nacteno");
         }
     }
 }
