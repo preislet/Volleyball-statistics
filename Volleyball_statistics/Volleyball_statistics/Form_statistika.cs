@@ -73,12 +73,15 @@ namespace Volleyball_statistics
                 {
                     label_ServisHoste.BackColor = Color.White;
                     label_ServisDomaci.BackColor = Color.Black;
+                    postaveni_A_StatistikaHracu.Rotace(true);
                 }
                 else
                 {
                     label_ServisHoste.BackColor = Color.Black;
                     label_ServisDomaci.BackColor = Color.White;
+                    postaveni_A_StatistikaHracu.Rotace(false);
                 }
+                RotacePoziceUpdate();
             }
 
             //Update procent
@@ -145,15 +148,15 @@ namespace Volleyball_statistics
             
             if ((sender as Button).Tag == 1.ToString())  //Button Servis Hosté
             {
-                // Vracení blokaře do hry, když má jít na servis
+                // Vrácení libera na pozici 1
                 if (textBox_PoziceDomaci1.Text != "")
                 {
-                    if(postaveni_A_StatistikaHracu.aktivniLiberoDomaciPozice == 0)
+                    if ((postaveni_A_StatistikaHracu.aktivniLiberoDomaciPozice == 7) && (postaveni_A_StatistikaHracu.CisloBlokare(postaveni_A_StatistikaHracu.PostaveniDomaci[0])))
                     {
-                        int cisloLibera = postaveni_A_StatistikaHracu.PostaveniDomaci[0];
+                        int cisloBlokare = postaveni_A_StatistikaHracu.PostaveniDomaci[0];
                         postaveni_A_StatistikaHracu.PostaveniDomaci[0] = postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci;
-                        postaveni_A_StatistikaHracu.aktivniLiberoDomaciPozice = 7;
-                        postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci = cisloLibera;
+                        postaveni_A_StatistikaHracu.aktivniLiberoDomaciPozice = 0;
+                        postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci = cisloBlokare;
                         textBox_PoziceDomaci1.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[0].ToString();
                         textBox_7LiberoDomaci.Text = postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci.ToString();
                     }
@@ -173,17 +176,17 @@ namespace Volleyball_statistics
                 label_ServisDomaci.BackColor = Color.White;
             }
             if ((sender as Button).Tag == 0.ToString()) //Button Servis Domácí
-            { 
+            {
 
-                // Vrácení libera na pozici 1
+                // Vracení blokaře do hry, když má jít na servis
                 if (textBox_PoziceDomaci1.Text != "")
                 {
-                    if ((postaveni_A_StatistikaHracu.aktivniLiberoDomaciPozice == 7) && (postaveni_A_StatistikaHracu.CisloBlokare(postaveni_A_StatistikaHracu.PostaveniDomaci[0])))
+                    if (postaveni_A_StatistikaHracu.aktivniLiberoDomaciPozice == 0)
                     {
-                        int cisloBlokare = postaveni_A_StatistikaHracu.PostaveniDomaci[0];
+                        int cisloLibera = postaveni_A_StatistikaHracu.PostaveniDomaci[0];
                         postaveni_A_StatistikaHracu.PostaveniDomaci[0] = postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci;
-                        postaveni_A_StatistikaHracu.aktivniLiberoDomaciPozice = 0;
-                        postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci = cisloBlokare;
+                        postaveni_A_StatistikaHracu.aktivniLiberoDomaciPozice = 7;
+                        postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci = cisloLibera;
                         textBox_PoziceDomaci1.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[0].ToString();
                         textBox_7LiberoDomaci.Text = postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci.ToString();
                     }
@@ -218,7 +221,22 @@ namespace Volleyball_statistics
             //Přechod do dalšího setu
             skore.CurrSet++;
         }
-
+        private void RotacePoziceUpdate()
+        {
+            textBox_PoziceDomaci1.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[0].ToString();
+            textBox_PoziceDomaci2.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[1].ToString();
+            textBox_PoziceDomaci3.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[2].ToString();
+            textBox_PoziceDomaci4.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[3].ToString();
+            textBox_PoziceDomaci5.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[4].ToString();
+            textBox_PoziceDomaci6.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[5].ToString();
+            textBox_7LiberoDomaci.Text = postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci.ToString();
+            textBox_PoziceHoste1.Text = postaveni_A_StatistikaHracu.PostaveniHoste[0].ToString();
+            textBox_PoziceHoste2.Text = postaveni_A_StatistikaHracu.PostaveniHoste[1].ToString();
+            textBox_PoziceHoste3.Text = postaveni_A_StatistikaHracu.PostaveniHoste[2].ToString();
+            textBox_PoziceHoste4.Text = postaveni_A_StatistikaHracu.PostaveniHoste[3].ToString();
+            textBox_PoziceHoste5.Text = postaveni_A_StatistikaHracu.PostaveniHoste[4].ToString();
+            textBox_PoziceHoste6.Text = postaveni_A_StatistikaHracu.PostaveniHoste[5].ToString();
+        }
         private void button_PoziceLock_Click(object sender, EventArgs e)
         {
 

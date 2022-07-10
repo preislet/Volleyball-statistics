@@ -249,7 +249,6 @@ namespace Volleyball_statistics
             }
             #endregion
 
-
             //Konstruktor
             public Hrac(string jmeno, int cislo)
             {
@@ -486,23 +485,24 @@ namespace Volleyball_statistics
         /// </summary>
         public void Rotace(bool z)
         {
+            //TODO Rotace s liberem
             if (z)
             {
-                int posledniPozice = postaveniDomaci[6];
+                int prvniPozice = postaveniDomaci[0];
                 for (int i = 1; i < postaveniDomaci.Length; i++)
                 {
-                    postaveniDomaci[postaveniDomaci.Length - i] = postaveniDomaci[postaveniDomaci.Length - i + 1];
+                    postaveniDomaci[i-1] = postaveniDomaci[i];
                 }
-                postaveniDomaci[0] = posledniPozice;
+                postaveniDomaci[5] = prvniPozice;
             }
             else
             {
-                int posledniPozice = postaveniHoste[6];
+                int prvniPozice = postaveniHoste[0];
                 for (int i = 1; i < postaveniHoste.Length; i++)
                 {
-                    postaveniHoste[postaveniHoste.Length - i] = postaveniDomaci[postaveniHoste.Length - i + 1];
+                    postaveniHoste[i - 1] = postaveniHoste[i];
                 }
-                postaveniHoste[0] = posledniPozice;
+                postaveniHoste[5] = prvniPozice;
             }
         }
         public void NactenySestavNaHristi(int D1 = 0, int D2 = 0, int D3 = 0, int D4 = 0, int D5 = 0, int D6 = 0, int H1 = 0, int H2 = 0, int H3 = 0, int H4 = 0, int H5 = 0, int H6 = 0)
@@ -622,7 +622,7 @@ namespace Volleyball_statistics
                 if (pozice == 'L') hraciDomaci[index] = new Libero(jmeno, cislo2);
                 index++;                
             }
-            Console.WriteLine("Nacteno");
+            //Console.WriteLine("Nacteno");
         }
     }
 }
