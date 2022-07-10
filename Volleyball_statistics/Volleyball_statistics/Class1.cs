@@ -489,6 +489,21 @@ namespace Volleyball_statistics
             if (z)
             {
                 int prvniPozice = postaveniDomaci[0];
+                //Zajištění prohazování s liberem
+                if (aktivniLiberoDomaciPozice == 4)
+                {
+                    int cisloLibera = postaveniDomaci[4];
+                    postaveniDomaci[4] = aktivniLiberoBlokarDomaci;
+                    aktivniLiberoDomaciPozice = 7;
+                    aktivniLiberoBlokarDomaci = cisloLibera;
+                }
+                // Posun libera
+                if (aktivniLiberoDomaciPozice != 7)
+                {
+                    if (aktivniLiberoDomaciPozice == 0) aktivniLiberoDomaciPozice = 5;
+                    else aktivniLiberoDomaciPozice--;
+                }
+
                 for (int i = 1; i < postaveniDomaci.Length; i++)
                 {
                     postaveniDomaci[i-1] = postaveniDomaci[i];
@@ -497,6 +512,14 @@ namespace Volleyball_statistics
             }
             else
             {
+                // Po tom, co Blokar dopodával, tak odcházi na stridacku a do gry prichází libero
+                if (CisloBlokare(postaveniDomaci[0]))
+                {
+                    int cisloBlokare =postaveniDomaci[0];
+                    postaveniDomaci[0] = aktivniLiberoBlokarDomaci;
+                    aktivniLiberoDomaciPozice = 0;
+                    aktivniLiberoBlokarDomaci = cisloBlokare;
+                }
                 int prvniPozice = postaveniHoste[0];
                 for (int i = 1; i < postaveniHoste.Length; i++)
                 {
