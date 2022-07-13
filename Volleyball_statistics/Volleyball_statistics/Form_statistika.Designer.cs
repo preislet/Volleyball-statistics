@@ -97,9 +97,42 @@
             this.textBox_PoziceDomaci4 = new System.Windows.Forms.TextBox();
             this.textBox_PoziceDomaci3 = new System.Windows.Forms.TextBox();
             this.textBox_PoziceDomaci2 = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label_StridaniDomaci = new System.Windows.Forms.Label();
+            this.label_StridaniHoste = new System.Windows.Forms.Label();
+            this.label_StridaniNapis = new System.Windows.Forms.Label();
+            this.label_DomaciPocetStridani = new System.Windows.Forms.Label();
+            this.label_HostePocetStridani = new System.Windows.Forms.Label();
+            this.button_PocetStridaniDomaci = new System.Windows.Forms.Button();
+            this.button_PocetStridaniHoste = new System.Windows.Forms.Button();
+            this.tableLayoutPanel_Stridacka = new System.Windows.Forms.TableLayoutPanel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label_StridackaHrac1 = new System.Windows.Forms.Label();
+            this.label_StridackaHrac7 = new System.Windows.Forms.Label();
+            this.label_StridackaHrac6 = new System.Windows.Forms.Label();
+            this.label_StridackaHrac5 = new System.Windows.Forms.Label();
+            this.label_StridackaHrac4 = new System.Windows.Forms.Label();
+            this.label_StridackaHrac3 = new System.Windows.Forms.Label();
+            this.label_StridackaHrac2 = new System.Windows.Forms.Label();
+            this.label_StridackaCislo1 = new System.Windows.Forms.Label();
+            this.label_StridackaCislo5 = new System.Windows.Forms.Label();
+            this.label_StridackaCislo2 = new System.Windows.Forms.Label();
+            this.label_StridackaCislo7 = new System.Windows.Forms.Label();
+            this.label_StridackaCislo3 = new System.Windows.Forms.Label();
+            this.label_StridackaCislo6 = new System.Windows.Forms.Label();
+            this.label_StridackaCislo4 = new System.Windows.Forms.Label();
+            this.label_StridackaPozice1 = new System.Windows.Forms.Label();
+            this.label_StridackaPozice2 = new System.Windows.Forms.Label();
+            this.label_StridackaPozice3 = new System.Windows.Forms.Label();
+            this.label_StridackaPozice4 = new System.Windows.Forms.Label();
+            this.label_StridackaPozice5 = new System.Windows.Forms.Label();
+            this.label_StridackaPozice6 = new System.Windows.Forms.Label();
+            this.label_StridackaPozice7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_HristeStridani)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel_Stridacka.SuspendLayout();
             this.SuspendLayout();
             // 
             // Label_Domaci
@@ -820,9 +853,9 @@
             this.label_liberoDomaci.AutoSize = true;
             this.label_liberoDomaci.Location = new System.Drawing.Point(395, 970);
             this.label_liberoDomaci.Name = "label_liberoDomaci";
-            this.label_liberoDomaci.Size = new System.Drawing.Size(68, 15);
+            this.label_liberoDomaci.Size = new System.Drawing.Size(40, 15);
             this.label_liberoDomaci.TabIndex = 57;
-            this.label_liberoDomaci.Text = "Libero/blok";
+            this.label_liberoDomaci.Text = "Libero";
             // 
             // textBox_PoziceDomaci1
             // 
@@ -902,11 +935,371 @@
             this.textBox_PoziceDomaci2.Tag = "2";
             this.textBox_PoziceDomaci2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.label_StridaniDomaci, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label_StridaniHoste, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label_StridaniNapis, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label_DomaciPocetStridani, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label_HostePocetStridani, 1, 2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(358, 453);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(153, 72);
+            this.tableLayoutPanel2.TabIndex = 65;
+            // 
+            // label_StridaniDomaci
+            // 
+            this.label_StridaniDomaci.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridaniDomaci.AutoSize = true;
+            this.label_StridaniDomaci.Location = new System.Drawing.Point(14, 27);
+            this.label_StridaniDomaci.Name = "label_StridaniDomaci";
+            this.label_StridaniDomaci.Size = new System.Drawing.Size(48, 15);
+            this.label_StridaniDomaci.TabIndex = 0;
+            this.label_StridaniDomaci.Text = "Domácí";
+            // 
+            // label_StridaniHoste
+            // 
+            this.label_StridaniHoste.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridaniHoste.AutoSize = true;
+            this.label_StridaniHoste.Location = new System.Drawing.Point(19, 51);
+            this.label_StridaniHoste.Name = "label_StridaniHoste";
+            this.label_StridaniHoste.Size = new System.Drawing.Size(38, 15);
+            this.label_StridaniHoste.TabIndex = 1;
+            this.label_StridaniHoste.Text = "Hosté";
+            // 
+            // label_StridaniNapis
+            // 
+            this.label_StridaniNapis.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridaniNapis.AutoSize = true;
+            this.label_StridaniNapis.Location = new System.Drawing.Point(91, 4);
+            this.label_StridaniNapis.Name = "label_StridaniNapis";
+            this.label_StridaniNapis.Size = new System.Drawing.Size(47, 15);
+            this.label_StridaniNapis.TabIndex = 2;
+            this.label_StridaniNapis.Text = "Střídání";
+            // 
+            // label_DomaciPocetStridani
+            // 
+            this.label_DomaciPocetStridani.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_DomaciPocetStridani.AutoSize = true;
+            this.label_DomaciPocetStridani.Location = new System.Drawing.Point(108, 27);
+            this.label_DomaciPocetStridani.Name = "label_DomaciPocetStridani";
+            this.label_DomaciPocetStridani.Size = new System.Drawing.Size(13, 15);
+            this.label_DomaciPocetStridani.TabIndex = 3;
+            this.label_DomaciPocetStridani.Tag = "";
+            this.label_DomaciPocetStridani.Text = "0";
+            // 
+            // label_HostePocetStridani
+            // 
+            this.label_HostePocetStridani.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_HostePocetStridani.AutoSize = true;
+            this.label_HostePocetStridani.Location = new System.Drawing.Point(108, 51);
+            this.label_HostePocetStridani.Name = "label_HostePocetStridani";
+            this.label_HostePocetStridani.Size = new System.Drawing.Size(13, 15);
+            this.label_HostePocetStridani.TabIndex = 4;
+            this.label_HostePocetStridani.Tag = "";
+            this.label_HostePocetStridani.Text = "0";
+            // 
+            // button_PocetStridaniDomaci
+            // 
+            this.button_PocetStridaniDomaci.Location = new System.Drawing.Point(517, 474);
+            this.button_PocetStridaniDomaci.Name = "button_PocetStridaniDomaci";
+            this.button_PocetStridaniDomaci.Size = new System.Drawing.Size(25, 26);
+            this.button_PocetStridaniDomaci.TabIndex = 66;
+            this.button_PocetStridaniDomaci.Tag = "0";
+            this.button_PocetStridaniDomaci.Text = "+";
+            this.button_PocetStridaniDomaci.UseVisualStyleBackColor = true;
+            this.button_PocetStridaniDomaci.Click += new System.EventHandler(this.button_PocetStridaniDomaci_Click);
+            // 
+            // button_PocetStridaniHoste
+            // 
+            this.button_PocetStridaniHoste.Location = new System.Drawing.Point(517, 499);
+            this.button_PocetStridaniHoste.Name = "button_PocetStridaniHoste";
+            this.button_PocetStridaniHoste.Size = new System.Drawing.Size(25, 26);
+            this.button_PocetStridaniHoste.TabIndex = 67;
+            this.button_PocetStridaniHoste.Tag = "1";
+            this.button_PocetStridaniHoste.Text = "+";
+            this.button_PocetStridaniHoste.UseVisualStyleBackColor = true;
+            this.button_PocetStridaniHoste.Click += new System.EventHandler(this.button_PocetStridaniDomaci_Click);
+            // 
+            // tableLayoutPanel_Stridacka
+            // 
+            this.tableLayoutPanel_Stridacka.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel_Stridacka.ColumnCount = 3;
+            this.tableLayoutPanel_Stridacka.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.82927F));
+            this.tableLayoutPanel_Stridacka.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.17073F));
+            this.tableLayoutPanel_Stridacka.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaPozice7, 2, 6);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaPozice6, 2, 5);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaPozice5, 2, 4);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaPozice4, 2, 3);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaPozice3, 2, 2);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaPozice2, 2, 1);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaPozice1, 2, 0);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaCislo4, 1, 3);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaCislo3, 1, 2);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaCislo2, 1, 1);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaHrac7, 0, 6);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaHrac6, 0, 5);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaHrac5, 0, 4);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaHrac4, 0, 3);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaHrac3, 0, 2);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaHrac2, 0, 1);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaHrac1, 0, 0);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaCislo1, 1, 0);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaCislo5, 1, 4);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaCislo6, 1, 5);
+            this.tableLayoutPanel_Stridacka.Controls.Add(this.label_StridackaCislo7, 1, 6);
+            this.tableLayoutPanel_Stridacka.Location = new System.Drawing.Point(358, 767);
+            this.tableLayoutPanel_Stridacka.Name = "tableLayoutPanel_Stridacka";
+            this.tableLayoutPanel_Stridacka.RowCount = 7;
+            this.tableLayoutPanel_Stridacka.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel_Stridacka.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel_Stridacka.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel_Stridacka.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel_Stridacka.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel_Stridacka.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel_Stridacka.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel_Stridacka.Size = new System.Drawing.Size(184, 171);
+            this.tableLayoutPanel_Stridacka.TabIndex = 68;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label22.Location = new System.Drawing.Point(377, 743);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(144, 21);
+            this.label22.TabIndex = 69;
+            this.label22.Text = "Střídačka domácích";
+            // 
+            // label_StridackaHrac1
+            // 
+            this.label_StridackaHrac1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaHrac1.AutoSize = true;
+            this.label_StridackaHrac1.Location = new System.Drawing.Point(12, 5);
+            this.label_StridackaHrac1.Name = "label_StridackaHrac1";
+            this.label_StridackaHrac1.Size = new System.Drawing.Size(91, 15);
+            this.label_StridackaHrac1.TabIndex = 0;
+            this.label_StridackaHrac1.Text = "XXXXXXXXXXXX";
+            // 
+            // label_StridackaHrac7
+            // 
+            this.label_StridackaHrac7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaHrac7.AutoSize = true;
+            this.label_StridackaHrac7.Location = new System.Drawing.Point(12, 150);
+            this.label_StridackaHrac7.Name = "label_StridackaHrac7";
+            this.label_StridackaHrac7.Size = new System.Drawing.Size(91, 15);
+            this.label_StridackaHrac7.TabIndex = 70;
+            this.label_StridackaHrac7.Text = "XXXXXXXXXXXX";
+            // 
+            // label_StridackaHrac6
+            // 
+            this.label_StridackaHrac6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaHrac6.AutoSize = true;
+            this.label_StridackaHrac6.Location = new System.Drawing.Point(12, 125);
+            this.label_StridackaHrac6.Name = "label_StridackaHrac6";
+            this.label_StridackaHrac6.Size = new System.Drawing.Size(91, 15);
+            this.label_StridackaHrac6.TabIndex = 71;
+            this.label_StridackaHrac6.Text = "XXXXXXXXXXXX";
+            // 
+            // label_StridackaHrac5
+            // 
+            this.label_StridackaHrac5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaHrac5.AutoSize = true;
+            this.label_StridackaHrac5.Location = new System.Drawing.Point(12, 101);
+            this.label_StridackaHrac5.Name = "label_StridackaHrac5";
+            this.label_StridackaHrac5.Size = new System.Drawing.Size(91, 15);
+            this.label_StridackaHrac5.TabIndex = 72;
+            this.label_StridackaHrac5.Text = "XXXXXXXXXXXX";
+            // 
+            // label_StridackaHrac4
+            // 
+            this.label_StridackaHrac4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaHrac4.AutoSize = true;
+            this.label_StridackaHrac4.Location = new System.Drawing.Point(12, 77);
+            this.label_StridackaHrac4.Name = "label_StridackaHrac4";
+            this.label_StridackaHrac4.Size = new System.Drawing.Size(91, 15);
+            this.label_StridackaHrac4.TabIndex = 73;
+            this.label_StridackaHrac4.Text = "XXXXXXXXXXXX";
+            // 
+            // label_StridackaHrac3
+            // 
+            this.label_StridackaHrac3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaHrac3.AutoSize = true;
+            this.label_StridackaHrac3.Location = new System.Drawing.Point(12, 53);
+            this.label_StridackaHrac3.Name = "label_StridackaHrac3";
+            this.label_StridackaHrac3.Size = new System.Drawing.Size(91, 15);
+            this.label_StridackaHrac3.TabIndex = 74;
+            this.label_StridackaHrac3.Text = "XXXXXXXXXXXX";
+            // 
+            // label_StridackaHrac2
+            // 
+            this.label_StridackaHrac2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaHrac2.AutoSize = true;
+            this.label_StridackaHrac2.Location = new System.Drawing.Point(12, 29);
+            this.label_StridackaHrac2.Name = "label_StridackaHrac2";
+            this.label_StridackaHrac2.Size = new System.Drawing.Size(91, 15);
+            this.label_StridackaHrac2.TabIndex = 75;
+            this.label_StridackaHrac2.Text = "XXXXXXXXXXXX";
+            // 
+            // label_StridackaCislo1
+            // 
+            this.label_StridackaCislo1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaCislo1.AutoSize = true;
+            this.label_StridackaCislo1.Location = new System.Drawing.Point(125, 5);
+            this.label_StridackaCislo1.Name = "label_StridackaCislo1";
+            this.label_StridackaCislo1.Size = new System.Drawing.Size(14, 15);
+            this.label_StridackaCislo1.TabIndex = 76;
+            this.label_StridackaCislo1.Text = "X";
+            // 
+            // label_StridackaCislo5
+            // 
+            this.label_StridackaCislo5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaCislo5.AutoSize = true;
+            this.label_StridackaCislo5.Location = new System.Drawing.Point(125, 101);
+            this.label_StridackaCislo5.Name = "label_StridackaCislo5";
+            this.label_StridackaCislo5.Size = new System.Drawing.Size(14, 15);
+            this.label_StridackaCislo5.TabIndex = 77;
+            this.label_StridackaCislo5.Text = "X";
+            // 
+            // label_StridackaCislo2
+            // 
+            this.label_StridackaCislo2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaCislo2.AutoSize = true;
+            this.label_StridackaCislo2.Location = new System.Drawing.Point(125, 29);
+            this.label_StridackaCislo2.Name = "label_StridackaCislo2";
+            this.label_StridackaCislo2.Size = new System.Drawing.Size(14, 15);
+            this.label_StridackaCislo2.TabIndex = 78;
+            this.label_StridackaCislo2.Text = "X";
+            // 
+            // label_StridackaCislo7
+            // 
+            this.label_StridackaCislo7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaCislo7.AutoSize = true;
+            this.label_StridackaCislo7.Location = new System.Drawing.Point(125, 150);
+            this.label_StridackaCislo7.Name = "label_StridackaCislo7";
+            this.label_StridackaCislo7.Size = new System.Drawing.Size(14, 15);
+            this.label_StridackaCislo7.TabIndex = 79;
+            this.label_StridackaCislo7.Text = "X";
+            // 
+            // label_StridackaCislo3
+            // 
+            this.label_StridackaCislo3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaCislo3.AutoSize = true;
+            this.label_StridackaCislo3.Location = new System.Drawing.Point(125, 53);
+            this.label_StridackaCislo3.Name = "label_StridackaCislo3";
+            this.label_StridackaCislo3.Size = new System.Drawing.Size(14, 15);
+            this.label_StridackaCislo3.TabIndex = 80;
+            this.label_StridackaCislo3.Text = "X";
+            // 
+            // label_StridackaCislo6
+            // 
+            this.label_StridackaCislo6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaCislo6.AutoSize = true;
+            this.label_StridackaCislo6.Location = new System.Drawing.Point(125, 125);
+            this.label_StridackaCislo6.Name = "label_StridackaCislo6";
+            this.label_StridackaCislo6.Size = new System.Drawing.Size(14, 15);
+            this.label_StridackaCislo6.TabIndex = 81;
+            this.label_StridackaCislo6.Text = "X";
+            // 
+            // label_StridackaCislo4
+            // 
+            this.label_StridackaCislo4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaCislo4.AutoSize = true;
+            this.label_StridackaCislo4.Location = new System.Drawing.Point(125, 77);
+            this.label_StridackaCislo4.Name = "label_StridackaCislo4";
+            this.label_StridackaCislo4.Size = new System.Drawing.Size(14, 15);
+            this.label_StridackaCislo4.TabIndex = 82;
+            this.label_StridackaCislo4.Text = "X";
+            // 
+            // label_StridackaPozice1
+            // 
+            this.label_StridackaPozice1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaPozice1.AutoSize = true;
+            this.label_StridackaPozice1.Location = new System.Drawing.Point(159, 5);
+            this.label_StridackaPozice1.Name = "label_StridackaPozice1";
+            this.label_StridackaPozice1.Size = new System.Drawing.Size(14, 15);
+            this.label_StridackaPozice1.TabIndex = 83;
+            this.label_StridackaPozice1.Text = "X";
+            // 
+            // label_StridackaPozice2
+            // 
+            this.label_StridackaPozice2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaPozice2.AutoSize = true;
+            this.label_StridackaPozice2.Location = new System.Drawing.Point(159, 29);
+            this.label_StridackaPozice2.Name = "label_StridackaPozice2";
+            this.label_StridackaPozice2.Size = new System.Drawing.Size(14, 15);
+            this.label_StridackaPozice2.TabIndex = 84;
+            this.label_StridackaPozice2.Text = "X";
+            // 
+            // label_StridackaPozice3
+            // 
+            this.label_StridackaPozice3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaPozice3.AutoSize = true;
+            this.label_StridackaPozice3.Location = new System.Drawing.Point(159, 53);
+            this.label_StridackaPozice3.Name = "label_StridackaPozice3";
+            this.label_StridackaPozice3.Size = new System.Drawing.Size(14, 15);
+            this.label_StridackaPozice3.TabIndex = 85;
+            this.label_StridackaPozice3.Text = "X";
+            // 
+            // label_StridackaPozice4
+            // 
+            this.label_StridackaPozice4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaPozice4.AutoSize = true;
+            this.label_StridackaPozice4.Location = new System.Drawing.Point(159, 77);
+            this.label_StridackaPozice4.Name = "label_StridackaPozice4";
+            this.label_StridackaPozice4.Size = new System.Drawing.Size(14, 15);
+            this.label_StridackaPozice4.TabIndex = 86;
+            this.label_StridackaPozice4.Text = "X";
+            // 
+            // label_StridackaPozice5
+            // 
+            this.label_StridackaPozice5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaPozice5.AutoSize = true;
+            this.label_StridackaPozice5.Location = new System.Drawing.Point(159, 101);
+            this.label_StridackaPozice5.Name = "label_StridackaPozice5";
+            this.label_StridackaPozice5.Size = new System.Drawing.Size(14, 15);
+            this.label_StridackaPozice5.TabIndex = 87;
+            this.label_StridackaPozice5.Text = "X";
+            // 
+            // label_StridackaPozice6
+            // 
+            this.label_StridackaPozice6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaPozice6.AutoSize = true;
+            this.label_StridackaPozice6.Location = new System.Drawing.Point(159, 125);
+            this.label_StridackaPozice6.Name = "label_StridackaPozice6";
+            this.label_StridackaPozice6.Size = new System.Drawing.Size(14, 15);
+            this.label_StridackaPozice6.TabIndex = 88;
+            this.label_StridackaPozice6.Text = "X";
+            // 
+            // label_StridackaPozice7
+            // 
+            this.label_StridackaPozice7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_StridackaPozice7.AutoSize = true;
+            this.label_StridackaPozice7.Location = new System.Drawing.Point(159, 150);
+            this.label_StridackaPozice7.Name = "label_StridackaPozice7";
+            this.label_StridackaPozice7.Size = new System.Drawing.Size(14, 15);
+            this.label_StridackaPozice7.TabIndex = 89;
+            this.label_StridackaPozice7.Text = "X";
+            // 
             // Form_statistika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.tableLayoutPanel_Stridacka);
+            this.Controls.Add(this.button_PocetStridaniHoste);
+            this.Controls.Add(this.button_PocetStridaniDomaci);
+            this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.textBox_PoziceDomaci2);
             this.Controls.Add(this.textBox_PoziceDomaci3);
             this.Controls.Add(this.textBox_PoziceDomaci4);
@@ -965,6 +1358,10 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_HristeStridani)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel_Stridacka.ResumeLayout(false);
+            this.tableLayoutPanel_Stridacka.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1041,5 +1438,36 @@
         private TextBox textBox_PoziceDomaci4;
         private TextBox textBox_PoziceDomaci3;
         private TextBox textBox_PoziceDomaci2;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Label label_StridaniDomaci;
+        private Label label_StridaniHoste;
+        private Label label_StridaniNapis;
+        private Label label_DomaciPocetStridani;
+        private Label label_HostePocetStridani;
+        private Button button_PocetStridaniDomaci;
+        private Button button_PocetStridaniHoste;
+        private TableLayoutPanel tableLayoutPanel_Stridacka;
+        private Label label_StridackaPozice7;
+        private Label label_StridackaPozice6;
+        private Label label_StridackaPozice5;
+        private Label label_StridackaPozice4;
+        private Label label_StridackaPozice3;
+        private Label label_StridackaPozice2;
+        private Label label_StridackaPozice1;
+        private Label label_StridackaCislo4;
+        private Label label_StridackaCislo3;
+        private Label label_StridackaCislo2;
+        private Label label_StridackaHrac7;
+        private Label label_StridackaHrac6;
+        private Label label_StridackaHrac5;
+        private Label label_StridackaHrac4;
+        private Label label_StridackaHrac3;
+        private Label label_StridackaHrac2;
+        private Label label_StridackaHrac1;
+        private Label label_StridackaCislo1;
+        private Label label_StridackaCislo5;
+        private Label label_StridackaCislo6;
+        private Label label_StridackaCislo7;
+        private Label label22;
     }
 }

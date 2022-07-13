@@ -112,6 +112,8 @@ namespace Volleyball_statistics
 
         }
     }
+
+
     public class Hriste
     {
         public int[,] hriste_procenta = new int[3, 6];
@@ -178,6 +180,8 @@ namespace Volleyball_statistics
             }
         }
     }
+
+
     public class Skore
     {
         public int SkoreDomaci;
@@ -198,6 +202,8 @@ namespace Volleyball_statistics
             DomaciSety = 0;
         }
     }
+
+
     public class Postaveni_a_StatistikaHracu
     {
         #region Třídy Hráčů
@@ -570,6 +576,65 @@ namespace Volleyball_statistics
             return false;
         }
 
+        /// <summary>
+        /// Načítá hráče, kteří nejsou v hlavní sestavě, ale jsou na střídačce
+        /// </summary>
+        public void NactiStridacku (TableLayoutPanel s)
+        {
+            int index = 0;
+            object[] stridacka = new object[7];
+            for (int i = 0; i < hraciDomaci.Length; i++)
+            {
+                int Lock = 0;
+                if (hraciDomaci[i] is null) break;
+                Hrac hrac = (Hrac)hraciDomaci[i];
+                for (int j = 0; j < postaveniDomaci.Length; j++)
+                {
+                    if ((hrac.Cislo == postaveniDomaci[j]) || hrac.Cislo == aktivniLiberoBlokarDomaci) 
+                    { 
+                        Lock = 1;
+                        break;
+                    } 
+                }
+                if (Lock == 0)
+                {
+                    stridacka[index] = hrac;
+                    index++;
+                }
+            }
+
+            //Zapsání Hráčů do tabulky vedle hřiště
+            for (int i = 0; i < stridacka.Length; i++)
+            {
+                if (stridacka[i] is null) break;
+                Hrac hracKZapisu = (Hrac)stridacka[i];
+                Control c = s.GetControlFromPosition(0, i);
+                c.Text = hracKZapisu.Jmeno;
+                c = s.GetControlFromPosition(1, i);
+                c.Text = (hracKZapisu.Cislo).ToString();
+                c = s.GetControlFromPosition(2, i);
+                switch (hracKZapisu)
+                {
+                    case Nahravac:
+                        c.Text = "N";
+                        break;
+                    case Smecar:
+                        c.Text = "S";
+                        break;
+                    case Univerzal:
+                        c.Text = "U";
+                        break;
+                    case Libero:
+                        c.Text = "L";
+                        break;
+                    case Blokar:
+                        c.Text = "B";
+                        break;
+                }
+
+            }
+            Console.WriteLine("Hotovo");
+        }
 
         // Private Funkce 
 

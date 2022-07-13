@@ -240,6 +240,51 @@ namespace Volleyball_statistics
                     else hriste.LastBod = skore.Podani = true;
                 }
             }
+
+            //Restart Postavení
+            button_PoziceLock.BackColor = Color.Green;
+            textBox_7LiberoDomaci.Text = "Libero";
+
+            textBox_PoziceHoste1.Enabled = true;
+            textBox_PoziceHoste1.BackColor = Color.Red;
+            textBox_PoziceHoste1.Text = "";
+            textBox_PoziceHoste2.Enabled = true;
+            textBox_PoziceHoste2.BackColor = Color.Red;
+            textBox_PoziceHoste2.Text = "";
+            textBox_PoziceHoste3.Enabled = true;
+            textBox_PoziceHoste3.BackColor = Color.Red;
+            textBox_PoziceHoste3.Text = "";
+            textBox_PoziceHoste4.Enabled = true;
+            textBox_PoziceHoste4.BackColor = Color.Red;
+            textBox_PoziceHoste4.Text = "";
+            textBox_PoziceHoste5.Enabled = true;
+            textBox_PoziceHoste5.BackColor = Color.Red;
+            textBox_PoziceHoste5.Text = "";
+            textBox_PoziceHoste6.Enabled = true;
+            textBox_PoziceHoste6.BackColor = Color.Red;
+            textBox_PoziceHoste6.Text = "";
+            textBox_PoziceDomaci1.Enabled = true;
+            textBox_PoziceDomaci1.BackColor = Color.Red;
+            textBox_PoziceDomaci1.Text = "";
+            textBox_PoziceDomaci2.Enabled = true;
+            textBox_PoziceDomaci2.BackColor = Color.Red;
+            textBox_PoziceDomaci2.Text = "";
+            textBox_PoziceDomaci3.Enabled = true;
+            textBox_PoziceDomaci3.BackColor = Color.Red;
+            textBox_PoziceDomaci3.Text = "";
+            textBox_PoziceDomaci4.Enabled = true;
+            textBox_PoziceDomaci4.BackColor = Color.Red;
+            textBox_PoziceDomaci4.Text = "";
+            textBox_PoziceDomaci5.Enabled = true;
+            textBox_PoziceDomaci5.BackColor = Color.Red;
+            textBox_PoziceDomaci5.Text = "";
+            textBox_PoziceDomaci6.Enabled = true;
+            textBox_PoziceDomaci6.BackColor = Color.Red;
+            textBox_PoziceDomaci6.Text = "";
+            textBox_7LiberoDomaci.Enabled = true;
+            textBox_7LiberoDomaci.BackColor = Color.Red;
+            textBox_7LiberoDomaci.Text = "";
+
         }
         private void RotacePoziceUpdate()
         {
@@ -270,7 +315,8 @@ namespace Volleyball_statistics
                 postaveni_A_StatistikaHracu.NactenySestavNaHristi(Convert.ToInt32(textBox_PoziceDomaci1.Text), Convert.ToInt32(textBox_PoziceDomaci2.Text), Convert.ToInt32(textBox_PoziceDomaci3.Text),
                     Convert.ToInt32(textBox_PoziceDomaci4.Text), Convert.ToInt32(textBox_PoziceDomaci5.Text), Convert.ToInt32(textBox_PoziceDomaci6.Text), Convert.ToInt32(textBox_PoziceHoste1.Text),
                     Convert.ToInt32(textBox_PoziceHoste2.Text), Convert.ToInt32(textBox_PoziceHoste3.Text), Convert.ToInt32(textBox_PoziceHoste4.Text), Convert.ToInt32(textBox_PoziceHoste5.Text), Convert.ToInt32(textBox_PoziceHoste6.Text));
-
+                //Načtení střádačky
+                postaveni_A_StatistikaHracu.NactiStridacku(tableLayoutPanel_Stridacka);
 
                 button_PoziceLock.BackColor = Color.Red;
                 textBox_PoziceHoste1.Enabled = false;
@@ -306,6 +352,7 @@ namespace Volleyball_statistics
                 textBox_7LiberoDomaci.Text = postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci.ToString();
                 textBox_7LiberoDomaci.Enabled = false;
                 textBox_7LiberoDomaci.BackColor = Color.Blue;
+                textBox_7LiberoDomaci.Text = "Libero/blok";
             }
             //Odemknutí všech pozic
             else
@@ -338,6 +385,16 @@ namespace Volleyball_statistics
                 textBox_7LiberoDomaci.Enabled = true;
                 textBox_7LiberoDomaci.BackColor = Color.Red;
             }
+
+        }
+
+        /// <summary>
+        /// Přičítání střídání obou týmů
+        /// </summary>
+        private void button_PocetStridaniDomaci_Click(object sender, EventArgs e)
+        {
+            if (((Button)sender).Tag == "0") label_DomaciPocetStridani.Text = (Convert.ToInt32(label_DomaciPocetStridani.Text) + 1).ToString();
+            if (((Button)sender).Tag == "1") label_HostePocetStridani.Text = (Convert.ToInt32(label_HostePocetStridani.Text) + 1).ToString(); ;
 
         }
     }

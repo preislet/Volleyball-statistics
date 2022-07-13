@@ -32,8 +32,6 @@ namespace Volleyball_statistics
         private void textBox43_TextChanged(object sender, EventArgs e)
         {
             if (textBox43.Text.Length != 0) button_Ulozit.Enabled = true;  //Sestava bez jména se nedá uložit
-
-            // TODO - kontorla, zda se už takhle nějaká sestava nejmenuje
         }
 
 
@@ -60,6 +58,7 @@ namespace Volleyball_statistics
         /// </summary>
         private void Varovani() 
         {
+            textBox43.Text = "";
             string message = "Sestava s tímto jménem již existuje. Zvolte jiné jméno";
             MessageBox.Show(message);
         }
