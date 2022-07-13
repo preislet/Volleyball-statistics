@@ -27,7 +27,7 @@ namespace Volleyball_statistics
             Label_Hoste.Text = Form1.menu.Hoste;  //Jméno týmu domácích
             button_OutDomaci.Text = "OUT " + Form1.menu.Domaci;
             button_OutHoste.Text = "OUT " + Form1.menu.Hoste;
-
+            postaveni_A_StatistikaHracu.NactiJmenaHracuDoTabulky(tableLayoutPanel_TabulkaHracu);
             UpdateHriste();
         }
 
@@ -243,7 +243,7 @@ namespace Volleyball_statistics
 
             //Restart Postavení
             button_PoziceLock.BackColor = Color.Green;
-            textBox_7LiberoDomaci.Text = "Libero";
+            label_liberoDomaci.Text = "Libero";
 
             textBox_PoziceHoste1.Enabled = true;
             textBox_PoziceHoste1.BackColor = Color.Red;
@@ -315,8 +315,13 @@ namespace Volleyball_statistics
                 postaveni_A_StatistikaHracu.NactenySestavNaHristi(Convert.ToInt32(textBox_PoziceDomaci1.Text), Convert.ToInt32(textBox_PoziceDomaci2.Text), Convert.ToInt32(textBox_PoziceDomaci3.Text),
                     Convert.ToInt32(textBox_PoziceDomaci4.Text), Convert.ToInt32(textBox_PoziceDomaci5.Text), Convert.ToInt32(textBox_PoziceDomaci6.Text), Convert.ToInt32(textBox_PoziceHoste1.Text),
                     Convert.ToInt32(textBox_PoziceHoste2.Text), Convert.ToInt32(textBox_PoziceHoste3.Text), Convert.ToInt32(textBox_PoziceHoste4.Text), Convert.ToInt32(textBox_PoziceHoste5.Text), Convert.ToInt32(textBox_PoziceHoste6.Text));
+
                 //Načtení střádačky
                 postaveni_A_StatistikaHracu.NactiStridacku(tableLayoutPanel_Stridacka);
+
+                //Zobrazení aktivních hráčů v tabulce
+                postaveni_A_StatistikaHracu.ZobrazAktivniHraceVTabulce(tableLayoutPanel_TabulkaHracu);
+
 
                 button_PoziceLock.BackColor = Color.Red;
                 textBox_PoziceHoste1.Enabled = false;
@@ -352,7 +357,7 @@ namespace Volleyball_statistics
                 textBox_7LiberoDomaci.Text = postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci.ToString();
                 textBox_7LiberoDomaci.Enabled = false;
                 textBox_7LiberoDomaci.BackColor = Color.Blue;
-                textBox_7LiberoDomaci.Text = "Libero/blok";
+                label_liberoDomaci.Text = "Libero/blok";
             }
             //Odemknutí všech pozic
             else
@@ -395,6 +400,74 @@ namespace Volleyball_statistics
         {
             if (((Button)sender).Tag == "0") label_DomaciPocetStridani.Text = (Convert.ToInt32(label_DomaciPocetStridani.Text) + 1).ToString();
             if (((Button)sender).Tag == "1") label_HostePocetStridani.Text = (Convert.ToInt32(label_HostePocetStridani.Text) + 1).ToString(); ;
+
+        }
+
+        private void button_TabulkaHracu_Click(object sender, EventArgs e)
+        {
+            static void ZapniButtony(Button[] b)
+            {
+                for (int i = 0; i < b.Length; i++)
+                {
+                    b[i].Visible = b[i].Enabled = true;
+                }
+            }
+
+            //Listy Buttonu, podle toho, co budou obsluhovat
+            Button[] servisButtons = new Button[] { button_servis1, button_servis3, button_servis5, button_servisChyba };
+            Button[] prijemButtons = new Button[] { button_Prijem1, button_Prijem3, button_Prijem5, button_PrijemChyba };
+            Button[] utokButtons = new Button[] { button_Utok1, button_Utok3, button_Utok5, button_UtokChyba };
+            Button[] blokButtons = new Button[] { button_Blok1, button_Blok3, button_Blok5, button_BlokChyba };
+            Button[] poleButtons = new Button[] { button_Pole1, button_PoleChyba };
+
+            //Vybarvení daného sloupce
+            for (int i = 1; i < tableLayoutPanel_TabulkaHracu.RowCount; i++)
+            {
+                Control control = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(Convert.ToInt32(((Button)sender).Tag), i);
+                if (control.BackColor == Color.Green)
+                {
+                    control.BackColor = Color.LightBlue;
+                    break;
+                }
+                control.BackColor = Color.Orange;
+            }
+
+            //Zobrazení Buttonu
+            switch (((Button)sender).Tag)
+            {
+                case "3":
+                    ZapniButtony(servisButtons);
+                    break;
+                case "4":
+                    ZapniButtony(prijemButtons);
+                    break;
+                case "5":
+                    ZapniButtony(utokButtons);
+                    break;
+                case "6":
+                    ZapniButtony(blokButtons);
+                    break;
+                case "7":
+                    ZapniButtony(poleButtons);
+                    break;
+            }
+        }
+
+        private void button_Hrac_Click(object sender, EventArgs e)
+        {
+            if (((Button)sender).Text == "XXXXXXXXXXXXXXXXX")
+            {
+                ((Button)sender).Enabled = false;
+                return;
+            }
+            //Zapnutí Buttonu servisu,utoku, bloku...
+            button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = true;
+            //Vybarvení daného řádku
+            for (int i = 1; i < tableLayoutPanel_TabulkaHracu.RowCount; i++)
+            {
+                Control control = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(Convert.ToInt32(((Button)sender).Tag), i);
+                control.BackColor = Color.Green;
+            }
 
         }
     }

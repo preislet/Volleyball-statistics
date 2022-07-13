@@ -583,6 +583,8 @@ namespace Volleyball_statistics
         {
             int index = 0;
             object[] stridacka = new object[7];
+
+            ///Pokud je hrac na soupisce a neni v hlavní sestavě, tak se hráč vloží do pole stridacka
             for (int i = 0; i < hraciDomaci.Length; i++)
             {
                 int Lock = 0;
@@ -633,8 +635,52 @@ namespace Volleyball_statistics
                 }
 
             }
-            Console.WriteLine("Hotovo");
         }
+
+        /// <summary>
+        /// Načítá jména hráčů a zapisuje je na Buttony v tabulce
+        /// </summary>
+        public void NactiJmenaHracuDoTabulky(TableLayoutPanel s)
+        {
+            for (int i = 0; i < s.RowCount; i++)
+            {
+                if (hraciDomaci[i] is null) return;
+                Control c = s.GetControlFromPosition(0, i + 1);
+                c.Text = ((Hrac)hraciDomaci[i]).Jmeno;
+            }
+        }
+
+
+        /// <summary>
+        /// Funkce zvírazňuje ty hráče v tabulce, kteří jsou zrovna na hřišti
+        /// </summary>
+        public void ZobrazAktivniHraceVTabulce(TableLayoutPanel s)
+        {
+            Hrac hrac = null ;
+            for (int i = 1; i < s.RowCount; i++)
+            {
+                Control c = s.GetControlFromPosition(0, i);
+                for (int k = 0; k < hraciDomaci.Length; k++)
+                {
+                    if (c.Text == "XXXXXXXXXXXXXXXXX") break;
+                    if (c.Text == ((Hrac)hraciDomaci[k]).Jmeno)
+                    {
+                        hrac = (Hrac)hraciDomaci[k];
+                        break;
+                    }
+                }
+                for (int j = 0; j < postaveniDomaci.Length; j++)
+                {
+                    if (hrac is null) break; 
+                    if ((hrac.Cislo == postaveniDomaci[j]) || hrac.Cislo == aktivniLiberoBlokarDomaci)
+                    {
+                        c.BackColor = Color.LightGreen;
+                    }
+                }
+                
+            }
+        }
+
 
         // Private Funkce 
 
@@ -725,6 +771,24 @@ namespace Volleyball_statistics
                 index++;                
             }
             //Console.WriteLine("Nacteno");
+        }
+
+        private object SpecializaceHrace(Hrac hrac)
+        {
+            switch (hrac)
+            {
+                case Nahravac:
+                    return (Nahravac)hrac;
+                case Smecar:
+                    return (Smecar)hrac;
+                case Univerzal:
+                    return (Univerzal)hrac;
+                case Libero:
+                    return (Libero)hrac;
+                case Blokar:
+                    return(Blokar)hrac;
+            }
+            return null;
         }
     }
 }
