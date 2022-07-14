@@ -447,6 +447,9 @@ namespace Volleyball_statistics
                     control.BackColor = Color.LightBlue;
                     break;
                 }
+
+                //Poud je tento řádek již zvírazněný, tak se znovu nevybarvuje
+                if (control.BackColor == Color.Orange) return;
                 control.BackColor = Color.Orange;
             }
 
@@ -471,6 +474,27 @@ namespace Volleyball_statistics
             }
         }
 
+        /// <summary>
+        /// Funkce vypne všechny pomocné buttony a celé tabulce nastavá defaultní barvu 
+        /// </summary>
+        private void RestartVybrani()
+        {
+            for (int i = 1; i < tableLayoutPanel_TabulkaHracu.ColumnCount; i++)
+            {
+                for (int j = 1; j < tableLayoutPanel_TabulkaHracu.RowCount; j++)
+                {
+                    Control control = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(i, j);
+                    control.BackColor = default;
+
+                    //Vypnutí všech pomocných buttonů pro servis, prijem, utok atd...
+                    button_Pole1.Enabled = button_PoleChyba.Enabled = button_Pole1.Visible = button_PoleChyba.Visible = false;
+                    button_servis1.Enabled = button_servis3.Enabled = button_servis5.Enabled = button_servisChyba.Enabled = button_servis1.Visible = button_servis3.Visible = button_servis5.Visible = button_servisChyba.Visible = false;
+                    button_Prijem1.Enabled = button_Prijem3.Enabled = button_Prijem5.Enabled = button_PrijemChyba.Enabled = button_Prijem1.Visible = button_Prijem3.Visible = button_Prijem5.Visible = button_PrijemChyba.Visible = false;
+                    button_Utok1.Enabled = button_Utok3.Enabled = button_Utok5.Enabled = button_UtokChyba.Enabled = button_Utok1.Visible = button_Utok3.Visible = button_Utok5.Visible = button_UtokChyba.Visible = false;
+                    button_Blok1.Enabled = button_Blok3.Enabled = button_Blok5.Enabled = button_BlokChyba.Enabled = button_Blok1.Visible = button_Blok3.Visible = button_Blok5.Visible = button_BlokChyba.Visible = false;
+                }
+            }
+        }
         private void button_Hrac_Click(object sender, EventArgs e)
         {
             //Kontrola jestli je zapsáno ve hřišti ukazující pozice
@@ -481,7 +505,8 @@ namespace Volleyball_statistics
                 return;
             }
 
-
+            //Vypnutí jiného hráče, poku se uživatel na poprvé překlikl
+            RestartVybrani();
 
             if (((Button)sender).Text == "XXXXXXXXXXXXXXXXX")
             {
@@ -499,22 +524,9 @@ namespace Volleyball_statistics
                     control.BackColor = Color.Green;
                 }
             }
-            else
-            {
-                button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = false;
-                for (int i = 1; i < tableLayoutPanel_TabulkaHracu.ColumnCount; i++)
-                {
-                    for (int j = 1; j < tableLayoutPanel_TabulkaHracu.RowCount; j++)
-                    {
-                        Control control = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(i, j);
-                        control.BackColor = default;
-                    }
-
-                }
-            }
-
+            else RestartVybrani();
+        
         }
-
 
         /// <summary>
         /// Funkce zajišťující spuštění zapisování akcí do příslušných polí a následně tabulky
@@ -525,6 +537,10 @@ namespace Volleyball_statistics
             Control c = null;
             Control hrac = null;
             int index = 0;
+
+            ///For cyklus se snaží najít světle modré pole ve sloupci servisu
+            ///Takto označené pole je to pole, do kterého se má zapsat
+            ///poté se program podívý u jakého hráče je tato statistika a poté vyvolá funkci pro vyhodnocení akce
             for (int i = 1; i < tableLayoutPanel_TabulkaHracu.RowCount; i++)
             {
                 c = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(3, i);
@@ -537,7 +553,11 @@ namespace Volleyball_statistics
             int znamka = Convert.ToInt32(((Button)sender).Tag);
             postaveni_A_StatistikaHracu.VyhodnotAkci('S', znamka , jmenoHrace);
             ResetBarevAButtonuTabulky(index, 3);
+
+            // Update tabulky hracu
             postaveni_A_StatistikaHracu.UpdateTabulkyHracu(tableLayoutPanel_TabulkaHracu);
+
+            // Vypnutí pomocných tlačítek
             button_servis1.Enabled = button_servis3.Enabled = button_servis5.Enabled = button_servisChyba.Enabled = button_servis1.Visible = button_servis3.Visible = button_servis5.Visible = button_servisChyba.Visible = false;
         }
         private void button_PrijemHodnoceni_Click(object sender, EventArgs e)
@@ -635,7 +655,29 @@ namespace Volleyball_statistics
             }
             //Vypnutí Buttonu servisu,utoku, bloku...
             button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = false;
+            RestartVybrani();
         }
         #endregion
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            Excel excel = new Excel(postaveni_A_StatistikaHracu);
+        }
+
+        private void buttonScreenshot_Click(object sender, EventArgs e)
+        {
+            Bitmap memoryImage;
+            memoryImage = new Bitmap(1920, 1080);
+            Size s = new Size(memoryImage.Width, memoryImage.Height);
+
+            Graphics memoryGraphics = Graphics.FromImage(memoryImage);
+
+            memoryGraphics.CopyFromScreen(0, 0, 0, 0, s);
+
+            string path = Form1.menu.FindPath("screenshots");
+            string JmenoScreenu = "Screenshot_" + DateTime.Now.ToString("(dd_MMMM_hh_mm_ss)") + ".png";
+            string fullpath = Path.Combine(path, JmenoScreenu);
+            memoryImage.Save(fullpath);
+        }
     }
 }

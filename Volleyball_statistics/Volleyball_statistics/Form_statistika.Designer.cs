@@ -278,8 +278,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.button_Save = new System.Windows.Forms.Button();
+            this.button_Screenshot = new System.Windows.Forms.Button();
+            this.label124 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_HristeStridani)).BeginInit();
@@ -292,8 +295,8 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // Label_Domaci
@@ -546,15 +549,15 @@
             this.label_Skore.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label_Skore.Location = new System.Drawing.Point(3, 0);
             this.label_Skore.Name = "label_Skore";
-            this.label_Skore.Size = new System.Drawing.Size(77, 15);
+            this.label_Skore.Size = new System.Drawing.Size(83, 15);
             this.label_Skore.TabIndex = 23;
-            this.label_Skore.Text = " D   Skóre   H ";
+            this.label_Skore.Text = " D    Skóre    H ";
             // 
             // label_Pomlcka
             // 
             this.label_Pomlcka.AutoSize = true;
             this.label_Pomlcka.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_Pomlcka.Location = new System.Drawing.Point(36, 15);
+            this.label_Pomlcka.Location = new System.Drawing.Point(952, 50);
             this.label_Pomlcka.Name = "label_Pomlcka";
             this.label_Pomlcka.Size = new System.Drawing.Size(12, 15);
             this.label_Pomlcka.TabIndex = 24;
@@ -574,7 +577,7 @@
             // 
             this.label_SkoreHoste.AutoSize = true;
             this.label_SkoreHoste.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_SkoreHoste.Location = new System.Drawing.Point(64, 15);
+            this.label_SkoreHoste.Location = new System.Drawing.Point(73, 15);
             this.label_SkoreHoste.Name = "label_SkoreHoste";
             this.label_SkoreHoste.Size = new System.Drawing.Size(13, 15);
             this.label_SkoreHoste.TabIndex = 26;
@@ -3596,13 +3599,13 @@
             // 
             // panel_Skore
             // 
+            this.panel_Skore.Controls.Add(this.label124);
             this.panel_Skore.Controls.Add(this.label_Skore);
             this.panel_Skore.Controls.Add(this.label_SkoreHoste);
             this.panel_Skore.Controls.Add(this.label_SkoreDomaci);
-            this.panel_Skore.Controls.Add(this.label_Pomlcka);
-            this.panel_Skore.Location = new System.Drawing.Point(0, 3);
+            this.panel_Skore.Location = new System.Drawing.Point(3, 11);
             this.panel_Skore.Name = "panel_Skore";
-            this.panel_Skore.Size = new System.Drawing.Size(87, 35);
+            this.panel_Skore.Size = new System.Drawing.Size(109, 35);
             this.panel_Skore.TabIndex = 95;
             // 
             // tableLayoutPanel_Outy
@@ -3635,6 +3638,7 @@
             this.panel1.Controls.Add(this.tableLayoutPanel_Outy);
             this.panel1.Controls.Add(this.label18);
             this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.label_Pomlcka);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label14);
@@ -3698,6 +3702,15 @@
             this.panel3.Size = new System.Drawing.Size(342, 286);
             this.panel3.TabIndex = 99;
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.panel_Skore);
+            this.panel5.Controls.Add(this.tableLayoutPanel3);
+            this.panel5.Location = new System.Drawing.Point(3, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(330, 57);
+            this.panel5.TabIndex = 96;
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.label_PoznamkyKeHre);
@@ -3707,20 +3720,44 @@
             this.panel4.Size = new System.Drawing.Size(732, 301);
             this.panel4.TabIndex = 100;
             // 
-            // panel5
+            // button_Save
             // 
-            this.panel5.Controls.Add(this.panel_Skore);
-            this.panel5.Controls.Add(this.tableLayoutPanel3);
-            this.panel5.Location = new System.Drawing.Point(3, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(330, 58);
-            this.panel5.TabIndex = 96;
+            this.button_Save.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button_Save.Location = new System.Drawing.Point(1630, 15);
+            this.button_Save.Name = "button_Save";
+            this.button_Save.Size = new System.Drawing.Size(156, 45);
+            this.button_Save.TabIndex = 101;
+            this.button_Save.Text = "Uložit zápas";
+            this.button_Save.UseVisualStyleBackColor = true;
+            this.button_Save.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // button_Screenshot
+            // 
+            this.button_Screenshot.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button_Screenshot.Location = new System.Drawing.Point(1467, 15);
+            this.button_Screenshot.Name = "button_Screenshot";
+            this.button_Screenshot.Size = new System.Drawing.Size(156, 44);
+            this.button_Screenshot.TabIndex = 102;
+            this.button_Screenshot.Text = "Screenshot";
+            this.button_Screenshot.UseVisualStyleBackColor = true;
+            this.button_Screenshot.Click += new System.EventHandler(this.buttonScreenshot_Click);
+            // 
+            // label124
+            // 
+            this.label124.AutoSize = true;
+            this.label124.Location = new System.Drawing.Point(40, 15);
+            this.label124.Name = "label124";
+            this.label124.Size = new System.Drawing.Size(12, 15);
+            this.label124.TabIndex = 103;
+            this.label124.Text = "-";
             // 
             // Form_statistika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.button_Screenshot);
+            this.Controls.Add(this.button_Save);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -3769,9 +3806,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -4029,5 +4066,8 @@
         private Panel panel3;
         private Panel panel4;
         private Panel panel5;
+        private Button button_Save;
+        private Button button_Screenshot;
+        private Label label124;
     }
 }

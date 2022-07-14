@@ -39,6 +39,8 @@ namespace Volleyball_statistics
             //excel použit při tvoření nové složky ve složce "Volleyball statistics" se jménem Tabulky Excel
             if (s == "excel") return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Volleyball statistics", "Tabulky Excel");
 
+            if (s == "screenshots") return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Volleyball statistics", "Screenshots");
+
             //Tvoření nového zápisu sestavy
             return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Volleyball statistics", "Sestavy", s + ".txt");
         }
@@ -78,6 +80,7 @@ namespace Volleyball_statistics
             string path = FindPath("new");  //Vytvoření složky na Ploše
             string path2 = FindPath("sestavy"); //Vytvoření složky ve složce programu (Sestavy)
             string path3 = FindPath("excel"); //Vytvoření složky ve složce programu (Tabulky Exel)
+            string path4 = FindPath("screenshots"); //Vytvoření složky ve složce programu (Screenshots)
 
             //Vytvoření složky
             if (!System.IO.Directory.Exists(path))
@@ -109,6 +112,15 @@ namespace Volleyball_statistics
                 {
                     Console.WriteLine("Error 3: " + e.Message);
                 }
+                try
+                {
+                    System.IO.Directory.CreateDirectory(path4);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error 4: " + e.Message);
+                }
+
             }
 
         }
@@ -945,22 +957,22 @@ namespace Volleyball_statistics
             else return 0;
         }
 
-        private object SpecializaceHrace(Hrac hrac)
+    }
+
+
+    public class Excel
+    {
+        Postaveni_a_StatistikaHracu Data;
+
+        //Konstruktor
+        public Excel(Postaveni_a_StatistikaHracu Data)
         {
-            switch (hrac)
-            {
-                case Nahravac:
-                    return (Nahravac)hrac;
-                case Smecar:
-                    return (Smecar)hrac;
-                case Univerzal:
-                    return (Univerzal)hrac;
-                case Libero:
-                    return (Libero)hrac;
-                case Blokar:
-                    return(Blokar)hrac;
-            }
-            return null;
+            this.Data = Data;
+            Zapis();
+        }
+        private void Zapis()
+        {
+            //TODO zápis
         }
     }
 }
