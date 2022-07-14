@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Volleyball_statistics
@@ -646,7 +647,7 @@ namespace Volleyball_statistics
             {
                 if (hraciDomaci[i] is null) return;
                 Control c = s.GetControlFromPosition(0, i + 1);
-                c.Text = ((Hrac)hraciDomaci[i]).Jmeno;
+                c.Text =  ((((Hrac)hraciDomaci[i]).Cislo).ToString() + "  " + ((Hrac)hraciDomaci[i]).Jmeno);
             }
         }
 
@@ -656,14 +657,23 @@ namespace Volleyball_statistics
         /// </summary>
         public void ZobrazAktivniHraceVTabulce(TableLayoutPanel s)
         {
-            Hrac hrac = null ;
             for (int i = 1; i < s.RowCount; i++)
             {
                 Control c = s.GetControlFromPosition(0, i);
+                c.BackColor = Color.Gray;
+            }
+            
+            for (int i = 1; i < s.RowCount; i++)
+            {
+                Hrac hrac = null;
+                Control c = s.GetControlFromPosition(0, i);
+                string jmeno = Regex.Replace(c.Text, @"[\d-]", string.Empty);
+                jmeno = Regex.Replace(jmeno, @"\s+", "");
+
                 for (int k = 0; k < hraciDomaci.Length; k++)
                 {
-                    if (c.Text == "XXXXXXXXXXXXXXXXX") break;
-                    if (c.Text == ((Hrac)hraciDomaci[k]).Jmeno)
+                    if (jmeno == "XXXXXXXXXXXXXXXXX") break;
+                    if (jmeno == ((Hrac)hraciDomaci[k]).Jmeno)
                     {
                         hrac = (Hrac)hraciDomaci[k];
                         break;

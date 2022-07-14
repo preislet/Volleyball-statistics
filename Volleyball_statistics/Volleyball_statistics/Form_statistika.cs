@@ -18,7 +18,9 @@ namespace Volleyball_statistics
         public Form_statistika()
         {
             InitializeComponent();
-            //this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Normal;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void Form_statistika_Load(object sender, EventArgs e)
@@ -398,8 +400,13 @@ namespace Volleyball_statistics
         /// </summary>
         private void button_PocetStridaniDomaci_Click(object sender, EventArgs e)
         {
-            if (((Button)sender).Tag == "0") label_DomaciPocetStridani.Text = (Convert.ToInt32(label_DomaciPocetStridani.Text) + 1).ToString();
-            if (((Button)sender).Tag == "1") label_HostePocetStridani.Text = (Convert.ToInt32(label_HostePocetStridani.Text) + 1).ToString(); ;
+            if ((((Button)sender).Tag == "0") && (Convert.ToInt32(label_DomaciPocetStridani.Text) < 7)) label_DomaciPocetStridani.Text = (Convert.ToInt32(label_DomaciPocetStridani.Text) + 1).ToString();
+            if ((((Button)sender).Tag == "1") && (Convert.ToInt32(label_HostePocetStridani.Text) < 7)) label_HostePocetStridani.Text = (Convert.ToInt32(label_HostePocetStridani.Text) + 1).ToString();
+
+            if (Convert.ToInt32(label_DomaciPocetStridani.Text) == 7) label_DomaciPocetStridani.BackColor = Color.Red;
+            if (Convert.ToInt32(label_HostePocetStridani.Text) == 7) label_HostePocetStridani.BackColor = Color.Red;
+
+
 
         }
 
@@ -463,12 +470,17 @@ namespace Volleyball_statistics
             //Zapnutí Buttonu servisu,utoku, bloku...
             button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = true;
             //Vybarvení daného řádku
-            for (int i = 1; i < tableLayoutPanel_TabulkaHracu.RowCount; i++)
+            for (int i = 1; i < tableLayoutPanel_TabulkaHracu.ColumnCount; i++)
             {
-                Control control = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(Convert.ToInt32(((Button)sender).Tag), i);
+                Control control = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(i, Convert.ToInt32(((Button)sender).Tag));
                 control.BackColor = Color.Green;
             }
 
+        }
+
+        private void button_ExitMaximized_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
