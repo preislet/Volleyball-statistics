@@ -39,6 +39,12 @@ namespace Volleyball_statistics
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            if ((textBox_PoziceHoste1.Text == "") || (textBox_PoziceHoste2.Text == "") || (textBox_PoziceHoste3.Text == "") || (textBox_PoziceHoste4.Text == "") || (textBox_PoziceHoste5.Text == "") || (textBox_PoziceHoste6.Text == "") ||
+                (textBox_PoziceDomaci1.Text == "") || (textBox_PoziceDomaci2.Text == "") || (textBox_PoziceDomaci3.Text == "") || (textBox_PoziceDomaci4.Text == "") || (textBox_PoziceDomaci5.Text == "") || (textBox_PoziceDomaci6.Text == "") || (textBox_7LiberoDomaci.Text == ""))
+            {
+                MessageBox.Show("Prvni vypňte postavení hráčů do hřiště v levém dolním rohu");
+                return;
+            }
             //Pozice kurzoru při kliknutí na obrázek hřiště
             int X = Cursor.Position.X;
             int Y = Cursor.Position.Y;
@@ -467,6 +473,16 @@ namespace Volleyball_statistics
 
         private void button_Hrac_Click(object sender, EventArgs e)
         {
+            //Kontrola jestli je zapsáno ve hřišti ukazující pozice
+            if ((textBox_PoziceHoste1.Text == "") || (textBox_PoziceHoste2.Text == "") || (textBox_PoziceHoste3.Text == "") || (textBox_PoziceHoste4.Text == "") || (textBox_PoziceHoste5.Text == "") || (textBox_PoziceHoste6.Text == "") ||
+                (textBox_PoziceDomaci1.Text == "") || (textBox_PoziceDomaci2.Text == "") || (textBox_PoziceDomaci3.Text == "") || (textBox_PoziceDomaci4.Text == "") || (textBox_PoziceDomaci5.Text == "") || (textBox_PoziceDomaci6.Text == "") || (textBox_7LiberoDomaci.Text == ""))
+            {
+                MessageBox.Show("Prvni vypňte postavení hráčů do hřiště v levém dolním rohu");
+                return;
+            }
+
+
+
             if (((Button)sender).Text == "XXXXXXXXXXXXXXXXX")
             {
                 ((Button)sender).Enabled = false;
@@ -488,8 +504,12 @@ namespace Volleyball_statistics
                 button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = false;
                 for (int i = 1; i < tableLayoutPanel_TabulkaHracu.ColumnCount; i++)
                 {
-                    Control control = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(i, Convert.ToInt32(((Button)sender).Tag));
-                    control.BackColor = default;
+                    for (int j = 1; j < tableLayoutPanel_TabulkaHracu.RowCount; j++)
+                    {
+                        Control control = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(i, j);
+                        control.BackColor = default;
+                    }
+
                 }
             }
 

@@ -776,7 +776,7 @@ namespace Volleyball_statistics
 
         public void UpdateTabulkyHracu(TableLayoutPanel s)
         {
-            for (int i = 1; i < s.RowCount; i++)
+            for (int i = 0; i < s.RowCount; i++)
             {
                 if (hraciDomaci[i] is null) break;
                 int servisProcenta = Procenta(i, 'S');
