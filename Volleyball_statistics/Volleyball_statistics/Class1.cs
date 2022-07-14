@@ -220,6 +220,8 @@ namespace Volleyball_statistics
             protected int[] pole = new int[2];
             protected int[] utok = new int[4];
             protected int[] prijem = new int[4];
+            public int body = 0;
+            public int chyby = 0;
             protected int cislo;
             protected string? jmeno;
 
@@ -262,7 +264,7 @@ namespace Volleyball_statistics
                 this.jmeno = jmeno;
                 this.cislo = cislo;
             }
-            
+
             /// <summary>
             /// Zajišťování zápisu statistiky servisu hráče (int z je známka servisu)
             /// 1 - eso
@@ -270,12 +272,20 @@ namespace Volleyball_statistics
             /// 5 - soupeřící tým přijal za 1
             /// chyba - chyba
             /// </summary>
-            public virtual void Servis_zmena(int z) 
+            public virtual void Servis_zmena(int z)
             {
-                if (z == 0) servis[3]++;
+                if (z == 0)
+                {
+                    servis[3]++;
+                    chyby++;
+                }
                 if (z == 5) servis[2]++;
                 if (z == 3) servis[1]++;
-                if (z == 1) servis[0]++;
+                if (z == 1)
+                {
+                    servis[0]++;
+                    body++;
+                }
             }
 
 
@@ -286,12 +296,20 @@ namespace Volleyball_statistics
             /// 5 -soupeřící tým zvedl v pohodě balón
             /// chyba - chyba bloku
             /// </summary>
-            public virtual void Blok_zmena(int z) 
+            public virtual void Blok_zmena(int z)
             {
-                if (z == 0) blok[3]++;
+                if (z == 0)
+                {
+                    blok[3]++;
+                    chyby++;
+                }
                 if (z == 5) blok[2]++;
                 if (z == 3) blok[1]++;
-                if (z == 1) blok[0]++;
+                if (z == 1)
+                {
+                    blok[0]++;
+                    body++;
+                }
             }
 
 
@@ -300,9 +318,13 @@ namespace Volleyball_statistics
             /// 1 - výborný zákrok
             /// chyba - kritická (nevynucená chyba v poli)
             /// </summary>
-            public virtual void Pole_zmena(int z) 
+            public virtual void Pole_zmena(int z)
             {
-                if (z == 0) pole[1]++;
+                if (z == 0)
+                {
+                    pole[1]++;
+                    chyby++;
+                }
                 if (z == 1) pole[0]++;
             }
 
@@ -314,12 +336,20 @@ namespace Volleyball_statistics
             /// 5 - soupeřící tým přijal balón bez problému
             /// chyba - chyba na útoku (out, blok)
             /// </summary>
-            public virtual void Utok_zmena(int z) 
+            public virtual void Utok_zmena(int z)
             {
-                if (z == 0) utok[3]++;
+                if (z == 0)
+                {
+                    utok[3]++;
+                    chyby++;
+                }
                 if (z == 5) utok[2]++;
                 if (z == 3) utok[1]++;
-                if (z == 1) utok[0]++;
+                if (z == 1)
+                {
+                    utok[0]++;
+                    body++;
+                }
             }
 
 
@@ -332,7 +362,11 @@ namespace Volleyball_statistics
             /// </summary>
             public virtual void Prijem_zmena(int z)
             {
-                if (z == 0) prijem[3]++;
+                if (z == 0)
+                {
+                    prijem[3]++;
+                    chyby++;
+                }
                 if (z == 5) prijem[2]++;
                 if (z == 3) prijem[1]++;
                 if (z == 1) prijem[0]++;
@@ -343,7 +377,7 @@ namespace Volleyball_statistics
         /// <summary>
         /// Class Smecar - třída zajišťující statistiku smečařů
         /// </summary>
-        sealed class Smecar: Hrac
+        sealed class Smecar : Hrac
         {
             protected string tag = "Smecar";
             protected bool prijemVeSmene = false;
@@ -353,11 +387,11 @@ namespace Volleyball_statistics
             /// index i 0 - za 1, index i 1 - za 3; index i 2 - za 5; index i 3 - chyba 
             /// index j 0 - prijemVeSmene = true (hrac zároveň přijímal balón), inde j 1 - prijemVeSmene = false (hrac nepřijímal balón)
             /// </summary>
-            public int[,] utokPoPrijmu = new int[4,2];
+            public int[,] utokPoPrijmu = new int[4, 2];
 
             public string Tag { get { return tag; } }
 
-            public Smecar(string jmeno, int cislo) : base(jmeno, cislo){}
+            public Smecar(string jmeno, int cislo) : base(jmeno, cislo) { }
             public override void Prijem_zmena(int z)
             {
                 if (z == 0) prijem[3]++;
@@ -393,7 +427,7 @@ namespace Volleyball_statistics
         /// <summary>
         /// Class Blokar - třída zajišťující statistiku blokařů
         /// </summary>
-        sealed class Blokar: Hrac 
+        sealed class Blokar : Hrac
         {
             protected string tag = "Blokar";
 
@@ -405,7 +439,7 @@ namespace Volleyball_statistics
         /// <summary>
         /// Class Nahravac - třída zajišťující statistiku nahravačů
         /// </summary>
-        sealed class Nahravac: Hrac 
+        sealed class Nahravac : Hrac
         {
             protected string tag = "Nahravac";
 
@@ -417,7 +451,7 @@ namespace Volleyball_statistics
         /// <summary>
         /// Class Univerzal - třída zajišťující statistiku univerzálů
         /// </summary>
-        sealed class Univerzal: Hrac 
+        sealed class Univerzal : Hrac
         {
             protected string tag = "Univerzal";
 
@@ -428,7 +462,7 @@ namespace Volleyball_statistics
         /// <summary>
         /// Class Libero - třída zajišťující statistiku liber
         /// </summary>
-        sealed class Libero: Hrac 
+        sealed class Libero : Hrac
         {
             string tag = "Libero";
 
@@ -444,6 +478,7 @@ namespace Volleyball_statistics
         protected int aktivniLiberoBlokarDomaci;
         protected object[] liberaDomaci = new object[3];
         public int aktivniLiberoDomaciPozice = 7;
+        public object PosledniPrijimajiciHrac;
         readonly Skore skore;
         readonly Hriste hriste;
 
@@ -517,7 +552,7 @@ namespace Volleyball_statistics
 
                 for (int i = 1; i < postaveniDomaci.Length; i++)
                 {
-                    postaveniDomaci[i-1] = postaveniDomaci[i];
+                    postaveniDomaci[i - 1] = postaveniDomaci[i];
                 }
                 postaveniDomaci[5] = prvniPozice;
             }
@@ -526,7 +561,7 @@ namespace Volleyball_statistics
                 // Po tom, co Blokar dopodával, tak odcházi na stridacku a do gry prichází libero
                 if (CisloBlokare(postaveniDomaci[0]))
                 {
-                    int cisloBlokare =postaveniDomaci[0];
+                    int cisloBlokare = postaveniDomaci[0];
                     postaveniDomaci[0] = aktivniLiberoBlokarDomaci;
                     aktivniLiberoDomaciPozice = 0;
                     aktivniLiberoBlokarDomaci = cisloBlokare;
@@ -580,7 +615,7 @@ namespace Volleyball_statistics
         /// <summary>
         /// Načítá hráče, kteří nejsou v hlavní sestavě, ale jsou na střídačce
         /// </summary>
-        public void NactiStridacku (TableLayoutPanel s)
+        public void NactiStridacku(TableLayoutPanel s)
         {
             int index = 0;
             object[] stridacka = new object[7];
@@ -593,11 +628,11 @@ namespace Volleyball_statistics
                 Hrac hrac = (Hrac)hraciDomaci[i];
                 for (int j = 0; j < postaveniDomaci.Length; j++)
                 {
-                    if ((hrac.Cislo == postaveniDomaci[j]) || hrac.Cislo == aktivniLiberoBlokarDomaci) 
-                    { 
+                    if ((hrac.Cislo == postaveniDomaci[j]) || hrac.Cislo == aktivniLiberoBlokarDomaci)
+                    {
                         Lock = 1;
                         break;
-                    } 
+                    }
                 }
                 if (Lock == 0)
                 {
@@ -647,10 +682,9 @@ namespace Volleyball_statistics
             {
                 if (hraciDomaci[i] is null) return;
                 Control c = s.GetControlFromPosition(0, i + 1);
-                c.Text =  ((((Hrac)hraciDomaci[i]).Cislo).ToString() + "  " + ((Hrac)hraciDomaci[i]).Jmeno);
+                c.Text = ((((Hrac)hraciDomaci[i]).Cislo).ToString() + "  " + ((Hrac)hraciDomaci[i]).Jmeno);
             }
         }
-
 
         /// <summary>
         /// Funkce zvírazňuje ty hráče v tabulce, kteří jsou zrovna na hřišti
@@ -662,7 +696,7 @@ namespace Volleyball_statistics
                 Control c = s.GetControlFromPosition(0, i);
                 c.BackColor = Color.Gray;
             }
-            
+
             for (int i = 1; i < s.RowCount; i++)
             {
                 Hrac hrac = null;
@@ -681,17 +715,93 @@ namespace Volleyball_statistics
                 }
                 for (int j = 0; j < postaveniDomaci.Length; j++)
                 {
-                    if (hrac is null) break; 
+                    if (hrac is null) break;
                     if ((hrac.Cislo == postaveniDomaci[j]) || hrac.Cislo == aktivniLiberoBlokarDomaci)
                     {
                         c.BackColor = Color.LightGreen;
                     }
                 }
-                
+
             }
         }
 
+        /// <summary>
+        /// Funkce vyhodnocuj akci zapsanou do tabulky hráčů
+        /// Vyhodnocuje všechy typy akcí a zapisuje je do příslušných polí
+        /// S - servis, P - příjem, U - útok, B - blok, p - pole
+        /// </summary>
+        public void VyhodnotAkci(char akce, int znamka, string jmenoHrace)
+        {
+            Hrac hrac = null;
+            for (int i = 0; i < hraciDomaci.Length; i++)
+            {
+                if (hraciDomaci[i] is null) break;
+                hrac = (Hrac)hraciDomaci[i];
+                if (hrac.Jmeno == jmenoHrace)
+                {
+                    switch (akce)
+                    {
+                        case 'S':
+                            hrac.Servis_zmena(znamka);
+                            break;
+                        case 'P':
+                            PosledniPrijimajiciHrac = hrac;
+                            hrac.Prijem_zmena(znamka);
+                            break;
+                        case 'U':
+                            hrac.Utok_zmena(znamka);
+                            if (PosledniPrijimajiciHrac is Smecar)
+                            {
+                                Smecar smecar = (Smecar)PosledniPrijimajiciHrac;
+                                smecar.RestartPrijmuVeSmene();
+                            }
+                            break;
+                        case 'B':
+                            hrac.Blok_zmena(znamka);
+                            if (PosledniPrijimajiciHrac is Smecar)
+                            {
+                                Smecar smecar = (Smecar)PosledniPrijimajiciHrac;
+                                smecar.RestartPrijmuVeSmene();
+                            }
+                            break;
+                        case 'p':
+                            hrac.Pole_zmena(znamka);
+                            break;
 
+                    }
+                    return;
+                }
+            }
+        }
+
+        public void UpdateTabulkyHracu(TableLayoutPanel s)
+        {
+            for (int i = 1; i < s.RowCount; i++)
+            {
+                if (hraciDomaci[i] is null) break;
+                int servisProcenta = Procenta(i, 'S');
+                int prijemProcenta = Procenta(i, 'P');
+                int utokProcenta = Procenta(i, 'U');
+                int blokProcenta = Procenta(i, 'B');
+                int poleProcenta = Procenta(i, 'p');
+                Hrac hrac = (Hrac)hraciDomaci[i];
+                Control c = s.GetControlFromPosition(1, i + 1);
+                c.Text = (hrac.body).ToString();
+                c = s.GetControlFromPosition(2, i + 1);
+                c.Text = (hrac.chyby).ToString();
+                c = s.GetControlFromPosition(3, i + 1);
+                c.Text = (servisProcenta).ToString() + " %";
+                c = s.GetControlFromPosition(4, i + 1);
+                c.Text = (prijemProcenta).ToString() + " %";
+                c = s.GetControlFromPosition(5, i + 1);
+                c.Text = (utokProcenta).ToString() + " %";
+                c = s.GetControlFromPosition(6, i + 1);
+                c.Text = (blokProcenta).ToString() + " %";
+                c = s.GetControlFromPosition(7, i + 1);
+                c.Text = (poleProcenta).ToString() + " %";
+
+            }
+        }
         // Private Funkce 
 
         /// <summary>
@@ -704,7 +814,7 @@ namespace Volleyball_statistics
             for (int i = 0; i < hraciDomaci.Length; i++)
             {
                 if (hraciDomaci[i] is null) break;
-                if (hraciDomaci[i] is Libero) 
+                if (hraciDomaci[i] is Libero)
                 {
                     liberaDomaci[index] = hraciDomaci[i];
                     index++;
@@ -773,14 +883,66 @@ namespace Volleyball_statistics
                 int cislo2 = Convert.ToInt32(cislo);
 
                 //Vytvoření třídy
-                if (pozice == 'S') hraciDomaci[index] = new Smecar(jmeno, cislo2); 
+                if (pozice == 'S') hraciDomaci[index] = new Smecar(jmeno, cislo2);
                 if (pozice == 'B') hraciDomaci[index] = new Blokar(jmeno, cislo2);
                 if (pozice == 'N') hraciDomaci[index] = new Nahravac(jmeno, cislo2);
                 if (pozice == 'U') hraciDomaci[index] = new Univerzal(jmeno, cislo2);
                 if (pozice == 'L') hraciDomaci[index] = new Libero(jmeno, cislo2);
-                index++;                
+                index++;
             }
             //Console.WriteLine("Nacteno");
+        }
+
+        /// <summary>
+        /// Funkce vypočítává procenta z polí ve třídě hráč
+        /// </summary>
+        private int Procenta(int i, char a)
+        {
+            Hrac hrac = (Hrac)hraciDomaci[i];
+            if (a == 'S')
+            {
+                int zaJedna = hrac.Servis[0] * 100;
+                int zaTri = hrac.Servis[1] * 50;
+                int zaPet = hrac.Servis[2] * 25;
+                if ((hrac.Servis[0] + hrac.Servis[1] + hrac.Servis[2] + hrac.Servis[3]) == 0) return 0;
+                int celkem = (zaJedna + zaTri + zaPet) / (hrac.Servis[0] + hrac.Servis[1] + hrac.Servis[2] + hrac.Servis[3]);
+                return celkem;
+            }
+            else if (a == 'P')
+            {
+                int zaJedna = hrac.Prijem[0] * 100;
+                int zaTri = hrac.Prijem[1] * 50;
+                int zaPet = hrac.Prijem[2] * 25;
+                if ((hrac.Prijem[0] + hrac.Prijem[1] + hrac.Prijem[2] + hrac.Prijem[3]) == 0) return 0;
+                int celkem = (zaJedna + zaTri + zaPet) / (hrac.Prijem[0] + hrac.Prijem[1] + hrac.Prijem[2] + hrac.Prijem[3]);
+                return celkem;
+            }
+            else if (a == 'U')
+            {
+                int zaJedna = hrac.Utok[0] * 100;
+                int zaTri = hrac.Utok[1] * 50;
+                int zaPet = hrac.Utok[2] * 25;
+                if ((hrac.Utok[0] + hrac.Utok[1] + hrac.Utok[2] + hrac.Utok[3]) == 0) return 0;
+                int celkem = (zaJedna + zaTri + zaPet) / (hrac.Utok[0] + hrac.Utok[1] + hrac.Utok[2] + hrac.Utok[3]);
+                return celkem;
+            }
+            else if (a == 'B')
+            {
+                int zaJedna = hrac.Blok[0] * 100;
+                int zaTri = hrac.Blok[1] * 50;
+                int zaPet = hrac.Blok[2] * 25;
+                if ((hrac.Blok[0] + hrac.Blok[1] + hrac.Blok[2] + hrac.Blok[3]) == 0) return 0;
+                int celkem = (zaJedna + zaTri + zaPet) / (hrac.Blok[0] + hrac.Blok[1] + hrac.Blok[2] + hrac.Blok[3]);
+                return celkem;
+            }
+            else if (a == 'p')
+            {
+                int zaJedna = hrac.Pole[0] * 100;
+                if ((hrac.Pole[0] + hrac.Pole[1]) == 0) return 0;
+                int celkem = zaJedna / (hrac.Pole[0] + hrac.Pole[1]);
+                return celkem;
+            }
+            else return 0;
         }
 
         private object SpecializaceHrace(Hrac hrac)

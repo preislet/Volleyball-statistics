@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -32,7 +33,10 @@ namespace Volleyball_statistics
             postaveni_A_StatistikaHracu.NactiJmenaHracuDoTabulky(tableLayoutPanel_TabulkaHracu);
             UpdateHriste();
         }
-
+        private void button_ExitMaximized_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             //Pozice kurzoru při kliknutí na obrázek hřiště
@@ -308,7 +312,8 @@ namespace Volleyball_statistics
         }
         private void button_PoziceLock_Click(object sender, EventArgs e)
         {
-
+            if ((textBox_PoziceHoste1.Text == "") || (textBox_PoziceHoste2.Text == "") || (textBox_PoziceHoste3.Text == "") || (textBox_PoziceHoste4.Text == "") || (textBox_PoziceHoste5.Text == "") || (textBox_PoziceHoste6.Text == "") ||
+                (textBox_PoziceDomaci1.Text == "") || (textBox_PoziceDomaci2.Text == "") || (textBox_PoziceDomaci3.Text == "") || (textBox_PoziceDomaci4.Text == "") || (textBox_PoziceDomaci5.Text == "") || (textBox_PoziceDomaci6.Text == "") || (textBox_7LiberoDomaci.Text == "")) return;
             //Zamknutí všech pozic
             if (button_PoziceLock.BackColor == Color.Green)
             {
@@ -470,17 +475,147 @@ namespace Volleyball_statistics
             //Zapnutí Buttonu servisu,utoku, bloku...
             button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = true;
             //Vybarvení daného řádku
-            for (int i = 1; i < tableLayoutPanel_TabulkaHracu.ColumnCount; i++)
+            if (tableLayoutPanel_TabulkaHracu.GetControlFromPosition(1, Convert.ToInt32(((Button)sender).Tag)).BackColor != Color.Green)
             {
-                Control control = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(i, Convert.ToInt32(((Button)sender).Tag));
-                control.BackColor = Color.Green;
+                for (int i = 1; i < tableLayoutPanel_TabulkaHracu.ColumnCount; i++)
+                {
+                    Control control = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(i, Convert.ToInt32(((Button)sender).Tag));
+                    control.BackColor = Color.Green;
+                }
+            }
+            else
+            {
+                button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = false;
+                for (int i = 1; i < tableLayoutPanel_TabulkaHracu.ColumnCount; i++)
+                {
+                    Control control = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(i, Convert.ToInt32(((Button)sender).Tag));
+                    control.BackColor = default;
+                }
             }
 
         }
 
-        private void button_ExitMaximized_Click(object sender, EventArgs e)
+
+        /// <summary>
+        /// Funkce zajišťující spuštění zapisování akcí do příslušných polí a následně tabulky
+        /// </summary>
+        #region Buttony pro Hodnocení jednotlivých akcí ve hře
+        private void button_ServisHodnoceni_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Control c = null;
+            Control hrac = null;
+            int index = 0;
+            for (int i = 1; i < tableLayoutPanel_TabulkaHracu.RowCount; i++)
+            {
+                c = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(3, i);
+                hrac = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(0, i);
+                index = i;
+                if (c.BackColor == Color.LightBlue) break;
+            }
+            string jmenoHrace = Regex.Replace(hrac.Text, @"[\d-]", string.Empty);
+            jmenoHrace = Regex.Replace(jmenoHrace, @"\s+", "");
+            int znamka = Convert.ToInt32(((Button)sender).Tag);
+            postaveni_A_StatistikaHracu.VyhodnotAkci('S', znamka , jmenoHrace);
+            ResetBarevAButtonuTabulky(index, 3);
+            postaveni_A_StatistikaHracu.UpdateTabulkyHracu(tableLayoutPanel_TabulkaHracu);
+            button_servis1.Enabled = button_servis3.Enabled = button_servis5.Enabled = button_servisChyba.Enabled = button_servis1.Visible = button_servis3.Visible = button_servis5.Visible = button_servisChyba.Visible = false;
         }
+        private void button_PrijemHodnoceni_Click(object sender, EventArgs e)
+        {
+            Control c = null;
+            Control hrac = null;
+            int index = 0;
+            for (int i = 1; i < tableLayoutPanel_TabulkaHracu.RowCount; i++)
+            {
+                c = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(4, i);
+                hrac = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(0, i);
+                index = i;
+                if (c.BackColor == Color.LightBlue) break;
+            }
+            string jmenoHrace = Regex.Replace(hrac.Text, @"[\d-]", string.Empty);
+            jmenoHrace = Regex.Replace(jmenoHrace, @"\s+", "");
+            int znamka = Convert.ToInt32(((Button)sender).Tag);
+            postaveni_A_StatistikaHracu.VyhodnotAkci('P', znamka, jmenoHrace);
+            ResetBarevAButtonuTabulky(index, 4);
+            postaveni_A_StatistikaHracu.UpdateTabulkyHracu(tableLayoutPanel_TabulkaHracu);
+            button_Prijem1.Enabled = button_Prijem3.Enabled = button_Prijem5.Enabled = button_PrijemChyba.Enabled = button_Prijem1.Visible = button_Prijem3.Visible = button_Prijem5.Visible = button_PrijemChyba.Visible = false;
+        }
+        private void button_UtokHodnoceni_Click(object sender, EventArgs e)
+        {
+            Control c = null;
+            Control hrac = null;
+            int index = 0;
+            for (int i = 1; i < tableLayoutPanel_TabulkaHracu.RowCount; i++)
+            {
+                c = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(5, i);
+                hrac = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(0, i);
+                index = i;
+                if (c.BackColor == Color.LightBlue) break;
+            }
+            string jmenoHrace = Regex.Replace(hrac.Text, @"[\d-]", string.Empty);
+            jmenoHrace = Regex.Replace(jmenoHrace, @"\s+", "");
+            int znamka = Convert.ToInt32(((Button)sender).Tag);
+            postaveni_A_StatistikaHracu.VyhodnotAkci('U', znamka, jmenoHrace);
+            ResetBarevAButtonuTabulky(index, 5);
+            postaveni_A_StatistikaHracu.UpdateTabulkyHracu(tableLayoutPanel_TabulkaHracu);
+            button_Utok1.Enabled = button_Utok3.Enabled = button_Utok5.Enabled = button_UtokChyba.Enabled = button_Utok1.Visible = button_Utok3.Visible = button_Utok5.Visible = button_UtokChyba.Visible = false;
+        }
+        private void button_BlokHodnoceni_Click(object sender, EventArgs e)
+        {
+            Control c = null;
+            Control hrac = null;
+            int index = 0;
+            for (int i = 1; i < tableLayoutPanel_TabulkaHracu.RowCount; i++)
+            {
+                c = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(6, i);
+                hrac = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(0, i);
+                index = i;
+                if (c.BackColor == Color.LightBlue) break;
+            }
+            string jmenoHrace = Regex.Replace(hrac.Text, @"[\d-]", string.Empty);
+            jmenoHrace = Regex.Replace(jmenoHrace, @"\s+", "");
+            int znamka = Convert.ToInt32(((Button)sender).Tag);
+            postaveni_A_StatistikaHracu.VyhodnotAkci('B', znamka, jmenoHrace);
+            ResetBarevAButtonuTabulky(index, 6);
+            postaveni_A_StatistikaHracu.UpdateTabulkyHracu(tableLayoutPanel_TabulkaHracu);
+            button_Blok1.Enabled = button_Blok3.Enabled = button_Blok5.Enabled = button_BlokChyba.Enabled = button_Blok1.Visible = button_Blok3.Visible = button_Blok5.Visible = button_BlokChyba.Visible = false;
+        }
+        private void button_PoleHodnoceni_Click(object sender, EventArgs e)
+        {
+            Control c = null;
+            Control hrac = null;
+            int index = 0;
+            for (int i = 1; i < tableLayoutPanel_TabulkaHracu.RowCount; i++)
+            {
+                c = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(7, i);
+                hrac = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(0, i);
+                index = i;
+                if (c.BackColor == Color.LightBlue) break;
+            }
+            string jmenoHrace = Regex.Replace(hrac.Text, @"[\d-]", string.Empty);
+            jmenoHrace = Regex.Replace(jmenoHrace, @"\s+", "");
+            int znamka = Convert.ToInt32(((Button)sender).Tag);
+            postaveni_A_StatistikaHracu.VyhodnotAkci('p', znamka, jmenoHrace);
+            ResetBarevAButtonuTabulky(index, 7);
+            postaveni_A_StatistikaHracu.UpdateTabulkyHracu(tableLayoutPanel_TabulkaHracu);
+            button_Pole1.Enabled = button_PoleChyba.Enabled = button_Pole1.Visible = button_PoleChyba.Visible = false;
+
+        }
+        private void ResetBarevAButtonuTabulky(int row, int column)
+        {
+            for (int i = 1; i < tableLayoutPanel_TabulkaHracu.ColumnCount; i++)
+            {
+                Control c = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(i, row);
+                c.BackColor = default;
+            }
+            for(int i = 1; i < tableLayoutPanel_TabulkaHracu.RowCount; i++)
+            {
+                Control c = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(column, i);
+                c.BackColor = default;
+            }
+            //Vypnutí Buttonu servisu,utoku, bloku...
+            button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = false;
+        }
+        #endregion
     }
 }

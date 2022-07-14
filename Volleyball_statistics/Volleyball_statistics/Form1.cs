@@ -36,7 +36,7 @@ namespace Volleyball_statistics
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if ((textBox_Domaci.Text != "") && (textBox_Domaci.Text != "") && (label_VybranaSestava.Text != "Nebyla vybrána sestava"))
+            if (((textBox_Domaci.Text != "") && (textBox_Hoste.Text != "")) && (menu.Sestava is not null))
             {
                 Form_statistika statistika = new Form_statistika();
                 this.Hide();

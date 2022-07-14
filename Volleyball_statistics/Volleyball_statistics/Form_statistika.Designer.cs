@@ -279,6 +279,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_HristeStridani)).BeginInit();
@@ -292,6 +293,7 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // Label_Domaci
@@ -1147,25 +1149,31 @@
             // 
             // label_DomaciPocetStridani
             // 
-            this.label_DomaciPocetStridani.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_DomaciPocetStridani.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label_DomaciPocetStridani.AutoSize = true;
-            this.label_DomaciPocetStridani.Location = new System.Drawing.Point(108, 27);
+            this.label_DomaciPocetStridani.Location = new System.Drawing.Point(80, 24);
             this.label_DomaciPocetStridani.Name = "label_DomaciPocetStridani";
-            this.label_DomaciPocetStridani.Size = new System.Drawing.Size(13, 15);
+            this.label_DomaciPocetStridani.Size = new System.Drawing.Size(69, 22);
             this.label_DomaciPocetStridani.TabIndex = 3;
             this.label_DomaciPocetStridani.Tag = "";
             this.label_DomaciPocetStridani.Text = "0";
+            this.label_DomaciPocetStridani.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_HostePocetStridani
             // 
-            this.label_HostePocetStridani.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_HostePocetStridani.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label_HostePocetStridani.AutoSize = true;
-            this.label_HostePocetStridani.Location = new System.Drawing.Point(108, 51);
+            this.label_HostePocetStridani.Location = new System.Drawing.Point(80, 47);
             this.label_HostePocetStridani.Name = "label_HostePocetStridani";
-            this.label_HostePocetStridani.Size = new System.Drawing.Size(13, 15);
+            this.label_HostePocetStridani.Size = new System.Drawing.Size(69, 24);
             this.label_HostePocetStridani.TabIndex = 4;
             this.label_HostePocetStridani.Tag = "";
             this.label_HostePocetStridani.Text = "0";
+            this.label_HostePocetStridani.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button_PocetStridaniDomaci
             // 
@@ -2112,6 +2120,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label86.AutoSize = true;
+            this.label86.BackColor = System.Drawing.SystemColors.Control;
             this.label86.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label86.Location = new System.Drawing.Point(928, 274);
             this.label86.Name = "label86";
@@ -3282,6 +3291,7 @@
             this.button_servis1.Text = "eso";
             this.button_servis1.UseVisualStyleBackColor = true;
             this.button_servis1.Visible = false;
+            this.button_servis1.Click += new System.EventHandler(this.button_ServisHodnoceni_Click);
             // 
             // button_servis3
             // 
@@ -3294,6 +3304,7 @@
             this.button_servis3.Text = "3";
             this.button_servis3.UseVisualStyleBackColor = true;
             this.button_servis3.Visible = false;
+            this.button_servis3.Click += new System.EventHandler(this.button_ServisHodnoceni_Click);
             // 
             // button_servis5
             // 
@@ -3306,6 +3317,7 @@
             this.button_servis5.Text = "5";
             this.button_servis5.UseVisualStyleBackColor = true;
             this.button_servis5.Visible = false;
+            this.button_servis5.Click += new System.EventHandler(this.button_ServisHodnoceni_Click);
             // 
             // button_servisChyba
             // 
@@ -3318,6 +3330,7 @@
             this.button_servisChyba.Text = "Chyba";
             this.button_servisChyba.UseVisualStyleBackColor = true;
             this.button_servisChyba.Visible = false;
+            this.button_servisChyba.Click += new System.EventHandler(this.button_ServisHodnoceni_Click);
             // 
             // button_PrijemChyba
             // 
@@ -3330,6 +3343,7 @@
             this.button_PrijemChyba.Text = "Chyba";
             this.button_PrijemChyba.UseVisualStyleBackColor = true;
             this.button_PrijemChyba.Visible = false;
+            this.button_PrijemChyba.Click += new System.EventHandler(this.button_PrijemHodnoceni_Click);
             // 
             // button_Prijem5
             // 
@@ -3342,11 +3356,12 @@
             this.button_Prijem5.Text = "5";
             this.button_Prijem5.UseVisualStyleBackColor = true;
             this.button_Prijem5.Visible = false;
+            this.button_Prijem5.Click += new System.EventHandler(this.button_PrijemHodnoceni_Click);
             // 
             // button_Prijem3
             // 
             this.button_Prijem3.Enabled = false;
-            this.button_Prijem3.Location = new System.Drawing.Point(1198, 395);
+            this.button_Prijem3.Location = new System.Drawing.Point(1198, 393);
             this.button_Prijem3.Name = "button_Prijem3";
             this.button_Prijem3.Size = new System.Drawing.Size(23, 23);
             this.button_Prijem3.TabIndex = 76;
@@ -3354,6 +3369,7 @@
             this.button_Prijem3.Text = "3";
             this.button_Prijem3.UseVisualStyleBackColor = true;
             this.button_Prijem3.Visible = false;
+            this.button_Prijem3.Click += new System.EventHandler(this.button_PrijemHodnoceni_Click);
             // 
             // button_Prijem1
             // 
@@ -3366,6 +3382,7 @@
             this.button_Prijem1.Text = "1";
             this.button_Prijem1.UseVisualStyleBackColor = true;
             this.button_Prijem1.Visible = false;
+            this.button_Prijem1.Click += new System.EventHandler(this.button_PrijemHodnoceni_Click);
             // 
             // button_UtokChyba
             // 
@@ -3378,6 +3395,7 @@
             this.button_UtokChyba.Text = "Chyba";
             this.button_UtokChyba.UseVisualStyleBackColor = true;
             this.button_UtokChyba.Visible = false;
+            this.button_UtokChyba.Click += new System.EventHandler(this.button_UtokHodnoceni_Click);
             // 
             // button_Utok5
             // 
@@ -3390,11 +3408,12 @@
             this.button_Utok5.Text = "5";
             this.button_Utok5.UseVisualStyleBackColor = true;
             this.button_Utok5.Visible = false;
+            this.button_Utok5.Click += new System.EventHandler(this.button_UtokHodnoceni_Click);
             // 
             // button_Utok3
             // 
             this.button_Utok3.Enabled = false;
-            this.button_Utok3.Location = new System.Drawing.Point(1351, 395);
+            this.button_Utok3.Location = new System.Drawing.Point(1351, 393);
             this.button_Utok3.Name = "button_Utok3";
             this.button_Utok3.Size = new System.Drawing.Size(23, 23);
             this.button_Utok3.TabIndex = 80;
@@ -3402,6 +3421,7 @@
             this.button_Utok3.Text = "3";
             this.button_Utok3.UseVisualStyleBackColor = true;
             this.button_Utok3.Visible = false;
+            this.button_Utok3.Click += new System.EventHandler(this.button_UtokHodnoceni_Click);
             // 
             // button_Utok1
             // 
@@ -3414,6 +3434,7 @@
             this.button_Utok1.Text = "1";
             this.button_Utok1.UseVisualStyleBackColor = true;
             this.button_Utok1.Visible = false;
+            this.button_Utok1.Click += new System.EventHandler(this.button_UtokHodnoceni_Click);
             // 
             // button_BlokChyba
             // 
@@ -3426,6 +3447,7 @@
             this.button_BlokChyba.Text = "Chyba";
             this.button_BlokChyba.UseVisualStyleBackColor = true;
             this.button_BlokChyba.Visible = false;
+            this.button_BlokChyba.Click += new System.EventHandler(this.button_BlokHodnoceni_Click);
             // 
             // button_Blok5
             // 
@@ -3438,6 +3460,7 @@
             this.button_Blok5.Text = "5";
             this.button_Blok5.UseVisualStyleBackColor = true;
             this.button_Blok5.Visible = false;
+            this.button_Blok5.Click += new System.EventHandler(this.button_BlokHodnoceni_Click);
             // 
             // button_Blok3
             // 
@@ -3450,6 +3473,7 @@
             this.button_Blok3.Text = "3";
             this.button_Blok3.UseVisualStyleBackColor = true;
             this.button_Blok3.Visible = false;
+            this.button_Blok3.Click += new System.EventHandler(this.button_BlokHodnoceni_Click);
             // 
             // button_Blok1
             // 
@@ -3462,6 +3486,7 @@
             this.button_Blok1.Text = "1";
             this.button_Blok1.UseVisualStyleBackColor = true;
             this.button_Blok1.Visible = false;
+            this.button_Blok1.Click += new System.EventHandler(this.button_BlokHodnoceni_Click);
             // 
             // button_PoleChyba
             // 
@@ -3474,6 +3499,7 @@
             this.button_PoleChyba.Text = "Chyba";
             this.button_PoleChyba.UseVisualStyleBackColor = true;
             this.button_PoleChyba.Visible = false;
+            this.button_PoleChyba.Click += new System.EventHandler(this.button_PoleHodnoceni_Click);
             // 
             // button_Pole1
             // 
@@ -3486,6 +3512,7 @@
             this.button_Pole1.Text = "1";
             this.button_Pole1.UseVisualStyleBackColor = true;
             this.button_Pole1.Visible = false;
+            this.button_Pole1.Click += new System.EventHandler(this.button_PoleHodnoceni_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -3502,7 +3529,7 @@
             this.tableLayoutPanel3.Controls.Add(this.label_Servis, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.button_ServisDomaci, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label53, 3, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(112, 14);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(115, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -3573,7 +3600,7 @@
             this.panel_Skore.Controls.Add(this.label_SkoreHoste);
             this.panel_Skore.Controls.Add(this.label_SkoreDomaci);
             this.panel_Skore.Controls.Add(this.label_Pomlcka);
-            this.panel_Skore.Location = new System.Drawing.Point(6, 14);
+            this.panel_Skore.Location = new System.Drawing.Point(0, 3);
             this.panel_Skore.Name = "panel_Skore";
             this.panel_Skore.Size = new System.Drawing.Size(87, 35);
             this.panel_Skore.TabIndex = 95;
@@ -3664,8 +3691,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.panel_Skore);
-            this.panel3.Controls.Add(this.tableLayoutPanel3);
+            this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.tableLayoutPanel1);
             this.panel3.Location = new System.Drawing.Point(709, 83);
             this.panel3.Name = "panel3";
@@ -3680,6 +3706,15 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(732, 301);
             this.panel4.TabIndex = 100;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.panel_Skore);
+            this.panel5.Controls.Add(this.tableLayoutPanel3);
+            this.panel5.Location = new System.Drawing.Point(3, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(330, 58);
+            this.panel5.TabIndex = 96;
             // 
             // Form_statistika
             // 
@@ -3736,6 +3771,7 @@
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3992,5 +4028,6 @@
         private Panel panel2;
         private Panel panel3;
         private Panel panel4;
+        private Panel panel5;
     }
 }
