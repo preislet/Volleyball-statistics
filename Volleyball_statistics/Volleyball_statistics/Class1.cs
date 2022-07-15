@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Reflection;
 
 namespace Volleyball_statistics
 {
@@ -219,11 +221,12 @@ namespace Volleyball_statistics
 
     public class Postaveni_a_StatistikaHracu
     {
-        #region Třídy Hráčů
-        /// <summary>
-        /// Class Hrac - vzorová třída pro další specializované pozice
-        /// </summary>
-        abstract class Hrac
+    
+    #region Třídy Hráčů
+    /// <summary>
+    /// Class Hrac - vzorová třída pro další specializované pozice
+    /// </summary>
+    abstract class Hrac
         {
             // index 0 - za 1, index 1 - za 3; index 2 - za 5; index 3 - chyba (pole ma pouze 1 nebo chyba)
             // Chyba je hodnocena známkou 0
@@ -406,13 +409,9 @@ namespace Volleyball_statistics
             public Smecar(string jmeno, int cislo) : base(jmeno, cislo) { }
             public override void Prijem_zmena(int z)
             {
-                if (z == 0) prijem[3]++;
-                if (z == 5) prijem[2]++;
-                if (z == 3) prijem[1]++;
-                if (z == 1) prijem[0]++;
+                base.Prijem_zmena(z);
                 prijemVeSmene = true;
             }
-            //TODO - Musím zajistit, aby se prijemVeSmene vždy po Smene nastavil na false
             public override void Utok_zmena(int z)
             {
                 base.Utok_zmena(z);
@@ -493,6 +492,9 @@ namespace Volleyball_statistics
         public object PosledniPrijimajiciHrac;
         readonly Skore skore;
         readonly Hriste hriste;
+        public TableLayoutPanel sety;
+        public Menu menu;
+        public PictureBox pictureBox = null;
 
         #region Get/Set
         public string Sestava
@@ -954,25 +956,314 @@ namespace Volleyball_statistics
                 int celkem = zaJedna / (hrac.Pole[0] + hrac.Pole[1]);
                 return celkem;
             }
+            else if (a == 'L') //Utoky po prijmu ve směně
+            {
+                Smecar smec = (Smecar)hraciDomaci[i];
+                int zaJedna = smec.utokPoPrijmu[0, 0] * 100;
+                int zaTri = smec.utokPoPrijmu[1, 0] * 50;
+                int zaPet = smec.utokPoPrijmu[2, 0] * 25;
+                if ((smec.utokPoPrijmu[0, 0] + smec.utokPoPrijmu[1, 0] + smec.utokPoPrijmu[2, 0] + smec.utokPoPrijmu[3, 0]) == 0) return 0;
+                int celkem = (zaJedna + zaTri + zaPet) / (smec.utokPoPrijmu[0, 0] + smec.utokPoPrijmu[1, 0] + smec.utokPoPrijmu[2, 0] + smec.utokPoPrijmu[3, 0]);
+                return celkem;
+            }
+            else if(a == 'K') //Utoky bez prijmu ve směně
+            {
+                Smecar smec = (Smecar)hraciDomaci[i];
+                int zaJedna = smec.utokPoPrijmu[0, 1] * 100;
+                int zaTri = smec.utokPoPrijmu[1, 1] * 50;
+                int zaPet = smec.utokPoPrijmu[2, 1] * 25;
+                if ((smec.utokPoPrijmu[0, 1] + smec.utokPoPrijmu[1, 1] + smec.utokPoPrijmu[2, 1] + smec.utokPoPrijmu[3, 1]) == 0) return 0;
+                int celkem = (zaJedna + zaTri + zaPet) / (smec.utokPoPrijmu[0, 1] + smec.utokPoPrijmu[1, 1] + smec.utokPoPrijmu[2, 1] + smec.utokPoPrijmu[3, 1]);
+                return celkem;
+            }
             else return 0;
         }
 
-    }
-
-
-    public class Excel
-    {
-        Postaveni_a_StatistikaHracu Data;
-
-        //Konstruktor
-        public Excel(Postaveni_a_StatistikaHracu Data)
+        public void Zapis()
         {
-            this.Data = Data;
-            Zapis();
-        }
-        private void Zapis()
-        {
-            //TODO zápis
+            Excel.Application xl;
+            Excel._Workbook wb;
+            Excel._Worksheet ws;
+            Excel.Range range;
+
+            //Start Excel aplikace
+            xl = new Excel.Application();
+            xl.Visible = true;
+
+            //Načtené workbooku + worksheetu
+            wb = (Excel._Workbook)xl.Workbooks.Add(Missing.Value);
+            ws = (Excel._Worksheet)wb.ActiveSheet;
+            ///Vyplnění tabulky hráčů s úspěšnostmi jejich akcí
+            ws.Cells[2, 5] = "Body";
+            ws.Cells[2, 6] = "Chyby";
+            ws.Cells[2, 7] = "Servis";
+            ws.Cells[2, 8] = "Příjem";
+            ws.Cells[2, 9] = "Útok";
+            ws.Cells[2, 10] = "Blok";
+            ws.Cells[2, 11] = "Pole";
+            range = ws.get_Range("C2", "D2");
+            range.Merge(true);
+
+            for (int i = 3; i < 17; i++)
+            {
+                if (HraciDomaci[i - 3] is null) break;
+                ws.Cells[i, 3] = ((Hrac)HraciDomaci[i-3]).Jmeno;
+                ws.Cells[i, 5] = ((Hrac)HraciDomaci[i - 3]).body;
+                ws.Cells[i, 6] = ((Hrac)HraciDomaci[i - 3]).chyby;
+                ws.Cells[i, 7] = (Procenta(i - 3, 'S') + "%");
+                ws.Cells[i, 8] = (Procenta(i - 3, 'P') + "%");
+                ws.Cells[i, 9] = (Procenta(i - 3, 'U') + "%");
+                ws.Cells[i, 10] = (Procenta(i - 3, 'B') + "%");
+                ws.Cells[i, 11] = (Procenta(i - 3, 'p') + "%");
+                range = ws.get_Range("C" + i.ToString(), "D" + i.ToString());
+                range.Merge(true);
+                range = ws.get_Range("C2", "K" + i.ToString());
+                range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                ws.get_Range("C2", "K" + i.ToString()).Borders.Color = Color.Black;
+            }
+
+            ///Vyplnění tabulky hráčů s celkovým počtem jejich akcí
+            ws.Cells[18, 5] = "Body";
+            ws.Cells[18, 6] = "Chyby";
+            ws.Cells[18, 7] = "Servis";
+            ws.Cells[18, 9] = "Příjem";
+            ws.Cells[18, 11] = "Útok";
+            ws.Cells[18, 13] = "Blok";
+            ws.Cells[18, 15] = "Pole";
+            ws.Cells[18, 3] = "1/3/5/Chyba";
+            range = ws.get_Range("C18", "D18");
+            range.Merge(true);
+            range = ws.get_Range("G18", "H18");
+            range.Merge(true);
+            range = ws.get_Range("I18", "J18");
+            range.Merge(true);
+            range = ws.get_Range("K18", "L18");
+            range.Merge(true);
+            range = ws.get_Range("M18", "N18");
+            range.Merge(true);
+            range = ws.get_Range("O18", "P18");
+            range.Merge(true);
+
+            for (int i = 19; i < 38; i++)
+            {
+                if (HraciDomaci[i - 19] is null) break;
+                ws.Cells[i, 3] = ((Hrac)HraciDomaci[i - 19]).Jmeno;
+                ws.Cells[i, 5] = ((Hrac)HraciDomaci[i - 19]).body;
+                ws.Cells[i, 6] = ((Hrac)HraciDomaci[i - 19]).chyby;
+                ws.Cells[i, 7] = ((Hrac)HraciDomaci[i - 19]).Servis[0] + "/" + ((Hrac)HraciDomaci[i - 19]).Servis[1] + "/" + ((Hrac)HraciDomaci[i - 19]).Servis[2] + "/" + ((Hrac)HraciDomaci[i - 19]).Servis[3];
+                ws.Cells[i, 9] = ((Hrac)HraciDomaci[i - 19]).Prijem[0] + "/" + ((Hrac)HraciDomaci[i - 19]).Prijem[1] + "/" + ((Hrac)HraciDomaci[i - 19]).Prijem[2] + "/" + ((Hrac)HraciDomaci[i - 19]).Prijem[3];
+                ws.Cells[i, 11] = ((Hrac)HraciDomaci[i - 19]).Utok[0] + "/" + ((Hrac)HraciDomaci[i - 19]).Utok[1] + "/" + ((Hrac)HraciDomaci[i - 19]).Utok[2] + "/" + ((Hrac)HraciDomaci[i - 19]).Utok[3];
+                ws.Cells[i, 13] = ((Hrac)HraciDomaci[i - 19]).Blok[0] + "/" + ((Hrac)HraciDomaci[i - 19]).Blok[1] + "/" + ((Hrac)HraciDomaci[i - 19]).Blok[2] + "/" + ((Hrac)HraciDomaci[i - 19]).Blok[3];
+                ws.Cells[i, 15] = " " + ((Hrac)HraciDomaci[i - 19]).Pole[0] + "/" + ((Hrac)HraciDomaci[i - 19]).Pole[1] + " ";
+                range = ws.get_Range("C" + i.ToString(), "D" + i.ToString());
+                range.Merge(true);
+                range = ws.get_Range("G" + i.ToString(), "H" + i.ToString());
+                range.Merge(true);
+                range = ws.get_Range("I" + i.ToString(), "J" + i.ToString());
+                range.Merge(true);
+                range = ws.get_Range("K" + i.ToString(), "L" + i.ToString());
+                range.Merge(true);
+                range = ws.get_Range("M" + i.ToString(), "N" + i.ToString());
+                range.Merge(true);
+                range = ws.get_Range("O" + i.ToString(), "P" + i.ToString());
+                range.Merge(true);
+                range = ws.get_Range("C18", "P" + i.ToString());
+                range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                ws.get_Range("C18", "P" + i.ToString()).Borders.Color = Color.Black;
+            }
+
+            ///Vyplnění tabulky smečařů s úspěšností jejich útoku
+            ws.Cells[2, 13] = "Úsp. útoku smeče";
+            ws.Cells[2, 15] = "S příjmem";
+            ws.Cells[2, 17] = "Bez příjmu";
+            range = ws.get_Range("M2", "N2");
+            range.Merge(true);
+            range = ws.get_Range("O2", "P2");
+            range.Merge(true);
+            range = ws.get_Range("Q2", "R2");
+            range.Merge(true);
+
+            int index = 3;
+            for (int i = 0; i < hraciDomaci.Length; i++)
+            {
+                if (hraciDomaci[i] is Smecar)
+                {
+                    range = ws.get_Range("M" + index.ToString(), "N" + index.ToString());
+                    range.Merge(true);
+                    range = ws.get_Range("O" + index.ToString(), "P" + index.ToString());
+                    range.Merge(true);
+                    range = ws.get_Range("Q" + index.ToString(), "R" + index.ToString());
+                    range.Merge(true);
+                    ws.Cells[index ,13] = ((Smecar)hraciDomaci[i]).Jmeno;
+                    ws.Cells[index, 15] = Procenta(i,'L') + "%";
+                    ws.Cells[index, 17] = Procenta(i, 'K') + "%";
+                    range = ws.get_Range("M2", "R" + index.ToString());
+                    range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    ws.get_Range("M2", "R" + index.ToString()).Borders.Color = Color.Black;
+                    index++;
+                    
+                }
+            }
+
+            ///Vyplnění tabulky smečařů s celkovám počtem jejich útoku
+            ws.Cells[2, 20] = "Počet útoku smeče";
+            ws.Cells[2, 22] = "S příjmem";
+            ws.Cells[2, 24] = "Bez příjmu";
+            range = ws.get_Range("T2", "U2");
+            range.Merge(true);
+            range = ws.get_Range("V2", "W2");
+            range.Merge(true);
+            range = ws.get_Range("X2", "Y2");
+            range.Merge(true);
+
+            index = 3;
+            for (int i = 0; i < hraciDomaci.Length; i++)
+            {
+                if (hraciDomaci[i] is Smecar)
+                {
+                    range = ws.get_Range("T" + index.ToString(), "U" + index.ToString());
+                    range.Merge(true);
+                    range = ws.get_Range("V" + index.ToString(), "W" + index.ToString());
+                    range.Merge(true);
+                    range = ws.get_Range("X" + index.ToString(), "Y" + index.ToString());
+                    range.Merge(true);
+                    ws.Cells[index, 20] = ((Smecar)hraciDomaci[i]).Jmeno;
+                    ws.Cells[index, 22] = ((Smecar)hraciDomaci[i]).utokPoPrijmu[0,0] + "/" + ((Smecar)hraciDomaci[i]).utokPoPrijmu[1, 0] + "/" + ((Smecar)hraciDomaci[i]).utokPoPrijmu[2, 0] + "/" + ((Smecar)hraciDomaci[i]).utokPoPrijmu[3, 0];
+                    ws.Cells[index, 24] = ((Smecar)hraciDomaci[i]).utokPoPrijmu[0, 1] + "/" + ((Smecar)hraciDomaci[i]).utokPoPrijmu[1, 1] + "/" + ((Smecar)hraciDomaci[i]).utokPoPrijmu[2, 1] + "/" + ((Smecar)hraciDomaci[i]).utokPoPrijmu[3, 1];
+                    range = ws.get_Range("T2", "Y" + index.ToString());
+                    range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    ws.get_Range("T2", "Y" + index.ToString()).Borders.Color = Color.Black;
+                    index++;
+
+                }
+            }
+
+            ///Vyplnění tabulky setů
+            ws.Cells[19 ,18] = "Set 1";
+            ws.Cells[20, 18] = "Set 2";
+            ws.Cells[21, 18] = "Set 3";
+            ws.Cells[22, 18] = "Set 4";
+            ws.Cells[23, 18] = "Set 5";
+            ws.Cells[18, 19] = "Skóre";
+            for (int i = 19; i < 24; i++)
+            {
+                Control c = sety.GetControlFromPosition(1, i - 18);
+                ws.Cells[i, 19] = c.Text;
+            }
+            range = ws.get_Range("R18", "S23");
+            range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            ws.get_Range("R18", "S23").Borders.Color = Color.Black;
+
+
+            //Vyplnění procent do hřiště
+            
+             
+            ws.get_Range("C36", "N53").BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick, Excel.XlColorIndex.xlColorIndexNone, Color.FromArgb(255, 0, 0), Type.Missing);
+            ws.get_Range("H33", "H56").Borders[Excel.XlBordersIndex.xlEdgeRight].Color = Color.Black;
+            ws.get_Range("J36", "J53").Borders[Excel.XlBordersIndex.xlEdgeRight].Color = Color.Black;
+            ws.get_Range("F36", "F53").Borders[Excel.XlBordersIndex.xlEdgeRight].Color = Color.Black;
+
+            range = ws.get_Range("C33", "H35");
+            range.Merge(Missing.Value);
+            ws.get_Range("C33", "H35").Font.Size = 25;
+            range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            ws.Cells[33, 3] = menu.Domaci;
+
+            range = ws.get_Range("I33", "N35");
+            range.Merge(Missing.Value);
+            ws.get_Range("I33", "N35").Font.Size = 25;
+            range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            ws.Cells[33, 9] = menu.Hoste;
+            if (((hriste.PocetBoduHoste + hriste.hriste_outy[1]) != 0) && ((hriste.PocetBoduDomaci + hriste.hriste_outy[0]) != 0))
+            { 
+                index = 36;
+                for (int i = 36; i < 54; i += 6)
+                {
+                    ws.Cells[i, 3] = (hriste.hriste_procenta[i - index, 0] * 100 / (hriste.PocetBoduHoste + hriste.hriste_outy[1])).ToString() + "%";
+                    range = ws.get_Range("C" + i.ToString(), "D" + (i + 5).ToString());
+                    range.Merge(Missing.Value);
+                    range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+
+                    ws.Cells[i, 5] = (hriste.hriste_procenta[i - index, 1] * 100 / (hriste.PocetBoduHoste + hriste.hriste_outy[1])).ToString() + "%";
+                    range = ws.get_Range("E" + i.ToString(), "F" + (i + 5).ToString());
+                    range.Merge(Missing.Value);
+                    range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+
+                    ws.Cells[i, 7] = (hriste.hriste_procenta[i - index, 2] * 100 / (hriste.PocetBoduHoste + hriste.hriste_outy[1])).ToString() + "%";
+                    range = ws.get_Range("G" + i.ToString(), "H" + (i + 5).ToString());
+                    range.Merge(Missing.Value);
+                    range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+
+                    ws.Cells[i, 9] = (hriste.hriste_procenta[0, 3] * 100 / (hriste.PocetBoduDomaci + hriste.hriste_outy[0])).ToString() + "%";
+                    range = ws.get_Range("I" + i.ToString(), "J" + (i + 5).ToString());
+                    range.Merge(Missing.Value);
+                    range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+
+                    ws.Cells[i, 11] = (hriste.hriste_procenta[0, 4] * 100 / (hriste.PocetBoduDomaci + hriste.hriste_outy[0])).ToString() + "%";
+                    range = ws.get_Range("K" + i.ToString(), "L" + (i + 5).ToString());
+                    range.Merge(Missing.Value);
+                    range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+
+                    ws.Cells[i, 13] = (hriste.hriste_procenta[0, 5] * 100 / (hriste.PocetBoduDomaci + hriste.hriste_outy[0])).ToString() + "%";
+                    range = ws.get_Range("M" + i.ToString(), "N" + (i + 5).ToString());
+                    range.Merge(Missing.Value);
+                    range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    index += 5;
+                }
+            }
+            else
+            {
+                for (int i = 36; i < 54; i += 6)
+                {
+                    ws.Cells[i, 3] = "0" + "%";
+                    range = ws.get_Range("C" + i.ToString(), "D" + (i + 5).ToString());
+                    range.Merge(Missing.Value);
+                    range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+
+                    ws.Cells[i, 5] = "0" + "%";
+                    range = ws.get_Range("E" + i.ToString(), "F" + (i + 5).ToString());
+                    range.Merge(Missing.Value);
+                    range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+
+                    ws.Cells[i, 7] = "0" + "%";
+                    range = ws.get_Range("G" + i.ToString(), "H" + (i + 5).ToString());
+                    range.Merge(Missing.Value);
+                    range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+
+                    ws.Cells[i, 9] = "0" + "%";
+                    range = ws.get_Range("I" + i.ToString(), "J" + (i + 5).ToString());
+                    range.Merge(Missing.Value);
+                    range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+
+                    ws.Cells[i, 11] = "0" + "%";
+                    range = ws.get_Range("K" + i.ToString(), "L" + (i + 5).ToString());
+                    range.Merge(Missing.Value);
+                    range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+
+                    ws.Cells[i, 13] = "0" + "%";
+                    range = ws.get_Range("M" + i.ToString(), "N" + (i + 5).ToString());
+                    range.Merge(Missing.Value);
+                    range.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    index += 5;
+                }
+            }
+            wb.SaveCopyAs(Path.Combine(menu.FindPath("excel"),menu.Domaci + "X" + menu.Hoste + DateTime.Now.ToString("(dd_MMMM_hh_mm_ss)") + ".xlsx"));
         }
     }
+    
 }
+

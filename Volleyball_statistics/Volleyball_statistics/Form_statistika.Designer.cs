@@ -60,7 +60,7 @@
             this.label_ServisHoste = new System.Windows.Forms.Label();
             this.button_ServisDomaci = new System.Windows.Forms.Button();
             this.button_ServisHoste = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel_Sety = new System.Windows.Forms.TableLayoutPanel();
             this.label_ServisSet4 = new System.Windows.Forms.Label();
             this.label_ServisSet3 = new System.Windows.Forms.Label();
             this.label_ServisSet2 = new System.Windows.Forms.Label();
@@ -273,6 +273,7 @@
             this.textBox_PoznamkyKeHre = new System.Windows.Forms.TextBox();
             this.label_PoznamkyKeHre = new System.Windows.Forms.Label();
             this.panel_Skore = new System.Windows.Forms.Panel();
+            this.label124 = new System.Windows.Forms.Label();
             this.tableLayoutPanel_Outy = new System.Windows.Forms.TableLayoutPanel();
             this.button_OutHoste = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -282,9 +283,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.button_Save = new System.Windows.Forms.Button();
             this.button_Screenshot = new System.Windows.Forms.Button();
-            this.label124 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel_Sety.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_HristeStridani)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel_Stridacka.SuspendLayout();
@@ -650,42 +650,42 @@
             this.button_ServisHoste.UseVisualStyleBackColor = false;
             this.button_ServisHoste.Click += new System.EventHandler(this.button_Servis_Click);
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanel_Sety
             // 
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.39833F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.41433F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.53271F));
-            this.tableLayoutPanel1.Controls.Add(this.label_ServisSet4, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label_ServisSet3, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label_ServisSet2, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label_Set5, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label_Set4, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label_Set3, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label_Set2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label_Set1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label20, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label19, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label_SkoreSet1, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label_SkoreSet2, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label_SkoreSet3, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label_SkoreSet4, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label_SkoreSet5, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label_ServisSet1, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label21, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label_ServisSet5, 2, 5);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 89);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(321, 186);
-            this.tableLayoutPanel1.TabIndex = 32;
+            this.tableLayoutPanel_Sety.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel_Sety.ColumnCount = 3;
+            this.tableLayoutPanel_Sety.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.39833F));
+            this.tableLayoutPanel_Sety.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.41433F));
+            this.tableLayoutPanel_Sety.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.53271F));
+            this.tableLayoutPanel_Sety.Controls.Add(this.label_ServisSet4, 2, 4);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label_ServisSet3, 2, 3);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label_ServisSet2, 2, 2);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label_Set5, 0, 5);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label_Set4, 0, 4);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label_Set3, 0, 3);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label_Set2, 0, 2);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label_Set1, 0, 1);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label20, 2, 0);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label19, 1, 0);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label_SkoreSet1, 1, 1);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label_SkoreSet2, 1, 2);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label_SkoreSet3, 1, 3);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label_SkoreSet4, 1, 4);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label_SkoreSet5, 1, 5);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label_ServisSet1, 2, 1);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label21, 0, 0);
+            this.tableLayoutPanel_Sety.Controls.Add(this.label_ServisSet5, 2, 5);
+            this.tableLayoutPanel_Sety.Location = new System.Drawing.Point(6, 89);
+            this.tableLayoutPanel_Sety.Name = "tableLayoutPanel_Sety";
+            this.tableLayoutPanel_Sety.RowCount = 6;
+            this.tableLayoutPanel_Sety.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel_Sety.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel_Sety.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel_Sety.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel_Sety.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel_Sety.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel_Sety.Size = new System.Drawing.Size(321, 186);
+            this.tableLayoutPanel_Sety.TabIndex = 32;
             // 
             // label_ServisSet4
             // 
@@ -3608,6 +3608,15 @@
             this.panel_Skore.Size = new System.Drawing.Size(109, 35);
             this.panel_Skore.TabIndex = 95;
             // 
+            // label124
+            // 
+            this.label124.AutoSize = true;
+            this.label124.Location = new System.Drawing.Point(40, 15);
+            this.label124.Name = "label124";
+            this.label124.Size = new System.Drawing.Size(12, 15);
+            this.label124.TabIndex = 103;
+            this.label124.Text = "-";
+            // 
             // tableLayoutPanel_Outy
             // 
             this.tableLayoutPanel_Outy.ColumnCount = 2;
@@ -3696,7 +3705,7 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.tableLayoutPanel1);
+            this.panel3.Controls.Add(this.tableLayoutPanel_Sety);
             this.panel3.Location = new System.Drawing.Point(709, 83);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(342, 286);
@@ -3742,15 +3751,6 @@
             this.button_Screenshot.UseVisualStyleBackColor = true;
             this.button_Screenshot.Click += new System.EventHandler(this.buttonScreenshot_Click);
             // 
-            // label124
-            // 
-            this.label124.AutoSize = true;
-            this.label124.Location = new System.Drawing.Point(40, 15);
-            this.label124.Name = "label124";
-            this.label124.Size = new System.Drawing.Size(12, 15);
-            this.label124.TabIndex = 103;
-            this.label124.Text = "-";
-            // 
             // Form_statistika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -3787,8 +3787,8 @@
             this.Text = "Form_statistika";
             this.Load += new System.EventHandler(this.Form_statistika_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel_Sety.ResumeLayout(false);
+            this.tableLayoutPanel_Sety.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_HristeStridani)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -3846,7 +3846,7 @@
         private Label label_ServisHoste;
         private Button button_ServisDomaci;
         private Button button_ServisHoste;
-        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel_Sety;
         private Label label_Set5;
         private Label label_Set4;
         private Label label_Set3;

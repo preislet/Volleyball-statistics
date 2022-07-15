@@ -22,6 +22,9 @@ namespace Volleyball_statistics
             this.WindowState = FormWindowState.Normal;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
+            postaveni_A_StatistikaHracu.sety = tableLayoutPanel_Sety;
+            postaveni_A_StatistikaHracu.menu = Form1.menu;
+            postaveni_A_StatistikaHracu.pictureBox = pictureBox1;
         }
 
         private void Form_statistika_Load(object sender, EventArgs e)
@@ -661,7 +664,7 @@ namespace Volleyball_statistics
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            Excel excel = new Excel(postaveni_A_StatistikaHracu);
+            postaveni_A_StatistikaHracu.Zapis();
         }
 
         private void buttonScreenshot_Click(object sender, EventArgs e)
