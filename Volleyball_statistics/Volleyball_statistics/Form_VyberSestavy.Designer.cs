@@ -69,7 +69,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_VyberSestavy";
-            this.Text = "Form_VyberSestavy";
+            this.Text = "VyberSestavy";
             this.Load += new System.EventHandler(this.Form_VyberSestavy_Load);
             this.ResumeLayout(false);
 

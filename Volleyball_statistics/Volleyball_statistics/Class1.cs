@@ -9,6 +9,10 @@ using System.Reflection;
 
 namespace Volleyball_statistics
 {
+    /// <summary>
+    /// Class Menu se stará převážně o přenos dat, co uživatel zadý do hlavního menu
+    /// Zajišťuje hledání cest do souboru aplikace, který se vytvoří na ploše
+    /// </summary>
     public class Menu
     {
         public string? Domaci;
@@ -30,6 +34,10 @@ namespace Volleyball_statistics
         }
 
         //Public functins
+
+        /// <summary>
+        /// Funkce pro vyhledání cesty do složky aplikace na ploše
+        /// </summary>
         public string FindPath(string s)
         {
             //new použito při tvoření nové složky na Desktopu
@@ -41,11 +49,17 @@ namespace Volleyball_statistics
             //excel použit při tvoření nové složky ve složce "Volleyball statistics" se jménem Tabulky Excel
             if (s == "excel") return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Volleyball statistics", "Tabulky Excel");
 
+            // screenshots použit, když je pořízen snímek obrazovky, který se má uložit do specifické složky
             if (s == "screenshots") return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Volleyball statistics", "Screenshots");
 
             //Tvoření nového zápisu sestavy
             return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Volleyball statistics", "Sestavy", s + ".txt");
         }
+
+        /// <summary>
+        /// Ukládání nové sestavy, která byla zapsána do formuláře pro uložení nové sestavy
+        /// Sestava se ukládá v podobě .txt souboru, který je poté dále možno využívat, při načítání sestavy
+        /// </summary>
         public void SaveNewTeam(string path, TableLayoutPanel tableLayoutPanel1)
         {
             string[] write = new string[45];  //Ukládání zípisu z formuláře
@@ -77,6 +91,10 @@ namespace Volleyball_statistics
                 Console.WriteLine("Error: " + ex.ToString());
             }
         }
+
+        /// <summary>
+        /// Vytvoření složky aplikace na ploše
+        /// </summary>
         public void CreateFolder()
         {
             string path = FindPath("new");  //Vytvoření složky na Ploše
@@ -128,7 +146,9 @@ namespace Volleyball_statistics
         }
     }
 
-
+    /// <summary>
+    /// Třídá zajišťující zapisování a vyhodnocování procentuelních dopadů balónů na herní plochu
+    /// </summary>
     public class Hriste
     {
         public int[,] hriste_procenta = new int[3, 6];
@@ -138,11 +158,17 @@ namespace Volleyball_statistics
         public bool LastBod;  //true-Domácí, false-Hosté
 
         //Public functions
+
+        /// <summary>
+        /// Funkce vyhodnocuijící, kam dopadl balón pomocí souřadnic kurzoru při kliknutí
+        /// Kurzor musí být na obrázku hřiště, kde se ukazují procenta, jinak se tato funkce nespustí
+        /// </summary>
         public void ProcentaDopadu(int X, int Y, PictureBox p)
         {
             //Vypocet pozice na obrázku je vypočítaný jako pozice kliku - x a y souřadnice obrázku hřiště (rozměry 630x318)
-            int RealnePoziceDopaduX = X - p.Location.X;
-            int RealnePoziceDopaduY = Y - p.Location.Y;
+            // 61,53 jsou souřadnice obrázku hřiště oproti celé obrazovce
+            int RealnePoziceDopaduX = X - 61;
+            int RealnePoziceDopaduY = Y - 53;
             if (RealnePoziceDopaduX < 315) //Balón dopadl na polovinu Domácích
             {
                 LastBod = false;  //Určuje, jaký tým naposledy dal bod (false = hoste)
@@ -196,7 +222,9 @@ namespace Volleyball_statistics
         }
     }
 
-
+    /// <summary>
+    /// Třidá zajišťující kontrolu a zapisování skóre 
+    /// </summary>
     public class Skore
     {
         public int SkoreDomaci;
@@ -218,15 +246,18 @@ namespace Volleyball_statistics
         }
     }
 
-
+    /// <summary>
+    /// Třída zajišťující kompletní vyhodnocování, zapisování a následné ukládání statistiky zápasu
+    /// Třída má přístup ke všem ostatní třídám, aby mohla efektivně pracovat
+    /// </summary>
     public class Postaveni_a_StatistikaHracu
     {
     
     #region Třídy Hráčů
-    /// <summary>
+        /// <summary>
     /// Class Hrac - vzorová třída pro další specializované pozice
     /// </summary>
-    abstract class Hrac
+        abstract class Hrac
         {
             // index 0 - za 1, index 1 - za 3; index 2 - za 5; index 3 - chyba (pole ma pouze 1 nebo chyba)
             // Chyba je hodnocena známkou 0
@@ -388,7 +419,6 @@ namespace Volleyball_statistics
             }
         }
 
-
         /// <summary>
         /// Class Smecar - třída zajišťující statistiku smečařů
         /// </summary>
@@ -415,6 +445,8 @@ namespace Volleyball_statistics
             public override void Utok_zmena(int z)
             {
                 base.Utok_zmena(z);
+
+                //Kontrola, zda stejný hráč i přijímal
                 if (prijemVeSmene)
                 {
                     if (z == 0) utokPoPrijmu[3, 0]++;
@@ -431,9 +463,12 @@ namespace Volleyball_statistics
                     if (z == 1) utokPoPrijmu[0, 1]++;
                 }
             }
+
+            /// <summary>
+            /// Restartování příjmu po směně (prijemVeSmene = false)
+            /// </summary>
             public void RestartPrijmuVeSmene() { prijemVeSmene = false; }
         }
-
 
         /// <summary>
         /// Class Blokar - třída zajišťující statistiku blokařů
@@ -446,7 +481,6 @@ namespace Volleyball_statistics
             public Blokar(string jmeno, int cislo) : base(jmeno, cislo) { }
         }
 
-
         /// <summary>
         /// Class Nahravac - třída zajišťující statistiku nahravačů
         /// </summary>
@@ -457,7 +491,6 @@ namespace Volleyball_statistics
             public string Tag { get { return tag; } }
             public Nahravac(string jmeno, int cislo) : base(jmeno, cislo) { }
         }
-
 
         /// <summary>
         /// Class Univerzal - třída zajišťující statistiku univerzálů
@@ -482,19 +515,29 @@ namespace Volleyball_statistics
         }
         #endregion
 
-        protected string sestava;
-        protected object[] hraciDomaci = new object[14];
-        protected int[] postaveniDomaci = new int[6];
+        protected string sestava;  //Jmeno sestavy
+        protected object[] hraciDomaci = new object[14];  //Všichni hraci na soupisce
+
+        //Postavení týmů na hřišti
+        protected int[] postaveniDomaci = new int[6];  
         protected int[] postaveniHoste = new int[6];
-        protected int aktivniLiberoBlokarDomaci;
-        protected object[] liberaDomaci = new object[3];
-        public int aktivniLiberoDomaciPozice = 7;
-        public object PosledniPrijimajiciHrac;
+        protected int aktivniLiberoBlokarDomaci;  //Libero/blokař, který je v aktivní sestavě, ale zrovna se nachází na lavičce
+        protected object[] liberaDomaci = new object[3];  //Libera v týmu
+        public int aktivniLiberoDomaciPozice = 7; //Pozice Libera
+
+        public object PosledniPrijimajiciHrac; //Kdo naposledy přijmul balón
+
+        //Odkazy na ostatní třídy
         readonly Skore skore;
         readonly Hriste hriste;
-        public TableLayoutPanel sety;
         public Menu menu;
+
+        //Odkazy na nástroje  
+        public TableLayoutPanel sety;
         public PictureBox pictureBox = null;
+
+        //Poznámky zapsané v textboxu pro poznámky
+        public string poznamkyKeHre = null;
 
         #region Get/Set
         public string Sestava
@@ -530,7 +573,7 @@ namespace Volleyball_statistics
         public Postaveni_a_StatistikaHracu(string sestava, Skore skore, Hriste hriste)
         {
             this.sestava = sestava;
-            NacteniSestavy(sestava);
+            NacteniSestavy(sestava);  //Přepsání informací z .txt dokumentu do jednotlivých objektů
             this.skore = skore;
             this.hriste = hriste;
         }
@@ -788,6 +831,10 @@ namespace Volleyball_statistics
             }
         }
 
+        /// <summary>
+        /// Funkce zajišťující aktualizaci tabulky, kde se vyplňuje statistika jednotlivých hráčů
+        /// Aktualizace probíhá ihned po zapsání akce
+        /// </summary>
         public void UpdateTabulkyHracu(TableLayoutPanel s)
         {
             for (int i = 0; i < s.RowCount; i++)
@@ -816,7 +863,35 @@ namespace Volleyball_statistics
 
             }
         }
-        // Private Funkce 
+        
+        /// <summary>
+        /// Funkce kontrolující, zda čísla hráčů, která byla zapsána do hřiště pro kontolu pozic, odpovídají číslům, která jsou napsána na soupisce
+        /// Kontroluje se pouze domácí tým (program nedisponuje soupiskou hostů)
+        /// </summary>
+        public bool KontrolaZapsaniPozice(TextBox[] poziceDomaci)
+        {
+            
+            for (int i = 0; i < poziceDomaci.Length; i++)
+            {
+                bool jeNaSoupisce = false;
+                for (int j = 0; j < HraciDomaci.Length; j++)
+                {
+                    if (HraciDomaci[j] is null) break;
+                    Hrac hrac = (Hrac)HraciDomaci[j];
+                    if (Convert.ToInt32((poziceDomaci[i]).Text) == hrac.Cislo)
+                    {
+                        jeNaSoupisce = true;
+                        break;
+                    }
+                }
+                if (!jeNaSoupisce)
+                {
+                    MessageBox.Show("Chyba v zapsání pozic (Čásla hráčů se neschodují s čísly na soupisce)");
+                    return false;
+                }
+            }
+            return true;
+        }
 
         /// <summary>
         /// Funkce zkontroluje, jestli se náhodou libero nenachází na hřišti a na střídačce není blokař
@@ -979,6 +1054,10 @@ namespace Volleyball_statistics
             else return 0;
         }
 
+        /// <summary>
+        /// Po kliknutí na tlačítko uložit zápas, funkce uvytvoří nový excel soubor a přepíše do něj všechny informace získané v průběhu utkání.
+        /// Soubor je následně ulože do složky ve složce, která byla automaticky vygenerována programem
+        /// </summary>
         public void Zapis()
         {
             Excel.Application xl;
@@ -989,6 +1068,7 @@ namespace Volleyball_statistics
             //Start Excel aplikace
             xl = new Excel.Application();
             xl.Visible = true;
+
 
             //Načtené workbooku + worksheetu
             wb = (Excel._Workbook)xl.Workbooks.Add(Missing.Value);
@@ -1261,7 +1341,27 @@ namespace Volleyball_statistics
                     index += 5;
                 }
             }
-            wb.SaveCopyAs(Path.Combine(menu.FindPath("excel"),menu.Domaci + "X" + menu.Hoste + DateTime.Now.ToString("(dd_MMMM_hh_mm_ss)") + ".xlsx"));
+            //Zapsání poznámek do souboru
+            ws.Cells[35,16] = "Poznámky ke hře";
+            range = ws.get_Range("P35", "Q35");
+            range.Merge(Missing.Value);
+            range = ws.get_Range("P36", "AB48");
+            range.Merge(Missing.Value);
+            ws.Cells[36, 16] = poznamkyKeHre;
+            (ws.Cells[36, 16]).VerticalAlignment = Excel.XlVAlign.xlVAlignTop;
+
+
+            //Uložení souboru do složky programu na ploše
+            try
+            {
+                wb.SaveCopyAs(Path.Combine(menu.FindPath("excel"), menu.Domaci + " X " + menu.Hoste + DateTime.Now.ToString("(dd_MMMM_hh_mm_ss)") + ".xlsx"));
+                MessageBox.Show("Zápas uložen");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Chyba při uložení: " + ex.ToString());
+            }
+            
         }
     }
     

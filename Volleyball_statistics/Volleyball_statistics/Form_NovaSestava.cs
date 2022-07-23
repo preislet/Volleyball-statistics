@@ -29,6 +29,29 @@ namespace Volleyball_statistics
             this.Close();
         }
 
+        /// <summary>
+        /// Kontroluje, zda se do kolonky pro pozice zapisují pouze existující pozice
+        /// </summary>
+        private void buttonTextBox_ZmenaPoziceHrace(object sender, EventArgs e)
+        {
+            if ((((TextBox)sender).Text == "S") || (((TextBox)sender).Text == "N") || (((TextBox)sender).Text == "U") || (((TextBox)sender).Text == "B") || (((TextBox)sender).Text == "L")) return;
+            else ((TextBox)sender).Text = "";
+        }
+
+        /// <summary>
+        /// Kontroluje, zda se do kolonky pro číslo zapisují pouze čísla
+        /// </summary>
+        private void buttonTextBox_ZmenaCislaHrace(object sender, EventArgs e)
+        {
+            string text = ((TextBox)sender).Text;
+            if (text.All(char.IsDigit)) return;
+            ((TextBox)sender).Text = "";
+            
+        }
+
+        /// <summary>
+        /// Kontroluje, jestli má sestava alespoň jednopísmenné jméno
+        /// </summary>
         private void textBox43_TextChanged(object sender, EventArgs e)
         {
             if (textBox43.Text.Length != 0) button_Ulozit.Enabled = true;  //Sestava bez jména se nedá uložit
@@ -44,7 +67,7 @@ namespace Volleyball_statistics
             List<string> jmenaSouboru = new List<string>();
             string path = Form1.menu.FindPath("sestavy");
             DirectoryInfo dir = new DirectoryInfo(path);
-            FileInfo[] Files = dir.GetFiles("*.txt"); //Nalezení všexh .txt files ve složce
+            FileInfo[] Files = dir.GetFiles("*.txt"); //Nalezení všech .txt files ve složce
             for (int i = 0; i < Files.Length; i++)
             {
                 if(Files[i].Name.Remove(Files[i].Name.Length - 4) == textBox43.Text) return true;

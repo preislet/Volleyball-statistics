@@ -903,6 +903,7 @@
             this.textBox_7LiberoDomaci.Size = new System.Drawing.Size(31, 32);
             this.textBox_7LiberoDomaci.TabIndex = 35;
             this.textBox_7LiberoDomaci.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_7LiberoDomaci.TextChanged += new System.EventHandler(this.buttonTextBox_ZmenaCislo);
             // 
             // label_HostePozice
             // 
@@ -936,6 +937,7 @@
             this.textBox_PoziceHoste1.TabIndex = 50;
             this.textBox_PoziceHoste1.Tag = "1";
             this.textBox_PoziceHoste1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_PoziceHoste1.TextChanged += new System.EventHandler(this.buttonTextBox_ZmenaCislo);
             // 
             // textBox_PoziceHoste6
             // 
@@ -949,6 +951,7 @@
             this.textBox_PoziceHoste6.TabIndex = 51;
             this.textBox_PoziceHoste6.Tag = "6";
             this.textBox_PoziceHoste6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_PoziceHoste6.TextChanged += new System.EventHandler(this.buttonTextBox_ZmenaCislo);
             // 
             // textBox_PoziceHoste2
             // 
@@ -962,6 +965,7 @@
             this.textBox_PoziceHoste2.TabIndex = 52;
             this.textBox_PoziceHoste2.Tag = "2";
             this.textBox_PoziceHoste2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_PoziceHoste2.TextChanged += new System.EventHandler(this.buttonTextBox_ZmenaCislo);
             // 
             // textBox_PoziceHoste3
             // 
@@ -975,6 +979,7 @@
             this.textBox_PoziceHoste3.TabIndex = 53;
             this.textBox_PoziceHoste3.Tag = "3";
             this.textBox_PoziceHoste3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_PoziceHoste3.TextChanged += new System.EventHandler(this.buttonTextBox_ZmenaCislo);
             // 
             // textBox_PoziceHoste5
             // 
@@ -988,6 +993,7 @@
             this.textBox_PoziceHoste5.TabIndex = 54;
             this.textBox_PoziceHoste5.Tag = "5";
             this.textBox_PoziceHoste5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_PoziceHoste5.TextChanged += new System.EventHandler(this.buttonTextBox_ZmenaCislo);
             // 
             // textBox_PoziceHoste4
             // 
@@ -1001,6 +1007,7 @@
             this.textBox_PoziceHoste4.TabIndex = 55;
             this.textBox_PoziceHoste4.Tag = "4";
             this.textBox_PoziceHoste4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_PoziceHoste4.TextChanged += new System.EventHandler(this.buttonTextBox_ZmenaCislo);
             // 
             // button_PoziceLock
             // 
@@ -1034,6 +1041,7 @@
             this.textBox_PoziceDomaci1.TabIndex = 59;
             this.textBox_PoziceDomaci1.Tag = "1";
             this.textBox_PoziceDomaci1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_PoziceDomaci1.TextChanged += new System.EventHandler(this.buttonTextBox_ZmenaCislo);
             // 
             // textBox_PoziceDomaci6
             // 
@@ -1047,6 +1055,7 @@
             this.textBox_PoziceDomaci6.TabIndex = 60;
             this.textBox_PoziceDomaci6.Tag = "6";
             this.textBox_PoziceDomaci6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_PoziceDomaci6.TextChanged += new System.EventHandler(this.buttonTextBox_ZmenaCislo);
             // 
             // textBox_PoziceDomaci5
             // 
@@ -1060,6 +1069,7 @@
             this.textBox_PoziceDomaci5.TabIndex = 61;
             this.textBox_PoziceDomaci5.Tag = "5";
             this.textBox_PoziceDomaci5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_PoziceDomaci5.TextChanged += new System.EventHandler(this.buttonTextBox_ZmenaCislo);
             // 
             // textBox_PoziceDomaci4
             // 
@@ -1073,6 +1083,7 @@
             this.textBox_PoziceDomaci4.TabIndex = 62;
             this.textBox_PoziceDomaci4.Tag = "4";
             this.textBox_PoziceDomaci4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_PoziceDomaci4.TextChanged += new System.EventHandler(this.buttonTextBox_ZmenaCislo);
             // 
             // textBox_PoziceDomaci3
             // 
@@ -1086,6 +1097,7 @@
             this.textBox_PoziceDomaci3.TabIndex = 63;
             this.textBox_PoziceDomaci3.Tag = "3";
             this.textBox_PoziceDomaci3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_PoziceDomaci3.TextChanged += new System.EventHandler(this.buttonTextBox_ZmenaCislo);
             // 
             // textBox_PoziceDomaci2
             // 
@@ -1099,6 +1111,7 @@
             this.textBox_PoziceDomaci2.TabIndex = 64;
             this.textBox_PoziceDomaci2.Tag = "2";
             this.textBox_PoziceDomaci2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_PoziceDomaci2.TextChanged += new System.EventHandler(this.buttonTextBox_ZmenaCislo);
             // 
             // tableLayoutPanel2
             // 
@@ -3586,6 +3599,7 @@
             this.textBox_PoznamkyKeHre.Name = "textBox_PoznamkyKeHre";
             this.textBox_PoznamkyKeHre.Size = new System.Drawing.Size(711, 263);
             this.textBox_PoznamkyKeHre.TabIndex = 93;
+            this.textBox_PoznamkyKeHre.TextChanged += new System.EventHandler(this.textBox_PoznamkyKeHre_TextChanged);
             // 
             // label_PoznamkyKeHre
             // 

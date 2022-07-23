@@ -40,12 +40,18 @@ namespace Volleyball_statistics
         {
             this.Close();
         }
+
+        /// <summary>
+        /// Funkce spouštějící zapisování a vyhodnocení dopadů balónů na herní plochu
+        /// Funkce se vyvolá kdykoili uživatel klikne na hřiště, ve kterém se ukazují procenta dopadu
+        /// </summary>
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            // Kontrola, zda je vyplněno hřiště pro kontorlu pozic (musí být vyplněno pro správnou funkčnost programu)
             if ((textBox_PoziceHoste1.Text == "") || (textBox_PoziceHoste2.Text == "") || (textBox_PoziceHoste3.Text == "") || (textBox_PoziceHoste4.Text == "") || (textBox_PoziceHoste5.Text == "") || (textBox_PoziceHoste6.Text == "") ||
                 (textBox_PoziceDomaci1.Text == "") || (textBox_PoziceDomaci2.Text == "") || (textBox_PoziceDomaci3.Text == "") || (textBox_PoziceDomaci4.Text == "") || (textBox_PoziceDomaci5.Text == "") || (textBox_PoziceDomaci6.Text == "") || (textBox_7LiberoDomaci.Text == ""))
             {
-                MessageBox.Show("Prvni vypňte postavení hráčů do hřiště v levém dolním rohu");
+                MessageBox.Show("Nejdříve je třeba vyplnit postavení hráčů do hřiště v levém dolním rohu");
                 return;
             }
             //Pozice kurzoru při kliknutí na obrázek hřiště
@@ -55,7 +61,11 @@ namespace Volleyball_statistics
             hriste.ProcentaDopadu(X, Y, pictureBox1);  //Přepočet procentuálních dopadů do určitých zón
             UpdateHriste();
         }
-        private void UpdateHriste()  //Kompletné Update celé statistiky (kromě setů)
+
+        /// <summary>
+        /// Update servisu, procent ukazujících se na hristi a vyvolávání funkce UpdateSet ve chvíli, kdy jeden z týmů vahrál set)
+        /// </summary>
+        private void UpdateHriste()
         {
             //Skore update
             if (hriste.PocetBoduDomaci + hriste.PocetBoduHoste + hriste.hriste_outy[0] + hriste.hriste_outy[1] != 0)
@@ -150,7 +160,10 @@ namespace Volleyball_statistics
             }
         }
 
-        private void button_Out_Click(object sender, EventArgs e)   //Outy
+        /// <summary>
+        /// Funkce zapisující outy jednotlivých týmů do příslušných polí
+        /// </summary>
+        private void button_Out_Click(object sender, EventArgs e)
         {
             hriste.hriste_outy[Convert.ToInt32((sender as Button).Tag)]++;
             if (Convert.ToInt32((sender as Button).Tag) == 1) hriste.LastBod = true;
@@ -158,6 +171,9 @@ namespace Volleyball_statistics
             UpdateHriste();
         }
 
+        /// <summary>
+        /// Funkce se spustí při nastavování, kdo je na podání
+        /// </summary>
         private void button_Servis_Click(object sender, EventArgs e)
         {
             
@@ -222,6 +238,11 @@ namespace Volleyball_statistics
                 label_ServisDomaci.BackColor = Color.Black;
             }
         }
+
+        /// <summary>
+        /// Funkce se spustí po konci setu
+        /// Funkce zapíše stav setu do tabulky setů
+        /// </summary>
         private void UpdateSet()
         {
             int Set = skore.CurrSet;
@@ -301,6 +322,10 @@ namespace Volleyball_statistics
             textBox_7LiberoDomaci.Text = "";
 
         }
+
+        /// <summary>
+        /// Funkce aktualizující hřiště pro kontorlu pozic
+        /// </summary>
         private void RotacePoziceUpdate()
         {
             textBox_PoziceDomaci1.Text = postaveni_A_StatistikaHracu.PostaveniDomaci[0].ToString();
@@ -319,6 +344,11 @@ namespace Volleyball_statistics
             if (postaveni_A_StatistikaHracu.aktivniLiberoDomaciPozice == 7) label_liberoDomaci.Text = "Libero";
             else label_liberoDomaci.Text = "Blokař";
         }
+
+        /// <summary>
+        /// Funkce, který zamkne pozice, který uživatel zapsal do hřičtě pro kontrolu pozic
+        /// Poté spustí další funkci pro kontrolu střídání blokaře za libero, pokud by byli na servisu hosté
+        /// </summary>
         private void button_PoziceLock_Click(object sender, EventArgs e)
         {
             if ((textBox_PoziceHoste1.Text == "") || (textBox_PoziceHoste2.Text == "") || (textBox_PoziceHoste3.Text == "") || (textBox_PoziceHoste4.Text == "") || (textBox_PoziceHoste5.Text == "") || (textBox_PoziceHoste6.Text == "") ||
@@ -326,13 +356,17 @@ namespace Volleyball_statistics
             //Zamknutí všech pozic
             if (button_PoziceLock.BackColor == Color.Green)
             {
+                //Kontrola, jestli jsou čísla zapsána na hřišti skutečně na soupisce
+                TextBox[] poziceDomaci = new TextBox[] { textBox_PoziceDomaci1, textBox_PoziceDomaci2, textBox_PoziceDomaci3, textBox_PoziceDomaci4, textBox_PoziceDomaci5, textBox_PoziceDomaci6, textBox_7LiberoDomaci };
+                if (!(postaveni_A_StatistikaHracu.KontrolaZapsaniPozice(poziceDomaci))) return;
+
                 // Načtení Sestavy na hřišti
                 postaveni_A_StatistikaHracu.AktivniLiberoBlokarDomaci = Convert.ToInt32(textBox_7LiberoDomaci.Text);
                 postaveni_A_StatistikaHracu.NactenySestavNaHristi(Convert.ToInt32(textBox_PoziceDomaci1.Text), Convert.ToInt32(textBox_PoziceDomaci2.Text), Convert.ToInt32(textBox_PoziceDomaci3.Text),
                     Convert.ToInt32(textBox_PoziceDomaci4.Text), Convert.ToInt32(textBox_PoziceDomaci5.Text), Convert.ToInt32(textBox_PoziceDomaci6.Text), Convert.ToInt32(textBox_PoziceHoste1.Text),
                     Convert.ToInt32(textBox_PoziceHoste2.Text), Convert.ToInt32(textBox_PoziceHoste3.Text), Convert.ToInt32(textBox_PoziceHoste4.Text), Convert.ToInt32(textBox_PoziceHoste5.Text), Convert.ToInt32(textBox_PoziceHoste6.Text));
 
-                //Načtení střádačky
+                //Načtení střídačky
                 postaveni_A_StatistikaHracu.NactiStridacku(tableLayoutPanel_Stridacka);
 
                 //Zobrazení aktivních hráčů v tabulce
@@ -374,6 +408,7 @@ namespace Volleyball_statistics
                 textBox_7LiberoDomaci.Enabled = false;
                 textBox_7LiberoDomaci.BackColor = Color.Blue;
                 label_liberoDomaci.Text = "Libero/blok";
+
             }
             //Odemknutí všech pozic
             else
@@ -424,8 +459,24 @@ namespace Volleyball_statistics
 
         }
 
+        /// <summary>
+        /// Funkce kontroluje, zda se do místa, kam se má zapsat číslo hráče, který je na pozici skutečně zapsalo číslo
+        /// Pokud ne, tak se daný znak smaže
+        /// </summary>
+        private void buttonTextBox_ZmenaCislo(object sender, EventArgs e)
+        {
+            string text = ((TextBox)sender).Text;
+            if (text.All(char.IsDigit)) return;
+            ((TextBox)sender).Text = "";
+        }
+
+        /// <summary>
+        /// Funkce, která se spustí, jakmile uživatel klikne na jednu z akcí, kterou chce zapsat
+        /// Funkce tviditelní tlačítka pro zapsání známky a zýroveň vybarví daný sloupec oranžově (až do místa, kde se protne s zeleným řádkem - vybraný hráč)
+        /// </summary>
         private void button_TabulkaHracu_Click(object sender, EventArgs e)
         {
+            ///Zapnutí buttonu
             static void ZapniButtony(Button[] b)
             {
                 for (int i = 0; i < b.Length; i++)
@@ -498,13 +549,18 @@ namespace Volleyball_statistics
                 }
             }
         }
+
+        /// <summary>
+        /// Funkce zahajující zapisování statistiky jednotlivých hráčů
+        /// Funkce se vyvolá, pokud uživatel klikne na jméno hráče v tabulce hráčů
+        /// </summary>
         private void button_Hrac_Click(object sender, EventArgs e)
         {
             //Kontrola jestli je zapsáno ve hřišti ukazující pozice
             if ((textBox_PoziceHoste1.Text == "") || (textBox_PoziceHoste2.Text == "") || (textBox_PoziceHoste3.Text == "") || (textBox_PoziceHoste4.Text == "") || (textBox_PoziceHoste5.Text == "") || (textBox_PoziceHoste6.Text == "") ||
                 (textBox_PoziceDomaci1.Text == "") || (textBox_PoziceDomaci2.Text == "") || (textBox_PoziceDomaci3.Text == "") || (textBox_PoziceDomaci4.Text == "") || (textBox_PoziceDomaci5.Text == "") || (textBox_PoziceDomaci6.Text == "") || (textBox_7LiberoDomaci.Text == ""))
             {
-                MessageBox.Show("Prvni vypňte postavení hráčů do hřiště v levém dolním rohu");
+                MessageBox.Show("Nejdříve je třeba vyplnit postavení hráčů do hřiště v levém dolním rohu");
                 return;
             }
 
@@ -532,9 +588,11 @@ namespace Volleyball_statistics
         }
 
         /// <summary>
-        /// Funkce zajišťující spuštění zapisování akcí do příslušných polí a následně tabulky
+        /// Funkce zajišťující spuštění zapisování akcí do příslušných polí a následně do tabulky
         /// </summary>
-        #region Buttony pro Hodnocení jednotlivých akcí ve hře
+        #region Buttony pro Hodnocení jednotlivých akcí ve hře + funkce pro uvedení tabulky do výchozího stavu
+
+        /// Funkce se stará o stav, kdy uživatel klikl na známku Servisu
         private void button_ServisHodnoceni_Click(object sender, EventArgs e)
         {
             Control c = null;
@@ -543,7 +601,7 @@ namespace Volleyball_statistics
 
             ///For cyklus se snaží najít světle modré pole ve sloupci servisu
             ///Takto označené pole je to pole, do kterého se má zapsat
-            ///poté se program podívý u jakého hráče je tato statistika a poté vyvolá funkci pro vyhodnocení akce
+            ///poté se program podívá u jakého hráče je tato statistika a poté vyvolá funkci pro vyhodnocení akce
             for (int i = 1; i < tableLayoutPanel_TabulkaHracu.RowCount; i++)
             {
                 c = tableLayoutPanel_TabulkaHracu.GetControlFromPosition(3, i);
@@ -662,11 +720,17 @@ namespace Volleyball_statistics
         }
         #endregion
 
+        /// <summary>
+        /// Funkce spouští funkce pro uložení zápasu do excel souboru
+        /// </summary>
         private void buttonSave_Click(object sender, EventArgs e)
         {
             postaveni_A_StatistikaHracu.Zapis();
         }
 
+        /// <summary>
+        /// Funcke pořídí snímek obrazovky, a pak ho následně uloží do složky vygenerované programem na ploše
+        /// </summary>
         private void buttonScreenshot_Click(object sender, EventArgs e)
         {
             Bitmap memoryImage;
@@ -681,6 +745,14 @@ namespace Volleyball_statistics
             string JmenoScreenu = "Screenshot_" + DateTime.Now.ToString("(dd_MMMM_hh_mm_ss)") + ".png";
             string fullpath = Path.Combine(path, JmenoScreenu);
             memoryImage.Save(fullpath);
+        }
+
+        /// <summary>
+        /// Po zapsání poznámky do boxu pro poznámky ve hře, funkce tento text zapíše do stringu, který je pak využit pro přepsání poznámek do excel souboru
+        /// </summary>
+        private void textBox_PoznamkyKeHre_TextChanged(object sender, EventArgs e)
+        {
+            postaveni_A_StatistikaHracu.poznamkyKeHre = textBox_PoznamkyKeHre.Text;
         }
     }
 }
