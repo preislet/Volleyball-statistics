@@ -10,6 +10,7 @@ using System.Reflection;
 namespace Volleyball_statistics
 {
     /// <summary>
+    /// oo
     /// Class Menu se stará převážně o přenos dat, co uživatel zadý do hlavního menu
     /// Zajišťuje hledání cest do souboru aplikace, který se vytvoří na ploše
     /// </summary>
@@ -18,6 +19,7 @@ namespace Volleyball_statistics
         public string? Domaci;
         public string? Hoste;
         public string? Sestava;
+        public int idk;
 
         //Konstruktory
         public Menu(string domaci, string hoste, string sestava)
